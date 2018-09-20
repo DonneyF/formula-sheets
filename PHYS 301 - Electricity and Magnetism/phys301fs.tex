@@ -1,0 +1,249 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{PHYS 301 Formula Sheet}} \\
+	\scriptsize{Donney Fan -- Updated \today}
+	\vspace{-0.1cm}
+\end{center}
+
+\section{Fundamental Constants}
+\tab $\epsilon_0 = 8.85\times 10^{-12}\, \text{C}^2/\text{Nm}^2$
+\\
+\tab $\mu_0 = 4\pi\times 10^{-7} \, \text{N}/\text{A}^2$
+\\
+\tab $c = 3.00 \times 10^8 \, \text{m}/\text{s}$
+\\
+\tab $e = 1.60 \times 10^{-19} \, \text{C}$
+\\
+\tab $m = 9.11 \times 10^{-31} \, \text{kg}$
+
+\section{Vector Derivatives}
+\subsection{Cartesian}
+$d\vb{l} = dx\,\vu{x} + dy\,\vu{y} + dz\,\vu{z}$
+\hspace{1cm}
+$d\uptau = dx\,dy\,dz$
+
+Gradient:\\
+\tab $\ds \grad{f} =  \pdv{f}{x}\vu{x} + \pdv{f}{y}\vu{y} + \pdv{f}{z}\vu{z}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \pdv{v_x}{x} + \pdv{v_y}{y} + \pdv{v_z}{z}$
+
+Curl:\\
+\tab $\ds \curl{\vb{v}} = \left(\pdv{v_z}{y} - \pdv{v_y}{z}\right)\vu{x} + \left(\pdv{v_x}{z} - \pdv{v_z}{x}\right)\vu{y} + \left(\pdv{v_y}{x} - \pdv{v_x}{y}\right)\vu{z}$
+
+Laplacian:\\
+\tab $\ds \laplacian{f} = \pdv[2]{f}{x} + \pdv[2]{f}{y} + \pdv[2]{f}{z}$
+
+\subsection{Spherical}
+$d\vb{l} = dr\,\vu{r} + r\,d\theta\,\vu*{\theta} + r\sin\theta\,d\phi\,\vu*{\phi}$
+\hspace{1cm}
+$d\uptau = r^2\sin\theta\,dr\,d\theta\,d\phi$
+
+Gradient:\\
+\tab $\ds \grad{f} = \pdv{f}{r}\vu{r} + \frac{1}{r}\pdv{f}{\theta}\vu*{\theta} + \frac{1}{r\sin\theta}\pdv{f}{\phi}\vu*{\phi}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \frac{1}{r^2}\pdv{r}(r^2v_r) + \frac{1}{r\sin\theta}\pdv{\theta}(\sin\theta v_\theta) + \frac{1}{r\sin\theta}\pdv{v_\theta}{\phi}$
+
+Curl:\\
+\tab $\ds \curl{\vb{v}} = \frac{1}{r\sin\theta}\left[\pdv{\theta}(\sin\theta\, v_\phi)- \pdv{v_\theta}{\phi}\right]\vu{r}\,+$\\
+\tab \tab $\ds \frac{1}{r}\left[\frac{1}{\sin\theta}\pdv{v_r}{\phi}-\pdv{r}(r v_\theta)\right]\vu*{\theta} + \frac{1}{r}\left[\pdv{r}(r v_\theta)-\pdv{v_r}{\theta}\right]\vu*{\phi}$
+
+Laplacian:\\
+\tab $\ds \laplacian{f} = \frac{1}{r}\pdv{r}\left(r^2\pdv{f}{r}\right) + \frac{1}{r^2\sin\theta}\pdv{\theta}\left(\sin\theta\pdv{f}{\theta}\right)+\frac{1}{r^2\sin^2\theta}\pdv[2]{f}{\phi}$
+
+\subsection{Cylindrical}
+$d\vb{l} = ds\,\vu{s} + s\,d\phi\,\vu*{\phi} + dz\,\vu{z}$
+\hspace{1cm}
+$d\uptau = s\,ds\,d\phi\,dz$
+
+Gradient:\\
+\tab $\ds \grad{f} = \pdv{f}{s}\vu{s}+\frac{1}{s}\pdv{f}{\phi}\vu*{\phi}+\pdv{f}{z}\vu{z}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \frac{1}{s}\pdv{s}(sv_s)+\frac{1}{s}\pdv{v_\phi}{\phi} + \pdv{v_z}{z}$
+
+Curl:\\
+\tab $\ds \curl{\vb{v}} = \left[\frac{1}{s}\pdv{v_z}{\phi}-\pdv{v_\phi}{z}\right]\vu{s}+\left[\pdv{v_s}{z}-\pdv{v_z}{s}\right]\vu*{\phi}+\frac{1}{s}\left[\pdv{s}(sv_\phi)-\pdv{v_s}{\phi}\right]\vu{z}$
+
+Laplacian:\\
+\tab $\ds \laplacian{f}=\frac{1}{s}\pdv{s}\left(s\pdv{f}{s}\right)+\frac{1}{s^2}\pdv[2]{f}{\phi}+\pdv[2]{f}{z}$
+
+\section{Fundamental Theorems}
+Gradient Theorem:\\
+\tab $\ds \int_{\vb{a}}^{\vb{b}}(\grad{f})\cdot d\vb{l} = f(\vb{b})-f(\vb{a})$
+
+Divergence Theorem:\\
+\tab $\ds \int (\div \vb{A})\, d\uptau = \oint \vb{A}\cdot d\vb{a}$
+
+Curl Theorem:\\
+\tab $\ds \int (\curl{\vb{A}})\cdot d\vb{a} = \oint \vb{A}\cdot d\vb{l}$
+
+\section{General Maxwell's Equations}
+\tab $\ds \div{\vb{E}} = \frac{1}{\epsilon_0}\rho$
+
+\tab $\ds \curl{\vb{E}} = -\pdv{\vb{B}}{t}$
+
+\tab $\ds \div{\vb{B}} = 0$
+
+\tab $\ds \curl{\vb{B}} = \mu_0\vb{J} + \mu_0\epsilon_0\dv{\vb{E}}{t}$
+
+\section{Electric Fields and Potential}
+\tab $\ds \vb{E} = -\grad{V} - \pdv{A}{t}$
+\\
+\tab $\vb{B} = \curl{\vb{A}}$
+
+Lorentz Force Law:\\
+\tab $\vb{F} = q(\vb{E}+\vb{v}\cross\vb{B})$
+
+Energy:\\
+\tab $\ds U = \frac{1}{2} \int \left(\epsilon_0 E^2 + \frac{1}{\mu_0}B^2\right)\,d\uptau$
+
+Momentum:\\
+\tab $\vb{P} = \epsilon_0\int (\vb{E}\cross\vb{B})\,d\uptau$
+
+Poynting vector:\\
+\tab $\ds \vb{S} = \frac{1}{\mu_0}(\vb{E}\cross\vb{B})\,d\uptau$
+
+Lamor Formula:\\
+\vspace{1mm}
+\tab $\ds \frac{\mu_0}{6\pi c}q^2a^2$
+
+\section{Spherical Coordinates}
+\tab $x = r\sin\theta\cos\phi$
+\\
+\tab $y = r\sin\theta\sin\phi$
+\\
+\tab $z = r\cos\theta$
+\\
+\vspace{3mm}
+\tab $\vu{x} = \sin\theta\cos\phi\,\vu{r} + \cos\theta\cos\phi\,\vu*{\theta} - \sin\phi\,\vu*{\phi}$
+\\
+\tab $\vu{y} = \sin\theta\sin\phi\,\vu{r} + \cos\theta\sin\phi\,\vu*{\theta} + \cos\phi\,\vu*{\phi}$
+\\
+\tab $\vu{z} = \cos\theta \, \vu{r} - \sin\theta \, \vu*{\theta}$
+\\
+\vspace{3mm}
+\tab $r=\sqrt{x^2 + y^2 + z^2}$
+\\
+\tab $\theta = \tan^{-1}\left(\sqrt{x^2+y^2}/z \right)$
+\\
+\tab $\phi = \tan^{-1}(y/x)$
+\\
+\vspace{3mm}
+\\
+\tab $\vu{r}=\sin\theta\cos\phi\,\vu{x} + \sin\theta\sin\phi\,\vu{y}+\cos\theta\,\vu{z}$
+\\
+\tab $\vu*{\theta}=\cos\theta\cos\phi\,\vu{x}+\cos\theta\sin\phi\,\vu{y}-\sin\theta\,\vu{z}$
+\\
+\tab $\vu*{\phi} = -\sin\phi\,\vu{x}+\cos\phi\,\vu{y}$
+
+\section{Cylindrical Coordinates}
+\tab $x = s\cos\phi$
+\\
+\tab $y = s \sin\phi$
+\\
+\tab $z=z$
+\\
+\vspace{3mm}
+\tab $\vu{x}=\cos\phi\,\vu{s}-\sin\phi\vu*{\phi}$
+\\
+\tab $\vu{y} = \sin\phi\,\vu{s}+\cos\phi\,\vu*{\phi}$
+\\
+\tab $\vu{z} = \vu{z}$
+\\
+\vspace{3mm}
+\tab $s = \sqrt{x^2+y^2}$
+\\
+\tab $\phi = \tan^{-1}(y/x)$
+\\
+\tab $z = z$
+\\
+\vspace{3mm}
+\tab $\vu{s} = \cos\phi\,\vu{x}+\sin\phi\,\vu{y}$
+\\
+\tab $\vu*{\phi}=-\sin\phi\,\vu{x}+\cos\phi\,\vu{y}$
+\\
+\tab $\vu{z} = \vu{z}$
+
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize
+
+Copyright \copyright\ \the\year ~Donney Fan
+
+
+\end{multicols}
+\end{document}
