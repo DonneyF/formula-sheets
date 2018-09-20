@@ -1,0 +1,202 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{MECH 360 Formula Sheet}} \\
+	\scriptsize{Donney Fan -- Updated \today}
+	\vspace{-0.1cm}
+\end{center}
+
+\section{Stress \& Strain}
+Average normal stress:\\
+\tab $\ds \sigma = \frac{P}{A}$
+
+Average shear stress:\\
+\tab $\ds \uptau = \frac{V}{A}$
+
+Double shear:\\
+\tab $\ds \uptau = \frac{P}{2A}$
+
+Bearing stress:\\
+\tab $\ds \sigma_b = \frac{P}{A} = \frac{P}{td}$
+
+Stresses on a 2-force member\\($\theta$ measured from vertical): \\
+\tab $\ds \sigma = \frac{P}{A_\perp}\cos^2\theta \hspace{1cm} \uptau = \frac{P}{A_\perp}\sin\theta\cos\theta$
+
+Factor of safety:\\
+\tab $\ds \text{Factor of safety} = \frac{\text{Ultimate Load}}{\text{Allowable Load}}$
+
+Normal strain:\\
+\tab $\ds \epsilon = \frac{\delta}{L} = \frac{d\delta}{dx}$
+
+Local shear strain (Change of $\pi/2$):\\
+\tab $\gamma = \pi/2 - \theta$
+
+\section{Axial Load}
+Hooke's Law and Modulus of Elasticity:\\
+\tab $\sigma = E\epsilon$
+
+Elastic deformation under axial loading:\\
+\tab $\ds \delta = \frac{FL}{AE} = \sum_{i}\frac{F_i L_i}{A_i E_i}$
+
+Temperature change:\\
+\tab $\delta_T = L_o\alpha\Delta T \hspace{1cm}$
+
+Poisson's Ration:\\
+\vspace{1mm}
+\tab $\ds \nu = -\frac{\epsilon_{\text{lat}}}{\epsilon_\text{long}}$
+
+Shear Stress-Strain Diagrams:\\
+\tab $\ds G = \frac{E}{2(1 + \nu)}$\\
+\tab $\uptau = G\gamma \hspace{1cm} \text{(elastic region)}$
+
+Elastic Strain Energy:\\
+\tab $\ds u = \int_{0}^{\sigma} \sigma\,d\epsilon = \frac{1}{2}\frac{\sigma^2}{E}$
+
+\section{Torsion}
+Polar Moment of Inertia:\\
+\tab $J = \int r^2\,dA$\\
+\tab $\ds J = \frac{\pi c^4}{2}$ \hspace{1cm} (full tube)\\
+\vspace{1mm}
+\tab $\ds J = \frac{\pi}{2}(c^4-a^4)$ \hspace{1cm} (hollow tube)
+
+Shear Stress:\\
+\tab $\ds \uptau = \frac{T\rho}{J} \hspace{1cm } \uptau_{\text{max}} = \frac{Tc}{J}$
+
+Power:\\
+\tab $P = T\omega$
+
+Angle of Twist:\\
+\tab $\ds \phi = \frac{TL}{JG} = \int_{0}^{L}\frac{T(x)}{J(x)G(x)}\,dx$
+
+Stress Concentrations:\\
+\tab $\ds \uptau_{\text{max}} = K\frac{Tc}{J}$
+
+\section{Bending}
+Distributed Load Intensity at each point:\\
+\tab $\ds w = \frac{dV}{dx}$
+
+Shear at each point:\\
+\tab $\ds V = \frac{dM}{dx}$
+
+Normal Strain:\\
+\vspace{1mm}
+\tab $\ds \epsilon_{x} = -\frac{y}{p} = -\frac{y}{c}\epsilon_{\text{max}}$
+
+Normal Stress:\\
+\vspace{1mm}
+\tab $\ds \sigma = -\frac{y}{c}\sigma_{\text{max}}$\\
+\vspace{1mm}
+\tab $\ds \sigma = \frac{My}{I}$\\
+\vspace{1mm}
+\tab $\ds \sigma_{\text{max}} = \frac{Mc}{I}$
+
+Moment of Inertia:\\
+\tab $I = \int y^2\,dA$
+
+Neutral Axis:\\
+\tab $\int y\,dA = 0$
+
+Section Modulus:\\
+\tab $S = I/c$
+
+Parallel Axis Theorem:\\
+\tab $I_{\parallel} = I_G + Md^2$
+
+\section{Stress Transformations}
+Principal Stresses:\\
+\tab $\ds \sigma_{1,2} = \frac{\sigma_x + \sigma _y}{2} \pm \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \uptau_{xy}^2}$
+
+Maximum In-Plane Shear Stress:\\
+\vspace{1mm}
+\tab $\uptau_{\text{max}} = R = \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \uptau_{xy}^2}$
+
+Angle of Principal In-Plane Stresses:\\
+\tab $\ds \tan 2\theta_p = \frac{2\uptau_{xy}}{(\sigma_x - \sigma_y)}$
+
+Angle of Maximum In-Plane Stresses:\\
+\tab $\ds \tan 2\theta_s = -\frac{(\sigma_x - \sigma_y)}{2\uptau_{xy}}$
+
+Average Stress:\\
+\tab $\ds \frac{\sigma_x + \sigma_y}{2}$
+
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize
+
+Copyright \copyright\ \the\year ~Donney Fan
+
+\href{http://wch.github.io/latexsheet/}{http://wch.github.io/latexsheet/}
+
+
+\end{multicols}
+\end{document}
