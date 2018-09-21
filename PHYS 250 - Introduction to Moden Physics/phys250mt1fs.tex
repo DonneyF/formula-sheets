@@ -1,0 +1,195 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+	
+	
+	% multicol parameters
+	% These lengths are set only within the two main columns
+	%\setlength{\columnseprule}{0.25pt}
+	\setlength{\premulticols}{1pt}
+	\setlength{\postmulticols}{1pt}
+	\setlength{\multicolsep}{1pt}
+	\setlength{\columnsep}{2pt}
+	
+	\begin{center}
+		\Large{\underline{PHYS 250 MT1 Formula Sheet}}
+	\end{center}
+	
+	\section{Energy \& Waves}
+	\tab $E_{\text{max}}^2 \approx (\text{amplitude})^2$\\
+		$\bullet$ Does not depend on frequency or matter.
+	
+	Energy of a photon:\\
+	\tab $\ds E = hf = \frac{hc}{\lambda} $\\
+		$\bullet$ Interference is evidence that light is a wave.
+	
+	\section{Photoelectric Effect}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Current is linearly proportional to intensity.
+		\item Current appears without delay.
+		\item Photoelectrons are only emitted if the light frequency $f$ exceeds a threshold frequency $f_0$
+		\item The value of $f_0$ depends on cathode material.
+		\item Current becomes independent of $V$ for large $V$.
+		\item If the voltage is made negative, then the current decreases until some stopping potential.
+		\item $V_{\text{stop}}$ is independent of light intensity.
+		\item Electron immediately has enough energy to escape.
+		\item Number of electrons $\propto$ Intensity
+		\item Maximum $E_k \propto$ Frequency
+	\end{itemize}
+
+	Classical Interpretation:
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Metal is heated to high temperature to allow Thermal Emission
+		\item Can possibly raise electron temperature to significantly higher than the metal, so that the electron can emit without the metal melting.
+		\item Nothing to suggest threshold frequency
+		\item Does not explain instantaneous current
+		\item Does not explain why $V_{\text{stop}}$ is constant.
+	\end{itemize}
+
+	Stopping Potential:\\
+	\tab $\ds V_{\text{stop}} = \frac{hf - E_0}{\text{e}}$
+	
+	The Photon Rate:\\
+	\tab $\ds P = \dv{N}{t} hf$
+	
+	\subsection{Emission and Absorption}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Atom jumps from lower energy to higher energy state by absorbing a photon. It can emit a photon of the same frequency as it jumps back. (Spontaneous Transmission)
+		\item Stimulated Emission: Production of two identical photons by one photon interacting with an excited atom. Only occurs if the first photon's frequency matches the energy difference.
+		\item A laser uses a chain reaction of stimulated emission in many excited atoms. The number of excited atoms must out number the non-excited atoms to be stable.
+		\item Population Inversion: Having an amount of atoms N such that the number of excited atoms is proportionally larger than the number of non-excited atoms.
+	\end{itemize}
+	
+	Balmer's Formula ($\lambda$ in hydrogen spectrum):\\
+	\tab $\ds \frac{91.18\text{nm}}{\frac{1}{m^2} - \frac{1}{n^2}} \text{ for m = 1,2,3... \& } n > m$
+	
+	\subsection{Wave Function}
+	We want to relate the probability functions with electrons, but there are no waves for electrons. We assume there is some continuous, wave-like function for matter that is analogous for light.
+	
+	Probability Density:\\
+	\tab $P(x) = \abs{\psi (x)}^2$
+	
+	Normalization:\\
+	\tab $\ds \int_{-\infty}^{\infty} \abs{\psi (x)}^2 dx = 1$
+	
+	\subsection{Quantum Models}
+	Bohr Model can't explain
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Why angular momentum is quantized
+		\item Why electrons don't radiate energy when in orbits
+		\item How does electron know what orbit to jump to?
+		\item Can't be generalized
+		\item Shapes of molecular orbits
+		\item Molecular bonds
+		\item Very closely spaced spectral lines
+	\end{itemize}
+
+	\subsection{Schroedinger Equation}
+	$$\dv[2]{\psi}{x}+\frac{2m}{\hbar^2}[E - U(x)]\psi (x) = 0$$
+	$$\hbar = h/2\pi$$
+	de Broglie wavelength:\\
+	\tab $ \ds \lambda = \frac{h}{p} = \frac{h}{mv} = \frac{h}{\sqrt{2m E_k}}$
+	
+	Restrictions
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item $\psi (x)$ is continuous
+		\item $\psi (x)$ = 0 if $x$ is in a region where te particle is impossible to be in
+		\item $\psi (x) \rightarrow 0$ as $x \rightarrow \infty$
+		\item $\psi (x)$ is a normalized function
+	\end{itemize}
+
+	\subsection{Potential Wells}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item A particle with energy $E > U_0$ an escape into the classically forbidden region.
+		\item Particle's energy is quantized
+		\item There area finite number of bound states
+		\item $\psi (x)$ extends into the classically forbidden region
+		\item Node spacing is smaller when kinetic energy is larger
+		\item Classical particle is more likely to be found where it is moving slowly
+		\item Wave function amplitude is larger where the kinetic energy is smaller
+	\end{itemize}
+	Wave Function in the classically forbidden region:\\
+	\tab $\psi (x) = \psi_{\text{edge}} e^{-(x-L)/\eta}$
+	
+	Penetration distance:\\
+	\tab $\ds \eta = \frac{\hbar}{\sqrt{2m(U_0 - E)}}$
+	
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Quantum tunneling requires no energy
+		\item Tunneling requires oscillatory solutions on the other side
+	\end{itemize}
+
+	Tunneling Probability:\\
+	\tab $P_{\text{tunnel}} = e^{-2w/\eta}$ for some edge $x=w$
+	
+	% Footer content
+	\rule{0.3\linewidth}{0.25pt}
+	\scriptsize\\
+	Updated \today\\
+	\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}

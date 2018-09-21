@@ -1,0 +1,223 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+	
+	
+	% multicol parameters
+	% These lengths are set only within the two main columns
+	%\setlength{\columnseprule}{0.25pt}
+	\setlength{\premulticols}{1pt}
+	\setlength{\postmulticols}{1pt}
+	\setlength{\multicolsep}{1pt}
+	\setlength{\columnsep}{2pt}
+	
+	\begin{center}
+		\Large{\underline{PHYS 250 Final Formula Sheet}}
+	\end{center}
+	
+	\section{Energy \& Waves}
+	\tab $E_{\text{max}}^2 \approx (\text{amplitude})^2$\\
+		$\bullet$ Does not depend on frequency or matter.
+	
+	Energy of a photon:\\
+	\tab $\ds E = hf = \frac{hc}{\lambda} $\\
+		$\bullet$ Interference is evidence that light is a wave.
+		
+	\section{Photoelectric Effect}
+		\begin{itemize}[leftmargin=0.5cm]
+			\itemsep0em
+			\item The value of $f_0$ depends on cathode material.
+			\item $V_{\text{stop}}$ is independent of light intensity.
+			\item Number of electrons $\propto$ Intensity
+			\item Maximum $E_k \propto$ Frequency
+		\end{itemize}
+		Stopping Potential: \tab $\ds V_{\text{stop}} = \frac{hf - E_0}{e}$\\
+		The Photon Rate: \tab $\ds P = \dv{N}{t} hf$
+	
+	\section{Emission and Absorption}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Atom transitions to higher energy state by absorbing a photon. Emits a photon of the same frequency if it jumps back.
+		\item Stimulated Emission: Production of two identical photons by one photon interacting with an excited atom. Only occurs if the first photon's frequency matches the energy difference.
+		\item Population Inversion: Having proportionally larger excited atoms than the number of non-excited atoms.
+	\end{itemize}
+	
+	Balmer's Formula ($\lambda$ in hydrogen spectrum):\\
+	\tab $\ds \frac{91.18\text{nm}}{\frac{1}{m^2} - \frac{1}{n^2}} \text{ for m = 1,2,3... \& } n > m$
+	
+\section{Bohr Model}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Electrons exist only in certain orbits. A particular arrangement of electrons is a stationary state.
+		\item Each stationary state has a discrete energy.
+	\end{itemize}
+
+	Hydrogen radius: \tab $r_n = n^2 a_B$
+	
+	Hydrogen Energy: \tab $E_n = -13.60 \text{ eV} / n^2$
+
+\section{Schroedinger Equation}
+	$$\dv[2]{\psi}{x}+\frac{2m}{\hbar^2}[E - U(x)]\psi (x) = 0$$
+	$$\hbar = h/2\pi$$
+	de Broglie wavelength:\\
+	\tab $ \ds \lambda = \frac{h}{p} = \frac{h}{mv} = \frac{h}{\sqrt{2m E_k}}$
+
+\section{Potential Wells}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item A particle with energy $E > U_0$ an escape into the classically forbidden region.
+		\item Node spacing is smaller when $E_K$ is larger
+		\item Classical particle is more likely to be found where it is moving slowly
+		\item $\psi (x)$ amplitude is larger where $E_K$ is smaller
+	\end{itemize}
+	Wave Function in the classically forbidden region:\\
+	\tab $\psi (x) = \psi_{\text{edge}} e^{-(x-L)/\eta}$
+	
+	Penetration distance:\\
+	\tab $\ds \eta = \frac{\hbar}{\sqrt{2m(U_0 - E)}}$
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Quantum tunneling requires no energy and has oscillatory solutions on the other side
+		\item $U_0 - E$ can be the metal's work function
+	\end{itemize}
+
+	Infinite well energy:\\
+	\tab $\ds E_n =\frac{n^2 \pi^2 \hbar^2}{2mL^2}$
+
+	Tunneling Probability:\\
+	\tab $P_{\text{tunnel}} = e^{-2w/\eta}$ for potential well width of $w$
+	
+	
+\section{Measurement}
+\begin{itemize}[leftmargin=0.5cm]
+	\itemsep0em
+	\item Measuring collapses wave function to a specific eigenstate
+	\item Cannot know both position and energy.
+	\item Measuring position $\rightarrow$ $\abs{\psi(x)}^2$ changes in time
+	\item Measuring energy $\rightarrow$ $\abs{\psi(x)}^2$ no change in time
+\end{itemize}
+	
+\section{Wave Packets}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item A localized particle with constant speed
+		\item For any wave packet $\Delta f \Delta t \geq 1$
+	\end{itemize}
+	Uncertainty: \tab $\Delta x = v_x \Delta t = \frac{p_x}{m}\Delta t$\\
+	Uncertainty Principle: \tab $\Delta x \Delta p_x \geq h / 2$
+\section{Hydrogen Atom}
+	Bohr Radius: \tab $\ds a_B = \frac{4 \pi \varepsilon_0 \hbar^2}{me^2}$
+	
+	Energy:\\
+	\tab $E_n = -13.60 eV / n^2$, $n = 1, 2, 3...$
+	
+	Momentum:\\
+	\tab $L = \sqrt{l(l+1)}\hbar$, $l = 0,1,2...n-1$\\
+	\tab $L_z = m\hbar$, $m = -l, -l+1,...0,...l-1,l$
+	
+	Symbols for $l$:\\
+	\tab 
+	$0 \rightarrow s$,
+	$1 \rightarrow p$,
+	$2 \rightarrow d$,
+	$3 \rightarrow f$
+
+	Radial probability: \tab $P_r(r) = 4\pi r^2 \abs{R_{nl}(r)}$
+	
+	Spin: \tab $S_z = m_s \hbar$, $m_s = \pm 1/2$
+	
+	Spin Angular Momentum: \tab $S=\sqrt{3}/2\hbar$
+	
+	Pauli Exclusion Principle: No two electrons can have the same set of quantum numbers. If one electron is present in a state, it excludes all others.
+	
+	High l $\rightarrow$ circular orbit
+	
+	\section{Special Relativity}
+	\begin{itemize}[leftmargin=0.5cm]
+		\itemsep0em
+		\item Laws of physics are the same in all inertial frames
+		\item Any two events occurring simultaneously in one reference frame are not simultaneous in any reference frame moving relative to the original.
+		\item Proper time: The time interval between two events occurring in the same position.
+	\end{itemize}
+	\tab $\ds \gamma = \frac{1}{\sqrt{1-(\frac{v}{c})^2}}$ \hspace{0.5cm} $\ds \gamma_p = \frac{1}{\sqrt{1-(\frac{u}{c})^2}}$
+	
+	Time Dilation:
+	\tab $\Delta t = \gamma \Delta \tau$
+	
+	Length Contraction:
+	\tab $L' = \frac{L}{\gamma}$
+	
+	Spacetime Interval:
+	\tab $s^2 = c^2(\Delta t)^2 - (\Delta x)^2$
+	
+	Relativistic Momentum:
+	\tab $p = \gamma_p m u$
+	
+	Relativistic Energy:\\
+	\tab $E = \gamma_p mc^2 = E_0 + K = mc^2 + (\gamma_p - 1)mc^2$\\
+	\tab $pc = \frac{u}{c}E$
+	
+	% Footer content
+	\rule{0.3\linewidth}{0.25pt}
+	\scriptsize\\
+	Updated \today\\
+	\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}
