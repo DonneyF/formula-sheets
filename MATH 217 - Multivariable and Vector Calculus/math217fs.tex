@@ -1,0 +1,352 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%x
+	{\normalfont\large\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsection}{2}{0mm}%
+	{-1explus -.5ex minus -.2ex}%
+	{0.5ex plus .2ex}%
+	{\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+	{-1ex plus -.5ex minus -.2ex}%
+	{1ex plus .2ex}%
+	{\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+% Custom Commands
+\newcommand{\ds}{\displaystyle}
+\newcommand{\tab}{\hspace{.02\textwidth}}
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+	
+	
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{MATH 217 Formula Sheet}}
+\end{center}
+
+\section{Vectors \& Geometry of Space}
+Distance between two points:\\
+\tab $d = \sqrt{(x_1-x_0)^2 + (y_1-y_0)^2 + (z_1 - z_0)^2}$
+
+Equation of a sphere:\\
+\tab $R^2 = (x_1-x_0)^2 + (y_1-y_0)^2 + (z_1 - z_0)^2$
+
+Unit vector:\\
+\tab $\vb{u} = \frac{\vb{a}}{|\vb{a}|}$
+
+Dot Product:\\
+\tab $\vb{a}\cdot\vb{b}=\|\vb{a}\|\ \|\vb{b}\|\cos(\theta)$
+
+Scalar projection of $\vb{a}$ on to $\vb{b}$:\\
+\tab $\text{comp}_{\vb{b}}\vb{a}=|\vb{a} |\cos \theta =|\vb{a} |{\frac {\vb{a} \cdot \vb{b} }{|\vb{a} |\,|\vb{b} |}}={\frac {\vb{a} \cdot \vb{b} }{|\vb{b} |}}$
+
+Vector projection of $\vb{a}$ on to $\vb{b}$:\\
+\tab $\text{proj}_{\vb{b}}\vb{a} ={\frac {\vb{a} \cdot \vb{b} }{|\vb{b} |}}{\frac {\vb{b} }{|\vb{b} |}}$
+
+Orthogonal projection of $\vb{a}$ on to $\vb{b}$:\\
+\tab $\vb{v} = \vb{a} - \text{proj}_{\vb{b}}\vb{a}$
+
+Cross product:\\
+\tab $\vb{a} \times \vb{b} =\left\|\vb{a} \right\|\left\|\vb{b} \right\|\sin(\theta )$
+
+\subsubsection{Lines \& Planes}
+
+Vector equation of a line:\\
+\tab $\vb{r}(t) = \vb{r_0} + \vb{v}(t)$
+
+Vector equation of a plane:\\
+\tab $\vb{r} - \vb{r}_0 \cdot \vb{n} = 0$
+
+Scalar equation of a plane, where $a,b,c$ are components of the normal vector:\\
+\tab $a(x-x_0) + b(y-y_0) + c(z-z_0) = 0$
+
+Distance from the point $P=(x_1,y_1,z_1)$ to the plane $Ax+By+Cz+D=0$:\\
+\tab $d = \frac{|Ax_1+By_1+Cz_1 +D|}{\sqrt{A^2+B^2+C^2}}$
+
+\subsubsection{Quadric Surfaces}
+
+Equation of an ellipsoid:\\
+\tab ${x^2 \over a^2} + {y^2 \over b^2} + {z^2 \over c^2} = 1$
+
+Equation of an elliptic paraboloid:\\
+\tab ${x^2 \over a^2} + {y^2 \over b^2} =z$
+
+Equation of a hyperbolic paraboloid:\\
+\tab ${x^2 \over a^2} - {y^2 \over b^2} = z$
+
+Equation of a elliptic hyperboloid of one sheet:\\
+\tab ${x^2 \over a^2} + {y^2 \over b^2} - {z^2 \over c^2} = 1$
+
+Equation of an elliptic hyperboloid of two sheets:\\
+\tab ${x^2 \over a^2} + {y^2 \over b^2} - {z^2 \over c^2} = - 1$
+
+\section{Vector Functions}
+Arc length of a vector function:\\
+\tab $\int_a^b|\vb{r}'(t)|\,dt$
+
+Length of the curve $y=f(x)$:\\
+\tab $\int_a^b \sqrt{1+(f'(x))^2}\,dx$
+
+If $\vb{r}'(t)$ is differentiable at $t=a$ and $ \vb{r}'(a) \neq \vb{r}(0)$, the tangent line to the curve given by $\vb{r}'(t)$ is the line through $\vb{r}'(a)$ in the direction of $\vb{r}'(a)$
+
+\section{Partial Derivatives}
+$f(x,y)$ is continuous at $(a,b)$ if\\
+\tab $\lim_{(x,y)\to (a,b)}f(x,y)=f(a,b)$\\
+
+Suppose that $z=f(x,y)$, $f$ is differentiable, $x=g(t)$, and $y=h(t)$. Assuming that the relevant derivatives exist,\\
+\tab $\pdv{z}{t} = \pdv{z}{x}\pdv{x}{t}+\pdv{z}{y}\pdv{y}{t}$
+
+If $f(x,y)$ is defined on a domain $D$ that contains the point $(a,b)$. If $\pdv{z}{y}{x}$ and $\pdv{z}{x}{y}$ are continuous on $D$, then\\
+\tab $\pdv{z}{y}{x} = \pdv{z}{x}{y}$
+	
+Equation of a tangent plane:\\
+\tab $z=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)+f(x_0,y_0)$
+
+The differential of $f(x,y)$ is:\\
+\tab $df = \pdv{f}{x}dx + \pdv{f}{y}dy$
+
+Suppose that $f(x,y)$ is a function and $x=g(s,t)$ and $y=h(s,t)$:\\
+\tab $\pdv{f}{s}=f_xg_s+f_yh_s\qquad \pdv{f}{t}=f_xg_t+f_yh_t.$
+
+The slope of a surface given by $z=f(x,y)$ in the direction of a vector $\vb{u}$ is called the directional derivative of $f$, written $D_uf$\\
+\tab $D_{\vb{u}}f=\nabla f\cdot \vb{u}=|\nabla f||\vb{u}|\cos\theta=
+	|\nabla f|\cos\theta$
+
+The maximum value of the directional derivative $D_{\vb{u}} f(\vb{v})$ is $|\nabla f(\vb{v})|$and it occurs when $\vb{u}$ has the same direction as the gradient vector $\nabla f(\vb{v})$.\\
+\vspace{0.2cm}
+The gradient vector $\nabla f(a,b,c)$ is orthogonal to the level surface $S$ through $(a,b,c)$\\
+\vspace{0.2cm}
+Discriminant of $f(x,y)$:\\
+\tab $D(x,y) = \det\mqty[f_{xx}& f_{xy}\\f_{yx} & f_{yy} ]$\\
+\vspace{0.2cm}
+If $f_{xx} > 0$ or $f_{yy} > 0$ and $D(a,b) > 0$, then $f(a,b)$ is a local minimum.\\
+If $f_{xx} < 0 $or $f_{yy} < 0$ and $D(a,b) > 0$, then $f(a,b)$ is a local maximum.\\
+If $D(a,b) < 0$, then $f(a,b)$ is a saddle point.\\
+If $D(a,b) = 0$, no information is given.\\
+
+\subsubsection{Optimization}
+The extreme values of $f(x,y)$ can only occur at:\\
+\begin{itemize}
+	\vspace{-0.5em}
+	\setlength\itemsep{-0.3em}
+	\item Interior critical points, where both partials exist.
+	\item Boundary points of the domain of the function.
+\end{itemize}
+\vspace{-0.25cm}
+To maximize or minimize $f(x,y)$ subject to the constraint $g(x,y) = C$, we solve:
+\begin{itemize}
+	\vspace{-0.5em}
+	\setlength\itemsep{-0.3em}
+	\item $\nabla f(x,y) = \lambda \nabla g(x,y)$
+	\item $g(x,y) = C$
+\end{itemize}
+
+\section{Multiple Integrals}
+
+Fubini's Theorem: If $f(x,y)$ is continuous on the domain $D$:\\
+\tab $\iint_D f(x,y)\,dA = \int_{c}^{d} \hspace{-1mm} \int_{a}^{b}f(x,y)\,dx\,dy = \int_{a}^{b} \hspace{-1mm} \int_{c}^{d}f(x,y)\,dy\,dx$
+
+Area of the domain $D$:\\
+\tab $ A = \iint_D\,dA$
+
+Average value of a $f(x,y)$ over domain $D$:\\
+\tab $f_{\text{avg}} = \frac{1}{A}\iint_D f(x,y)\,dA$
+
+Mass of a lamina $D$ with density $\rho (x,y)$:\\
+\tab $m = \iint_D \rho (x,y)\,dA$
+
+Moment of a mass about the $x$-axis:\\
+\tab $M_x = \iint_D x\rho (x,y) \,dA$
+
+Center of mass of a lamina:\\
+\tab $\bar{x} = M_x/m \hspace{1cm} \bar{y} = M_y/m \hspace{1cm} \bar{z} = M_z/m$
+
+Surface area of $f(x,y)$:\\
+\tab $\int_{x_0}^{x_1}\int_{y_0}^{y_1} \sqrt{f_x^2+f_y^2+1}\,dy\,dx.$
+
+\subsubsection{Cylindrical Coordinates}
+\tab $x=r\cos\theta \hspace{1cm} y=r\sin\theta \hspace{1cm} z = z$\\
+\tab $dA = r\,dr\,d\theta \hspace{1cm} dV = r\,dr\,dz\,d\theta$\\
+\tab $x^2 + y^2 = r^2$
+\subsubsection{Spherical Coordinates}
+\tab $x= \rho\sin\phi\cos\theta$\\
+\tab $y= \rho\sin\phi\sin\theta$\\
+\tab $z= \rho\cos\phi$\\
+\tab $x^2+y^2+z^2 = \rho^2$\\
+\tab $x^2+y^2 = \rho^2\sin^2\phi$\\
+\tab $dV = \rho^2\sin\phi\,d\rho\,d\phi\,d\theta$\\
+
+\subsubsection{Change of Variables}
+Suppose that $f(x,y)$ is continuous on $R$ and that $R$ and $S$ are type I or type II plane regions. Suppose also that $T$ is one-to-one, except perhaps on the boundary of $S$:\\
+$\iint_R F(x,y) \, dV = 
+\iint_S F(x(u,v),y(u,v)) 
+\left|{\partial(x,y)\over\partial(u,v)}\right| \,du\,dv$
+$\small\text{3D case:}\iiint_R F(x,y,z) \, dV =$\\
+	\hspace{-0.5cm}\tab $\iiint_S F(x(u,v,w),y(u,v,w),z(u,v,w)) 
+	\left|{\partial(x,y,z)\over\partial(u,v,w)}\right| \,du\,dv\,dw$\\
+Jacobian:\\
+\tab $\ds \left|{\partial(x,y)\over\partial(u,v)}\right| = \det\mqty[ x_u& x_v\\ y_u& y_v ]$\\
+\tab $\ds \left|{\partial(x,y,z)\over\partial(u,v,w)}\right| = \det\mqty[ 
+	x_u& x_v&x_w\\ 
+	y_u& y_v&y_w \\
+	z_u&z_v&z_w]$
+
+\section{Vector Calculus}
+A vector field $\vb{F}$ is conservative if there is a scalar function $f$ such that: $\vb{F} = \nabla f$\\
+\tab $\text{curl }\vb{F} = \curl{\vb{F}}$\\
+\tab $\text{div }\vb{F} = \div{\vb{F}}$\\
+\tab $\nabla\times(\grad{f}) = \vb{0}$
+		
+If $\div{\vb{F}} \neq 0$, then $\vb{F}$ cannot be a curl of another vector field.
+
+\subsubsection{Line Integrals}
+\tab $\int_C f(x,y,z)\,ds = \int_{a}^{b} f(\vb{r}(t))\,|\vb{r}'(t)|\,dt$\\
+where $\vb{r}(t)$ is the parametrization of $C$.
+
+\tab $\int_C \vb{F}\cdot d\vb{r} = \int_{a}^{b} \vb{F(\vb{r}(t))}\cdot \vb{r}'(t)\,dt = \int_{a}^{b} \vb{F}\cdot\vb{T}\,ds$\\
+where $\vb{T}$ is the unit tangential vector $\frac{\vb{r}'(t)}{|\vb{r}'(t)|}$
+
+Fundamental Theorem of Line Integrals:\\
+\tab $\int_C \grad{f} \cdot d\vb{r} = f(\vb{r}(b)) - f(\vb{r}(a))$
+
+\subsubsection{Independence of Path \& Conservativeness}
+\begin{itemize}[leftmargin=0.5cm]
+	\vspace{-0.5em}
+	\setlength\itemsep{-0.3em}
+\item Let $\vb{F}$ be a continuous vector field on the domain $D$. We have independence of path in $D$ if:\\
+\tab $\int_{C_1} \vb{F}\cdot d\vb{r} = \int_{C_2} \vb{F}\cdot d\vb{r}$\\
+\item If $\vb{F}$ is conservative, then $\int_{C} \vb{F}\cdot d\vb{r}$ is independent of path.
+
+\item If Clairaut's Theorem fails, then $\vb{F}$ is not conservative.
+
+\item If $D$ is an open (boundary points are not on the domain) and connected region and $\vb{F}$ is a continuous vector field of $D$, then if $\int_{C_1} \vb{F}\cdot d\vb{r}$ is independent of path in $D$, then $\vb{F}$ is conservative.
+
+\item Green's Theorem evaluates to 0 for any conservative vector field.
+
+\item $\vb{F}$ is conservative if and only if $\nabla \times \vb{F} = 0$
+\end{itemize}
+
+\subsubsection{Green's Theorem}
+Let $C$ be a simple piecewise smooth curve that bounds a region $D$ in the plane. If $P(x,y)$ and $Q(x,y)$ have continuous partials in an open region containing $D$, then\\
+\tab $\int_C P\,dx +Q\,dy = \iint_D \pdv{Q}{x}
+	-\pdv{P}{y} \,dA$
+
+If $\vb{F}$ is a vector field with third component 0 defined on a domain $D$ enclosed by boundary $C$ then\\
+\tab $\oint_{C} \vb{F}\cdot d\vb{r} = \iint_D (\curl{\vb{F}})\cdot\vb{k}\,dA.$
+
+Similarly, if $C$ is defined by $\vb{r}(t) = \left<x(t),y(t)\right>$\\
+\tab $\oint_{C} \vb{F}\cdot \vb{n}\,ds = \iint_D \div{\vb{F}}\,dA$
+
+\subsubsection{Parametric Surfaces}
+Plane through $\vb{r}_0$ parallel to the non-parallel vectors $\vb{v}_1$, $\vb{v}_2$:\\
+\tab $\vb{r}(s,t) = \vb{r}_0 + s\vb{v}_1 + t\vb{v}_2$
+
+Graph of a function $z = f(x,y)$:\\
+\tab $\vb{r}(x,y) = \left<x,\,y,\,f(x,y)\right>$
+
+Cylinder about the x-axis:\\
+\tab $\vb{r}(x,\theta) = \left<x,\,\cos\theta,\,\sin\theta\right>$
+
+A cone given by $z = a\sqrt{x^2 + y^2}$:\\
+\tab $\vb{r}(r,\theta) = \left<r\cos\theta,\,r\sin\theta,\,ar\right>$
+
+An ellipsoid given by $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} = 1$\\
+\tab $\vb{r}(\phi,\theta) = \left<a\sin\phi\cos\theta,\,b\sin\phi\sin\theta,\,c\cos\theta\right>$
+
+A smooth parametric surface given by the equation $\vb{r}(u,v) = \left<x(u,v),\,y(u,v),\,z(u,v)\right>$ in a domain $D$ and $S$ is covered once throughout the parameter domain $D$, then the area of $S$ is:\\
+\tab $A(S) = \iint_D |\vb{r}_u \times \vb{r}_v|\,dA$
+
+Surface area of a graph of a function:\\
+\tab $A(S) = \iint_D \sqrt{1 + (f_x)^2 + (f_y)^2}\,dA$
+
+
+\subsubsection{Surface Integrals}
+
+$\iint_S f(x,y,z)\,d\vb{S} = \iint_D f(\vb{r}(u,v))\, |\vb{r}_u \times \vb{r}_v|\,dA$\\
+\vspace{0.2cm}
+Graph of a function $z = g(x,y)$:\\
+$\iint_S f(x,y,z)\,d\vb{S} = \iint_D f(x,y,g(x,y)) \sqrt{1 + (g_x)^2 + (g_y)^2}\,dA$\\
+\vspace{0.2cm}
+A surface $S$ given by a graph $z = g(x,y)$:\\
+\tab $\vb{F} \cdot (\vb{r}_x \times \vb{r}_y) = \left< P,Q,R \right> \cdot \left<-\pdv{g}{x},-\pdv{g}{y},1\right> \text{  so}$\\
+\tab $\iint_S \vb{F} \cdot \,d\vb{S} = \iint_D (-P\pdv{g}{x} - Q\pdv{g}{y} + R)\, dA$\\
+Vector field:\\
+$\iint_S f(x,y,z)\,d\vb{S} = \iint_S \vb{F}\cdot\vb{n}\,dS = \iint_D \vb{F} \cdot (\vb{r}_u \times \vb{r}_v)\, dA$
+
+\subsubsection{Stokes' Theorem}
+Let $S$ be an oriented piecewise-smooth surface that is	bounded by a simple, closed, piecewise-smooth boundary curve $C$ with positive orientation. Let $\vb{F}$ be a vector field whose components have continuous partial derivatives on an open region in $\mathbb{R}^3$ that contains $S$. Then\\
+$\oint_{C} \vb{F}\cdot d\vb{r}
+=\iint_D(\nabla\times \vb{F})\,d\vb{S} = \iint_D(\nabla\times \vb{F})\cdot \vb{n}\,dA$
+
+\subsubsection{Divergence Theorem}
+Let $E$ be a solid region in $\mathbb{R}^3$ with piecewise smooth boundary surface $S$ (given the outward orientation). Let $\vb{F}$ be a vector field with continuous partial derivatives on a region containing $E$. Then\\
+\tab $\iint_D \vb{F}\cdot\,d\vb{S} = \iint_D \vb{F}\cdot\vb{n}\,dS=\iiint_E \nabla\cdot\vb{F}\,dV.$\\
+The flux of $\vb{F}$ across the boundary surface of $E$ is equal to the triple integral of the divergence of $\vb{F}$ over $E$.\\
+For cases where it is too difficult to parameterize a surface, the surface is not closed, and we cannot use Stokes' Theorem, we can close the surface and apply the Divergence Theorem. (Later subtract the contribution from the closed surface)
+
+\subsubsection{Trigonometric Identities}
+\begin{itemize}[leftmargin=0.5cm]
+	\vspace{-0.5em}
+	\setlength\itemsep{-0.3em}
+	\item $\ds \sin^2 x  = \frac{1 - \cos(2x)}{2}$
+	\item $\ds \cos^2 x  = \frac{1 + \cos(2x)}{2}$
+	\item $\sin(2x) = 2\sin x\cos x$
+	\item $\cos(2x)  = \cos^2 x - \sin^2 x = 2 \cos^2 x - 1 = 1 - 2 \sin^2 x$
+\end{itemize}
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+
+\end{multicols}
+\end{document}
