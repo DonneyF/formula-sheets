@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{upgreek}
+\usepackage{gensymb}
 \usepackage{newtxtext,newtxmath}
 
 % This sets page margins to .5 inch if using letter paper, and to 1cm
@@ -81,16 +82,16 @@ Average normal stress:\\
 \tab $\ds \sigma = \frac{P}{A}$
 
 Average shear stress:\\
-\tab $\ds \uptau = \frac{V}{A}$
+\tab $\ds \tau = \frac{V}{A}$
 
 Double shear:\\
-\tab $\ds \uptau = \frac{P}{2A}$
+\tab $\ds \tau = \frac{P}{2A}$
 
 Bearing stress:\\
 \tab $\ds \sigma_b = \frac{P}{A} = \frac{P}{td}$
 
 Stresses on a 2-force member\\($\theta$ measured from vertical): \\
-\tab $\ds \sigma = \frac{P}{A_\perp}\cos^2\theta \hspace{1cm} \uptau = \frac{P}{A_\perp}\sin\theta\cos\theta$
+\tab $\ds \sigma = \frac{P}{A_\perp}\cos^2\theta \hspace{1cm} \tau = \frac{P}{A_\perp}\sin\theta\cos\theta$
 
 Factor of safety:\\
 \tab $\ds \text{Factor of safety} = \frac{\text{Ultimate Load}}{\text{Allowable Load}}$
@@ -117,7 +118,7 @@ Poisson's Ration:\\
 
 Shear Stress-Strain Diagrams:\\
 \tab $\ds G = \frac{E}{2(1 + \nu)}$\\
-\tab $\uptau = G\gamma \hspace{1cm} \text{(elastic region)}$
+\tab $\tau = G\gamma \hspace{1cm} \text{(elastic region)}$
 
 Elastic Strain Energy:\\
 \tab $\ds u = \int_{0}^{\sigma} \sigma\,d\epsilon = \frac{1}{2}\frac{\sigma^2}{E}$
@@ -130,7 +131,7 @@ Polar Moment of Inertia:\\
 \tab $\ds J = \frac{\pi}{2}(c^4-a^4)$ \hspace{1cm} (hollow tube)
 
 Shear Stress:\\
-\tab $\ds \uptau = \frac{T\rho}{J} \hspace{1cm } \uptau_{\text{max}} = \frac{Tc}{J}$
+\tab $\ds \tau = \frac{T\rho}{J} \hspace{1cm } \tau_{\text{max}} = \frac{Tc}{J}$
 
 Power:\\
 \tab $P = T\omega$
@@ -139,7 +140,7 @@ Angle of Twist:\\
 \tab $\ds \phi = \frac{TL}{JG} = \int_{0}^{L}\frac{T(x)}{J(x)G(x)}\,dx$
 
 Stress Concentrations:\\
-\tab $\ds \uptau_{\text{max}} = K\frac{Tc}{J}$
+\tab $\ds \tau_{\text{max}} = K\frac{Tc}{J}$
 
 \section{Bending}
 Distributed Load Intensity at each point:\\
@@ -160,8 +161,10 @@ Normal Stress:\\
 \vspace{1mm}
 \tab $\ds \sigma_{\text{max}} = \frac{Mc}{I}$
 
-Moment of Inertia:\\
-\tab $I = \int y^2\,dA$
+Second Moment of Inertia:\\
+\tab $I = \int y^2\,dA$\\
+\tab Circle: $\ds I = \frac{\pi}{4}r^4$\\
+\tab Rectangle: $\ds I = \frac{1}{12}bh^3$
 
 Neutral Axis:\\
 \tab $\int y\,dA = 0$
@@ -173,21 +176,59 @@ Parallel Axis Theorem:\\
 \tab $I_{\parallel} = I_G + Md^2$
 
 \section{Stress Transformations}
+\tab $\ds \sigma_x' = \frac{\sigma_x + \sigma_y}{2}	+ \frac{\sigma_x - \sigma_y}{2}\cos2\theta + \tau_{xy}\sin2\theta$
+\\[2mm]
+\tab $\ds \sigma_y' = \frac{\sigma_x + \sigma_y}{2}	- \frac{\sigma_x - \sigma_y}{2}\cos2\theta - \tau_{xy}\sin2\theta$
+\\[2mm]
+\tab $\ds \tau_{x'y'} = -\frac{\sigma_x - \sigma_y}{2}\sin2\theta + \tau_{xy}\cos2\theta$
+
 Principal Stresses:\\
-\tab $\ds \sigma_{1,2} = \frac{\sigma_x + \sigma _y}{2} \pm \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \uptau_{xy}^2}$
+\tab $\ds \sigma_{1,2} = \frac{\sigma_x + \sigma _y}{2} \pm \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \tau_{xy}^2}$
 
 Maximum In-Plane Shear Stress:\\
 \vspace{1mm}
-\tab $\uptau_{\text{max}} = R = \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \uptau_{xy}^2}$
+\tab $\ds \tau_{\text{max}} = R = \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \tau_{xy}^2}$
 
 Angle of Principal In-Plane Stresses:\\
-\tab $\ds \tan 2\theta_p = \frac{2\uptau_{xy}}{(\sigma_x - \sigma_y)}$
+\tab $\ds \tan 2\theta_p = \frac{2\tau_{xy}}{(\sigma_x - \sigma_y)}$
 
 Angle of Maximum In-Plane Stresses:\\
-\tab $\ds \tan 2\theta_s = -\frac{(\sigma_x - \sigma_y)}{2\uptau_{xy}}$
+\tab $\ds \tan 2\theta_s = -\frac{(\sigma_x - \sigma_y)}{2\tau_{xy}}$
 
-Average Stress:\\
-\tab $\ds \frac{\sigma_x + \sigma_y}{2}$
+\section{Theories of Failure}
+Maximum-Shearing-Stress Criterion for a yield strength $\sigma_Y$ and principal stresses $\sigma_a, \sigma_b$:\\
+\tab Same sign: $|\sigma_a| < \sigma_Y$ \,and\, $|\sigma_b| < \sigma_Y$\\
+\tab Opposite sign: $|\sigma_a - \sigma_b| < \sigma_Y$
+
+Distortion Energy per unit volume:\\
+\tab $\ds u_d = \frac{1}{6G}(\sigma^2_a - \sigma_a \sigma_b + \sigma_b^2)$
+
+Maximum Distortion Energy Criterion:\\
+\tab $\sigma^2_a - \sigma_a \sigma_b + \sigma_b^2 < \sigma_Y^2$
+
+
+\section{Thin-Walled Pressure Vessel Stress}
+\subsubsection{Cylindrical}
+Hoop Stress:\\
+\tab $\ds \sigma_1 = \frac{pr}{t}$
+
+Longitudinal Stress:\\
+\tab $\ds \sigma_2 = \frac{pr}{2t}$
+
+Maximum In-Plane Shearing Stress:\\
+\tab $\ds \tau_{\text{max}} = \frac{1}{2}\sigma_2 = \frac{pr}{4t}$
+
+Maximum Out-of-Plane Shearing Stress (45\degree rotation around a longitudinal axis):\\
+\tab $\ds \tau_{\text{max}} = \frac{pr}{2t}$
+
+\subsubsection{Circle}
+\tab $\ds \sigma_1 = \sigma_2 \frac{pr}{2t}$
+
+Maximum In-Plane Shearing Stress:\\
+\tab $\ds \tau_{\text{max}} = 0$ (reduces to a point)
+
+Maximum Out-of-Plane Shearing Stress (45\degree rotation around a longitudinal axis):\\
+\tab $\ds \tau_{\text{max}} = \frac{1}{2}\sigma_1 = \frac{pr}{4t}$
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
