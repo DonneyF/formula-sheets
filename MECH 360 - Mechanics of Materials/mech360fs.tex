@@ -181,7 +181,10 @@ Composite Beams:\\
 \tab $\sigma_2 = n \sigma_1$
 
 Product of Inertia:\\
-\tab $I_{xy} = \int xy\,dA$
+\tab $I_{xy} = \int xy\,dA$\\
+\tab $I_{x'} = I_x \cos^2\theta + I_y\sin^2\theta - I_{xy}\sin\theta\cos\theta$\\
+\tab $I_{y'} = I_x \sin^2\theta + I_y\cos^2\theta - I_{xy}\sin\theta\cos\theta$\\
+\tab $I_{x'y'} = I_x\sin\theta\cos\theta-I_y\sin\theta\cos\theta+I_{xy}(\cos^2\theta-\sin^2\theta)$
 
 \section{Stress Transformations}
 \tab $\ds \sigma_x' = \frac{\sigma_x + \sigma_y}{2}	+ \frac{\sigma_x - \sigma_y}{2}\cos2\theta + \tau_{xy}\sin2\theta$
