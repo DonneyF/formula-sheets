@@ -30,15 +30,15 @@
 \renewcommand{\section}{\@startsection{section}{1}{0mm}%
                                 {-1ex plus -.5ex minus -.2ex}%
                                 {0.5ex plus .2ex}%x
-                                {\normalfont\large\bfseries}}
+                                {\normalfont\normalsize\bfseries}}
 \renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
                                 {-1explus -.5ex minus -.2ex}%
                                 {0.5ex plus .2ex}%
-                                {\normalfont\normalsize\bfseries}}
+                                {\normalfont\small\bfseries}}
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
                                 {-1ex plus -.5ex minus -.2ex}%
                                 {1ex plus .2ex}%
-                                {\normalfont\small\bfseries}}
+                                {\normalfont\footnotessize\bfseries}}
 \makeatother
 
 % Define BibTeX command
@@ -54,6 +54,8 @@
 
 \newcommand{\tab}{\hspace{.02\textwidth}}
 \newcommand{\ds}{\displaystyle}
+
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
 
 
 % -----------------------------------------------------------------------
@@ -76,17 +78,6 @@
 \begin{center}
 	\Large{\underline{PHYS 301 Formula Sheet}}
 \end{center}
-
-\section{Fundamental Constants}
-\tab $\epsilon_0 = 8.85\times 10^{-12}\, \text{C}^2/\text{Nm}^2$
-\\
-\tab $\mu_0 = 4\pi\times 10^{-7} \, \text{N}/\text{A}^2$
-\\
-\tab $c = 3.00 \times 10^8 \, \text{m}/\text{s}$
-\\
-\tab $e = 1.60 \times 10^{-19} \, \text{C}$
-\\
-\tab $m = 9.11 \times 10^{-31} \, \text{kg}$
 
 \section{Vector Derivatives}
 \subsection{Cartesian}
@@ -152,8 +143,8 @@ Divergence Theorem:\\
 Curl Theorem:\\
 \tab $\ds \int (\curl{\vb{A}})\cdot d\vb{a} = \oint \vb{A}\cdot d\vb{l}$
 
-\section{General Maxwell's Equations}
-\tab $\ds \div{\vb{E}} = \frac{1}{\epsilon_0}\rho$
+\section{Differential Maxwell's Equations}
+\tab $\ds \div{\vb{E}} = \frac{\rho}{\epsilon_0}$
 
 \tab $\ds \curl{\vb{E}} = -\pdv{\vb{B}}{t}$
 
@@ -161,8 +152,17 @@ Curl Theorem:\\
 
 \tab $\ds \curl{\vb{B}} = \mu_0\vb{J} + \mu_0\epsilon_0\pdv{\vb{E}}{t}$
 
+\section{Integral Maxwell's Equations}
+\tab $\ds \oint \vb{E}\cdot d\vb{a} = \frac{Q_\text{enc}}{\epsilon_0}$
+
+\tab $\ds \oint \vb{B}\cdot d\vb{a} = 0$
+
+\tab $\ds \oint \vb{E}\cdot d\vb{l} = -\dv{\Phi_B}{t}$
+
+\tab $\ds \oint \vb{B}\cdot d\vb{l} = \mu_0 I_\text{enc} + \epsilon_0\mu_0 \dv{\Phi_E}{t}$
+
 \section{Electric Fields and Potential}
-\tab $\ds \vb{E} = -\grad{V} - \pdv{A}{t}$
+\tab $\ds \vb{E} = -\grad{V}$
 \\
 \tab $\vb{B} = \curl{\vb{A}}$
 
@@ -171,16 +171,6 @@ Lorentz Force Law:\\
 
 Energy:\\
 \tab $\ds U = \frac{1}{2} \int \left(\epsilon_0 E^2 + \frac{1}{\mu_0}B^2\right)\,d\uptau$
-
-Momentum:\\
-\tab $\vb{P} = \epsilon_0\int (\vb{E}\cross\vb{B})\,d\uptau$
-
-Poynting vector:\\
-\tab $\ds \vb{S} = \frac{1}{\mu_0}(\vb{E}\cross\vb{B})\,d\uptau$
-
-Lamor Formula:\\
-\vspace{1mm}
-\tab $\ds \frac{\mu_0}{6\pi c}q^2a^2$
 
 \section{Spherical Coordinates}
 \tab $x = r\sin\theta\cos\phi$
