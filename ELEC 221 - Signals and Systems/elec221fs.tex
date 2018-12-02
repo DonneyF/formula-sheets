@@ -10,7 +10,7 @@
 \usepackage{physics}
 \usepackage{mathtools}
 \usepackage{newtxtext,newtxmath}
-\usepackage{xfrac}
+\usepackage{booktabs}
 
 % This sets page margins to .5 inch if using letter paper, and to 1cm
 % if using A4 paper. (This probably isn't strictly necessary.)
@@ -42,13 +42,8 @@
                                 {\normalfont\footnotessize\bfseries}}
 \makeatother
 
-% Define BibTeX command
-\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-
 % Don't print section numbers
 \setcounter{secnumdepth}{0}
-
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1pt plus 0.5ex}
@@ -56,11 +51,7 @@
 \newcommand{\tab}{\hspace{.02\textwidth}}
 \newcommand{\ds}{\displaystyle}
 
-\def\rcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{ScriptR}}$}}}
-\def\brcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{BoldR}}$}}}
-
 \renewcommand{\dv}[2]{\frac{d#1}{d#2}}
-
 \DeclareMathOperator{\sinc}{sinc}
 
 % -----------------------------------------------------------------------
@@ -94,10 +85,10 @@ A signal is periodic with fundamental period $T_0$ if\\
 \tab $x(t + kT_0) = x(t) \quad \forall t \in (-\infty, \infty)$
 
 Energy:\\
-\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt$
+\tab $E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt$
 
 Power:\\
-\tab $\ds P = \lim_{T \rightarrow \infty} \frac{1}{2T} \int_{-T}^{T}\abs{x(t)}^2\,dt$
+\tab $ P = \lim_{T \rightarrow \infty} \frac{1}{2T} \int_{-T}^{T}\abs{x(t)}^2\,dt$
 
 Causality:\\
 \begin{itemize}
@@ -122,18 +113,15 @@ Zero-State Response:\\
 Zero-Input Response:\\
 \tab Due to the initial conditions as the input is zero.
 
-Convolution Integral:\\
-\tab $\ds [x * y](t) = \int_{-\infty}^{\infty}x(\tau)y(t-\tau)\,d\tau = \int_{-\infty}^{\infty}x(t - \tau)y(\tau)\,d\tau$
-
-Total Response from Impulse Response:\\
-\tab $\ds y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)\,d\tau$
+Convolution:\\
+\tab $y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)\,d\tau$
 
 Causality:\\
 \tab A continuous time system $\mathcal{S}$ is causal if whenever $x(t) = 0$ and there are no initial conditions, $y(t) = 0$ and the output $y(t)$ does not depend on future inputs.
 \\~\\
 Bounded-Input Bounded-Output Stability:\\
 \tab If an input $x(t)$ bounded then the output of an BIBO system is also bounded.\\
-\tab $\ds \int_{-\infty}^{\infty} \abs{h(t)}\,dt < \infty$
+\tab $\int_{-\infty}^{\infty} \abs{h(t)}\,dt < \infty$
 
 \section{Laplace Transform}
 $s = \sigma + j\omega$\\
@@ -142,9 +130,9 @@ Eigenfunction Property:\\
 \tab $\mathcal{S}[e^{s_0t}] = H(s_0)e^{s_0t}$
 
 One Sided Laplace Transform:\\
-\tab $\ds F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$
+\tab $F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$
 
-Region of Convergence:\\
+Region of Convergence:
 \begin{itemize}
 	\itemsep0em
 	\item Finite support $\rightarrow$ Entire s-plane.
@@ -167,13 +155,13 @@ Bounded-Input Bounded-Output Stability:\\
 
 Eigenfunction Property:\\
 \tab $\mathcal{S}[e^{j\omega_0t}] = H(j\omega_0)e^{j\omega_0t}$\\
-\tab $\ds x(t) = \sum_k X_k e^{j\omega_kt} \implies y(t) = \sum_k X_k H(j\omega_k)e^{j\omega_kt}$\\\hspace{2.5cm}$\ds = \sum_k X_k \abs{H(j\omega_k)}e^{j(\omega_kt + \angle H(\omega_k))}$
+\tab $x(t) = \sum_k X_k e^{j\omega_kt} \implies y(t) = \sum_k X_k H(j\omega_k)e^{j\omega_kt}$\\\vspace{1mm}\hspace{2.5cm}$= \sum_k X_k \abs{H(j\omega_k)}e^{j(\omega_kt + \angle H(\omega_k))}$
 
 Fourier Series Coefficients (for any $t_0$):\\
-\tab $\ds X_k = \frac{1}{T_0}\int_{t_0}^{t_0 + T_0}x(t)e^{-jk\omega_0t}\,dt$
+\tab $X_k = \frac{1}{T_0}\int_{t_0}^{t_0 + T_0}x(t)e^{-jk\omega_0t}\,dt$
 
 Parseval's Power Relation (for any $t_0$):\\
-\tab $\ds P = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}\abs{x(t)}^2\,dt = \sum_{k = -\infty}^{\infty}\abs{X_k}^2$
+\tab $ P = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}\abs{x(t)}^2\,dt = \sum_{k = -\infty}^{\infty}\abs{X_k}^2$
 
 Symmetry of Line Spectra:\\
 \tab $\abs{X_k} = \abs{X_{-k}}$\\
@@ -182,20 +170,20 @@ Symmetry of Line Spectra:\\
 Trigonometric Fourier Series:\\
 \tab $x(t) = X_0 + 2\sum_{k = 1}^{\infty}\abs{X_k}\cos(k\omega t + \Theta_k)$\\
 \tab $x(t) = c_0 + 2\sum_{k = 1}^{\infty}[c_k\cos(k\omega_0 t) + d_k\sin(k\omega_0 t)]$\\
-\tab $\ds c_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\cos(k\omega_0 t)\,dt$ \quad $k$ = 0,1,2$\ldots$\\
-\tab $\ds d_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\sin(k\omega_0 t)\,dt$\quad $k$ = 1,2,3$\ldots$\\
+\tab $c_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\cos(k\omega_0 t)\,dt$ \quad $k$ = 0,1,2$\ldots$\\
+\tab $d_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\sin(k\omega_0 t)\,dt$\quad $k$ = 1,2,3$\ldots$\\
 \tab $\Theta_k = -\arctan(d_k/c_k)$
 \\~\\
 Fourier Coefficients from Laplace Transform:\\
 \tab If $x_1(t)$ is a single period of $x(t)$, then\\
-\tab $\ds X_k = \frac{1}{T_0}\mathcal{L}[x_1(t)] \big\rvert_{s = jk\omega_0}$
+\tab $X_k = \frac{1}{T_0}\mathcal{L}[x_1(t)] \big\rvert_{s = jk\omega_0}$
 
 Response of LTI Systems to Periodic Signals:\\
 \tab If the input to an LTI system has Fourier Series $x(t) = X_0 + 2\sum_{k=1}^{\infty}\abs{X_k}\cos(k\omega t + \angle X_k)$, then the steady state response is $y(t) = X_0\abs{H(j0)} + 2\sum_{k=1}^{\infty}\abs{X_k}\abs{H(jk\omega_0)}\cos(k\omega_0 t + \angle X_k + \angle H(jk\omega_0))$
 
 \section{Fourier Transform}
-\tab $\ds X(\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt$\\
-\tab $\ds x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}X(\omega)e^{j\omega t}\,d\omega$
+\tab $X(\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt$\\
+\tab $x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}X(\omega)e^{j\omega t}\,d\omega$
 
 Fourier Transform from Laplace Transform (if $X(s)$ contains the $j\omega$-axis):\\
 \tab $\mathcal{F}[x(t)] = \mathcal{L}[x(t)]\big\rvert_{s = j\omega} = X(s)\big\rvert_{s = j\omega}$
@@ -204,10 +192,10 @@ Duality:\\
 \tab $\ds X(t) \xLeftrightarrow{\mathcal{F}} 2\pi x(-\omega)$
 
 Fourier Transform of Periodic Signals:\\
-\tab $\ds \sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi_k \delta(\omega - k\omega_0)$
+\tab $\sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi_k \delta(\omega - k\omega_0)$
 
 Parseval's Energy Relation:\\
-\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\abs{X(\omega)}^2\,d\omega$
+\tab $E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\abs{X(\omega)}^2\,d\omega$
 
 Symmetry of Spectral Representations:\\
 \tab $\abs{X(\omega)} = \abs{X(-\omega)}$\\
@@ -217,10 +205,10 @@ Symmetry of Spectral Representations:\\
 
 \section{Sampling Theory}
 \tab $x_s(t) = x(nT_s) = x(t)\rvert_{t = nT_s} = x(t)\sum_n \delta(t - nT_s)$\\
-\tab $\ds X_s(\omega) = \frac{1}{T_s} \sum_{k=-\infty}^{\infty}X(\omega - k\omega_s)$
+\tab $X_s(\omega) = \frac{1}{T_s} \sum_{k=-\infty}^{\infty}X(\omega - k\omega_s)$
 
 Nyquist-Shannon Sampling Rate:\\
-\tab $\ds \omega_s = \frac{2\pi}{T_s} \geq 2\omega_\text{max}$\\
+\tab $\omega_s = \frac{2\pi}{T_s} \geq 2\omega_\text{max}$\\
 \tab Aliasing occurs if $\omega_s < 2\omega_\text{max}$.
 
 Reconstruction $X(\omega)=X_s(\omega)H_\text{lp}(\omega)$:
@@ -233,8 +221,12 @@ T_s & -\frac{\omega_s}{2} < \omega < \frac{\omega_s}{2}\\
 \end{equation*}
 
 Signal Reconstruction from Sinc Interpolation:\\
-\tab $\ds x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s))/T_s}{\pi(t-nT_s)/T_s}$
+\tab $x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s))/T_s}{\pi(t-nT_s)/T_s}$
+\end{multicols*}
 
+\newpage
+
+\begin{minipage}[t]{0.30\textwidth}
 \section{Discrete Time Signals}
 \tab Define $x[n] = x(nT_0)$.\\
 \tab $x[n] = \sum_{k=-\infty}^{\infty}x[k]\delta[n-k]$
@@ -243,10 +235,10 @@ Periodicity:\\
 \tab $x[n + kN] = x[n]$ \qquad $\forall k\in \mathbb{Z}$
 
 When sampling an analog sinusoid of fundamental period $T_0$, we obtain a periodic discrete sinusoid provided that $m$, $N$ not divisible by each-other:\\
-\tab $\ds \frac{T_s}{T_0} = \frac{m}{N}$
+\tab $T_s/T_0 = m/N$
 
 Aliasing occurs if:\\
-\tab $\ds T_s > \frac{T_0}{2}$
+\tab $T_s > T_0/2$
 
 Energy:\\
 \tab $E = \sum_{n = -\infty}^{\infty}\abs{x[n]}^2$
@@ -255,7 +247,7 @@ Power:\\
 \tab $ P_x = \lim_{N \rightarrow \infty}\frac{1}{2N + 1}\sum_{n= -N}^{N}\abs{x[n]}^2$
 
 Convolutional Sum:\\\
-\tab $\ds y[n] = \sum_{k = -\infty}^{\infty} x[k]h[n-k]$
+\tab $y[n] = \sum_{k = -\infty}^{\infty} x[k]h[n-k]$
 
 Bounded-Input Bounded-Output Stability:\\
 \tab $\sum_k \abs{h[n]}^2 < \infty$
@@ -265,11 +257,48 @@ Bounded-Input Bounded-Output Stability:\\
 
 Convergence:\\
 \tab $|X(z)| = \sum_n \abs{x[n]}r^{-n} < \infty$
-
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize\\
 Updated \today\\
 \href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
-\end{multicols*}
+\end{minipage}%
+\begin{minipage}[t]{0.43\textwidth}
+\subsection{Fourier Transform Properties}
+\begin{tabular}{lll}  
+	\toprule
+	   & Time Domain & Frequency Domain\\
+	\midrule
+	Expansion/Contraction & $x(\alpha t)$, $\alpha \neq 0$ & $\frac{1}{\abs{\alpha}} X(\frac{\omega}{\alpha})$ \\
+	Duality & $X(t)$ & $2\pi x(-\omega)$\\
+	Differentiation ($t$) & $\ds \frac{d^nx}{dt^2}$& $(j\omega)^n X(\omega)$\\
+	Differentiation ($\omega$) & $-jtx(t)$ & $\ds \dv{X(\omega)}{\omega}$\\
+	Integration & $\ds \int_{-\infty}^{t} x(\tau)\,d\uptau$ & $\ds \frac{X(\omega)}{j\omega} + \pi X(0)\delta(\omega)$\\
+	Time shifting & $x(t - \alpha)$ & $e^{-j\alpha\omega}X(\omega)$\\
+	Frequency shifting &  $e^{j\omega_0 t}x(t)$ & $X(\omega-\omega_0)$\\
+	Modulation & $x(t)\cos(\omega_c t)$ & $0.5[X(\omega - \omega_c) + X(\omega + \omega_c)]$\\
+	\bottomrule
+\end{tabular}
+\end{minipage}%
+\begin{minipage}[t]{0.20\textwidth}
+\subsection{Fourier Transform Pairs}
+\begin{tabular}{ll}  
+	\toprule
+	$f(t)$ & $F(\omega)$\\
+	\midrule
+	$\delta(t)$ & 1\\
+	$\delta(t - \tau)$ & $e^{-j\omega\tau}$\\
+	$u(t)$ & $1/j\omega + \pi\delta(\omega)$\\
+	$u(t)$ & $-1/j\omega + \pi\delta(\omega)$\\
+	$\text{sign}(t)$ & $2/j\omega$\\
+	$e^{-a\abs{t}}$, $a > 0$ & $\frac{2a}{a^2 + \omega^2}$\\
+	$\cos(\omega_0 t)$ & $\pi[\delta(\omega - \omega_0)] + \delta(\omega + \omega_0)$\\
+	$\sin(\omega_0 t)$ & $-j\pi[\delta(\omega - \omega_0)] - \delta(\omega + \omega_0)$\\
+	$\frac{\sin(\omega t)}{\pi t}$ &  $u(\omega + \omega_0) - u(\omega - \omega_0)$\\
+	$u(\omega + \tau) - u(\omega - \tau)$ & $2\tau \frac{\sin(\omega\tau)}{\omega\tau}$\\
+	\bottomrule
+\end{tabular}
+\end{minipage}
+
+
 \end{document}
