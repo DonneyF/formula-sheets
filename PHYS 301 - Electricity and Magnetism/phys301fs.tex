@@ -55,8 +55,16 @@
 \newcommand{\tab}{\hspace{.02\textwidth}}
 \newcommand{\ds}{\displaystyle}
 
+\def\rcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{BoldR}}$}}}
+
 \renewcommand{\dv}[2]{\frac{d#1}{d#2}}
 
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
 
 % -----------------------------------------------------------------------
 
@@ -79,6 +87,188 @@
 	\Large{\underline{PHYS 301 Formula Sheet}}
 \end{center}
 
+\section{Differential Maxwell's Equations}
+\hspace{3mm}\begin{tabular}{p{2cm}p{4cm}}
+	$\ds \div{\vb{E}} = \frac{\rho}{\epsilon_0}$ & $\ds \curl{\vb{E}} = -\pdv{\vb{B}}{t}$\\
+	$\ds \div{\vb{B}} = 0$ & $\ds \curl{\vb{B}} = \mu_0\vb{J} + \mu_0\epsilon_0\pdv{\vb{E}}{t}$
+\end{tabular}
+
+\section{Integral Maxwell's Equations}
+
+\begin{tabular}{p{2.75cm}p{5cm}}
+	$\ds \oint \vb{E}\cdot d\vb{a} = \frac{Q_\text{enc}}{\epsilon_0}$ & $\ds \oint \vb{B}\cdot d\vb{a} = 0$\\
+	$\ds \oint \vb{E}\cdot d\vb{l} = -\dv{\Phi_B}{t}$ & $\ds \oint \vb{B}\cdot d\vb{l} = \mu_0 I_\text{enc} + \epsilon_0\mu_0 \dv{\Phi_E}{t}$
+\end{tabular}
+\section{Electrostatics}
+\subsection{The Electric Field}
+Coulomb's Law:\\
+\tab $\ds \vb{F} = \frac{1}{4\pi\epsilon_0} \frac{qQ}{\rcurs} \vu{\brcurs}$
+
+The Electric Field:\\
+\tab $\vb{F} = Q \vb{E}$ \qquad $\vb{E} = -\grad{V}$
+
+Electric Field due to discrete point charges:\\
+\tab $\ds \vb{E(\vb{r})} = \frac{1}{4\pi\epsilon_0} \sum_{i = 1}^{n} \frac{q_i}{\rcurs_i^2} \vu{\brcurs}_i$
+
+Electric Field due to a continuous charge distribution:\\
+\tab $\ds \vb{E(\vb{r})} = \frac{1}{4\pi\epsilon_0} \int \frac{\vu{\brcurs}}{\rcurs^2}\,dq$
+
+\subsection{Electric Potential}
+\tab $\ds V(b) - V(a) = - \int_{a}^{b} \vb{E} \cdot d\vb{l}$
+
+Poisson's Equation:\\
+\tab $\ds \nabla^2 V = \rho/\epsilon_0$
+
+Potential due to a localized charge distribution:\\
+\tab $\ds V(\vb{r}) = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\vb{r'})}{\rcurs}\,dV$
+
+\subsection{Work and Energy in Electrostatics}
+Energy stored in a point charge distribution:\\
+\tab $\ds W = \frac{1}{2} \sum_{i=1}^{n} q_i V(\vb{r}_i)$
+
+Energy of a continuous charge distribution:\\
+\tab $\ds W = \frac{1}{2} \int \rho V\,d\uptau$
+
+Total energy of a continuous charge distribution:\\
+\tab $\ds W = \frac{\epsilon_0}{2} \int E^2\,d\uptau$ \quad (all space)
+
+\subsection{Conductors}
+\tab $\vb{E} = \vb{0}$ inside a conductor.\\
+
+Electric Field immediately outside a conductor:\\
+\tab $\ds \vb{E} = \frac{\sigma}{\epsilon_0} \vu{\vb{n}}$
+
+Surface charge:\\
+\tab $\ds \sigma = -\epsilon_0 \pdv{V}{n}$
+
+Capacitors:\\
+\tab $Q = CV$ 	
+\\
+\tab $\ds W = \frac{1}{2}CV^2 = \frac{1}{2}\frac{Q^2}{C} = \frac{1}{2}QV$
+
+\section{Potentials}
+Laplace's Equation:\\
+\tab $\ds \nabla^2 V = \pdv[2]{V}{x} + \pdv[2]{V}{y} + \pdv[2]{V}{z}= 0$
+
+\subsection{Separation of Variables}
+\begin{equation*}
+	\hspace{-1cm}\int_0^a \sin(\frac{n\pi x}{a})\sin(\frac{m\pi x}{a})\,dx = 
+	\begin{cases}
+	0 & \text{if } n \neq m\\
+	a/2 & \text{if } n = m
+	\end{cases}
+\end{equation*}
+
+Legendre Polynomials:
+\begin{itemize}
+	\itemsep0em
+	\item $P_0(x) = 1$
+	\item $P_1(x) = x$
+	\item $P_2(x) = (3x^2 - 1)/2$
+	\item $P_3(x) = (5x^3 - 3x)/2$
+\end{itemize}
+
+Solution to Laplace in spherical ($\phi$ independent):\\
+\tab $\ds V(r,\theta) = \sum_{l = 0}^{\infty}\left(A_l r^l + \frac{B_l}{r^{l + 1}}\right)P_l(\cos\theta)$
+
+Solution to Laplace in cylindrical ($z$ independent):\\
+\tab $\ds V(s,\phi) = A_0\ln(s) + B_0 +$\\\tab$\ds \sum_{n = 1}^{\infty}(A_n s^{-n} + B_ns^{-n})(C_n\cos(n\phi) + D_n\sin(n\phi))$
+
+\subsection{Multipole Expansion}
+Potential at large distances ($\alpha$ is between $\vb{r}$ and $\vb{r'}$):\\
+\tab $\ds V(\vb{r}) = \frac{1}{4\pi\epsilon_0}\sum_{n = 0}^{\infty}\frac{1}{r^{n + 1}}\int (r')^n P_n(\cos\alpha)\rho(\vb{r'})\,d\uptau$
+
+Dipole Moment:\\
+\tab $\ds \vb{p} = \sum_{i=1}^{n}q_i \vb{r'}_i = \int \vb{r'}\rho(\vb{r'})\,d\uptau$
+
+Electric Dipole Potential:\\
+\tab $\ds V_{\text{dip}}(\vb{r}) = \frac{1}{4\pi\epsilon_0} \frac{\vb{p}\cdot\vu{r}}{r^2}$
+
+\section{Electric Fields in Matter}
+
+Bound Charges:\\
+\tab $\sigma_b = \vb{P}\cdot \vu{n} \qquad \rho_b = - \div{\vb{P}}$
+
+The Electric Displacement:\\
+\tab $\vb{D} = \epsilon_0\vb{E} + \vb{P}$ \quad\, $\div{\vb{D}} = \rho_f$ \quad\, $\ds \oint \vb{D} \cdot d\vb{a} = Q_{f,\text{enc}}$
+
+\subsection{Linear Dielectrics}
+Polarization:\\
+\tab $\vb{P} = \epsilon_0\chi_e \vb{E}$
+
+Electric Displacement:\\
+\tab $\vb{D} = \epsilon_0(1 + \chi_e)\vb{E} = \epsilon\vb{E}$
+
+Energy in a Dielectric System:\\
+\tab $\ds W = \frac{1}{2}\int \vb{D}\cdot\vb{E}\,d\uptau$
+
+\subsection{Boundary Conditions in Electrostatics}
+\begin{itemize}
+	\itemsep0em
+	\item $\vb{D}_{\text{above}}^{\perp} - \vb{D}_{\text{below}}^{\perp}  = \sigma_f$
+	\item $\vb{D}_{\text{above}}^{\parallel} - \vb{D}_{\text{below}}^{\parallel} = \vb{P}_{\text{above}}^{\parallel} - \vb{P}_{\text{below}}^{\parallel}$
+	\item $\vb{E}_{\text{above}}^{\perp} - \vb{E}_{\text{below}}^{\perp}  = \sigma/\epsilon_0$
+	\item $\vb{E}_{\text{above}}^{\parallel} - \vb{E}_{\text{below}}^{\parallel}  = \vb{0}$
+	\item $V_\text{above} = V_\text{below}$
+	\item $\epsilon_\text{above}\vb{E}_\text{above}^\perp - \epsilon_\text{below}\vb{E}_\text{below}^\perp = \sigma_f$
+	\item $\ds \epsilon_\text{above}\pdv{V_\text{above}}{n} - \epsilon_\text{below}\pdv{V_\text{below}}{n} = \sigma_f$
+\end{itemize}
+
+\section{Magnetostatics}
+Lorentz Force Law:\\
+\tab $\vb{F} = q(\vb{E}+\vb{v}\cross\vb{B})$
+
+Currents:\\
+\tab $\vb{I} = \lambda \vb{v}$ \qquad $\vb{K} = \sigma\vb{v}$ \qquad $\vb{J} = \rho\vb{v}$
+
+Biot-Savart Law:\\
+\tab $\ds \vb{B}(\vb{r}) = \frac{\mu_0}{4\pi}\int \frac{\vb{I}\cross\vu{\brcurs}}{\rcurs^2}\,dl' = \frac{\mu_0I}{4\pi}\int \frac{d\vb{l'}\cross\vu{\brcurs}}{\rcurs^2}$
+
+\subsection{Magnetic Vector Potential}
+\tab $\vb{B} = \curl{\vb{A}}$ \quad where \quad $\div{\vb{A}} = 0$
+
+Vector Potential Poisson's Equation:\\
+\tab $\nabla^2\vb{A} = -\mu_0 \vb{J}$
+
+Vector Potential when $\vb{A} \rightarrow \vb{0}$ at infinity:\\
+\tab $\ds \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi}\int \frac{\vb{J}(\vb{r'})}{\rcurs}\,d\uptau$
+
+Multipole Expansion of a current loop:\\
+\tab $\ds \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \sum_{n = 0}^{\infty} \frac{1}{r^{n+1}} \oint (r')^n P_n(\cos\alpha)\,d\vb{l'}$\\
+\tab $\ds \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \frac{\vb{m}\times\vu{r}}{r^2}$
+
+Magnetic Dipole Moment for a vector area $\vb{a}$:\\
+\tab $\ds \vb{m} = I\int d\vb{A} = I\vb{a}$
+
+\section{Magnetic Fields in Matter}
+Bound Currents:\\
+\tab $\vb{J}_B = \curl{\vb{M}}$ \qquad $\vb{K}_B = \vb{M}\cross\vb{n}$
+
+Auxillary Field:\\
+\tab $\ds \vb{H} = \frac{\vb{B}}{\mu_0} - \vb{M}$ \quad\, $\curl{\vb{H}} = \vb{J}_f$ \quad\, $\ds \oint \vb{H}\cdot d\vb{l} = I_\text{free}$
+
+\subsection{Linear Media}
+Magnetization in linear media:\\
+\tab $\vb{M} = \chi_m \vb{H}$
+
+Auxillary Field:\\
+\tab $\vb{B} = \mu_0(\vb{H} + \vb{M}) = \mu_0(1 + \chi_m)\vb{H} = \mu \vb{H}$
+
+Volume bound current:\\
+\tab $\vb{J}_B = \chi_m \vb{J}_f$
+
+
+\subsection{Boundary Conditions in Magnetostatics}
+\begin{itemize}
+	\itemsep0em
+	\item $\vb{B}_\text{above}^\parallel - \vb{B}_\text{below}^\parallel = \mu_0\vb{K}$
+	\item $\vb{B}_\text{above} - \vb{B}_\text{below} = \mu_0(\vb{K}\cross\vu{n})$
+	\item $\vb{A}_\text{above} = \vb{A}_\text{below}$
+	\item $\ds \pdv{A_\text{above}}{n} - \pdv{A_\text{below}}{n} = -\mu_0\vb{K}$
+	\item $\vb{H}_\text{above}^\perp - \vb{H}_\text{below}^\perp = - (\vb{M}_\text{above}^\perp - \vb{M}_\text{below}^\perp) $
+	\item $\vb{H}_\text{above}^\parallel - \vb{H}_\text{below}^\parallel = \vb{K}_f \cross \vu{n}$
+\end{itemize}
+
 \section{Vector Derivatives}
 \subsection{Cartesian}
 $d\vb{l} = dx\,\vu{x} + dy\,\vu{y} + dz\,\vu{z}$
@@ -94,12 +284,7 @@ Divergence:\\
 Curl:\\
 \tab $\ds \curl{\vb{v}} = \left(\pdv{v_z}{y} - \pdv{v_y}{z}\right)\vu{x} + \left(\pdv{v_x}{z} - \pdv{v_z}{x}\right)\vu{y} + \left(\pdv{v_y}{x} - \pdv{v_x}{y}\right)\vu{z}$
 
-Laplacian:\\
-\tab $\ds \laplacian{f} = \pdv[2]{f}{x} + \pdv[2]{f}{y} + \pdv[2]{f}{z}$
-
 \subsection{Spherical}
-$d\vb{l} = dr\,\vu{r} + r\,d\theta\,\vu*{\theta} + r\sin\theta\,d\phi\,\vu*{\phi}$
-\hspace{1cm}
 $d\uptau = r^2\sin\theta\,dr\,d\theta\,d\phi$
 
 Gradient:\\
@@ -112,13 +297,7 @@ Curl:\\
 \tab $\ds \curl{\vb{v}} = \frac{1}{r\sin\theta}\left[\pdv{\theta}(\sin\theta\, v_\phi)- \pdv{v_\theta}{\phi}\right]\vu{r}\,+$\\
 \tab \tab $\ds \frac{1}{r}\left[\frac{1}{\sin\theta}\pdv{v_r}{\phi}-\pdv{r}(r v_\theta)\right]\vu*{\theta} + \frac{1}{r}\left[\pdv{r}(r v_\theta)-\pdv{v_r}{\theta}\right]\vu*{\phi}$
 
-Laplacian:\\
-\tab $\ds \laplacian{f} = \frac{1}{r^2}\pdv{r}\left(r^2\pdv{f}{r}\right) +$\\
-\tab $\ds \frac{1}{r^2\sin\theta}\pdv{\theta}\left(\sin\theta\pdv{f}{\theta}\right)+\frac{1}{r^2\sin^2\theta}\pdv[2]{f}{\phi}$
-
 \subsection{Cylindrical}
-$d\vb{l} = ds\,\vu{s} + s\,d\phi\,\vu*{\phi} + dz\,\vu{z}$
-\hspace{1cm}
 $d\uptau = s\,ds\,d\phi\,dz$
 
 Gradient:\\
@@ -130,47 +309,22 @@ Divergence:\\
 Curl:\\
 \tab $\ds \curl{\vb{v}} = \left[\frac{1}{s}\pdv{v_z}{\phi}-\pdv{v_\phi}{z}\right]\vu{s}+\left[\pdv{v_s}{z}-\pdv{v_z}{s}\right]\vu*{\phi}+\frac{1}{s}\left[\pdv{s}(sv_\phi)-\pdv{v_s}{\phi}\right]\vu{z}$
 
-Laplacian:\\
-\tab $\ds \laplacian{f}=\frac{1}{s}\pdv{s}\left(s\pdv{f}{s}\right)+\frac{1}{s^2}\pdv[2]{f}{\phi}+\pdv[2]{f}{z}$
-
 \section{Fundamental Theorems}
-Gradient Theorem:\\
+Fundamental Theorem of Line Integrals:\\
 \tab $\ds \int_{\vb{a}}^{\vb{b}}(\grad{f})\cdot d\vb{l} = f(\vb{b})-f(\vb{a})$
 
 Divergence Theorem:\\
 \tab $\ds \int (\div \vb{A})\, d\uptau = \oint \vb{A}\cdot d\vb{a}$
 
-Curl Theorem:\\
+Stoke's Theorem:\\
 \tab $\ds \int (\curl{\vb{A}})\cdot d\vb{a} = \oint \vb{A}\cdot d\vb{l}$
 
-\section{Differential Maxwell's Equations}
-\tab $\ds \div{\vb{E}} = \frac{\rho}{\epsilon_0}$
-
-\tab $\ds \curl{\vb{E}} = -\pdv{\vb{B}}{t}$
-
-\tab $\ds \div{\vb{B}} = 0$
-
-\tab $\ds \curl{\vb{B}} = \mu_0\vb{J} + \mu_0\epsilon_0\pdv{\vb{E}}{t}$
-
-\section{Integral Maxwell's Equations}
-\tab $\ds \oint \vb{E}\cdot d\vb{a} = \frac{Q_\text{enc}}{\epsilon_0}$
-
-\tab $\ds \oint \vb{B}\cdot d\vb{a} = 0$
-
-\tab $\ds \oint \vb{E}\cdot d\vb{l} = -\dv{\Phi_B}{t}$
-
-\tab $\ds \oint \vb{B}\cdot d\vb{l} = \mu_0 I_\text{enc} + \epsilon_0\mu_0 \dv{\Phi_E}{t}$
-
-\section{Electric Fields and Potential}
-\tab $\ds \vb{E} = -\grad{V}$
+\section{Vector Identities}
+\tab $\ds \div{\left(\frac{\vu{\brcurs}}{\rcurs^2}\right)} = 4\pi \delta^3(\brcurs)$
 \\
-\tab $\vb{B} = \curl{\vb{A}}$
-
-Lorentz Force Law:\\
-\tab $\vb{F} = q(\vb{E}+\vb{v}\cross\vb{B})$
-
-Energy:\\
-\tab $\ds U = \frac{1}{2} \int \left(\epsilon_0 E^2 + \frac{1}{\mu_0}B^2\right)\,d\uptau$
+\tab $\ds \grad{\left(\frac{1}{\rcurs}\right)} = -\frac{\vu{\brcurs}}{\rcurs}$
+\\
+\tab $\ds \delta(kx) = \frac{1}{\abs{k}}\delta(x)$
 
 \section{Spherical Coordinates}
 \tab $x = r\sin\theta\cos\phi$
