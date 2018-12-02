@@ -1,0 +1,224 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage{newtxtext,newtxmath}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+\def\rcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{BoldR}}$}}}
+
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
+
+\DeclareMathOperator{\sinc}{sinc}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{ELEC 221 Formula Sheet}}
+\end{center}
+
+\section{Continuous Time Signals}
+
+Even and Odd Components:\\
+\tab $x_e(t) = \frac{1}{2}[x(t) + x(-t)]$\\
+\tab $x_o(t) = \frac{1}{2}[x(t) - x(-t)]$
+
+A signal is periodic with fundamental period $T_0$ if\\
+\tab $x(t + kT_0) = x(t) \quad \forall t \in (-\infty, \infty)$
+
+Energy:\\
+\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt$
+
+Power:\\
+\tab $\ds P = \lim_{T \rightarrow \infty} \frac{1}{2T} \int_{-T}^{T}\abs{x(t)}^2\,dt$
+
+Causality:\\
+\begin{itemize}
+	\itemsep0em
+	\item Causal: $x(t) = 0$ for $t < 0$.
+	\item Anti-Causal: $x(t) = 0$ for $t \geq 0$.
+	\item A-Causal or Non-Causal: Both of the above.
+\end{itemize}
+
+\section{Continuous Time Systems}
+Dynamic systems have memory. Active systems can deliver energy to the outside world.
+\\
+Linearity:\\
+\tab $\mathcal{S}[\alpha x(t) + \beta y(t)] = \alpha\mathcal{S}[x(t)] + \beta\mathcal{S}[y(t)]$
+
+Time Invariance:\\
+\tab If $\mathcal{S}[x(t)] = y(t)$ then $\mathcal{S}[x(t \pm \tau)] = y(t \pm \tau)$.
+
+Zero-State Response:\\
+\tab Due to the input as the initial conditions are zero.
+
+Zero-Input Response:\\
+\tab Due to the initial conditions as the input is zero.
+
+Convolution Integral:\\
+\tab $\ds [x * y](t) = \int_{-\infty}^{\infty}x(\tau)y(t-\tau)\,d\tau = \int_{-\infty}^{\infty}x(t - \tau)y(\tau)\,d\tau$
+
+Total Response from Impulse Response:\\
+\tab $\ds y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)\,d\tau$
+
+Causality:\\
+\tab A continuous time system $\mathcal{S}$ is causal if whenever $x(t) = 0$ and there are no initial conditions, $y(t) = 0$ and the output $y(t)$ does not depend on future inputs.
+\\~\\
+Bounded-Input Bounded-Output Stability:\\
+\tab If an input $x(t)$ bounded then the output of an BIBO system is also bounded.\\
+\tab $\ds \int_{-\infty}^{\infty} \abs{h(t)}\,dt < \infty$
+
+\section{Laplace Transform}
+$s = \sigma + j\omega$\\
+
+Eigenfunction Property:\\
+\tab $\mathcal{S}[e^{s_0t}] = H(s_0)e^{s_0t}$
+
+One Sided Laplace Transform:\\
+\tab $\ds F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$
+
+Region of Convergence:\\
+\begin{itemize}
+	\itemsep0em
+	\item Finite support $\rightarrow$ Entire s-plane.
+	\item Causal function $\rightarrow$ $\sigma > \max(\sigma_i)$,  $-\infty < \omega < \infty$.
+	\item Anti-causal $\rightarrow$ $\sigma < \min(\sigma_i)$,  $-\infty < \omega < \infty$.
+	\item Non-causal $\rightarrow$ $\mathcal{R} = \mathcal{R}_\text{causal} \cap \mathcal{R}_\text{anti-causal}$.
+\end{itemize}
+
+Initial Value Theorem:\\
+\tab $\ds f(0+) \Leftrightarrow \lim_{s\rightarrow\infty} sF(s)$
+
+Final Value Theorem:\\
+\tab $\ds \lim_{t\rightarrow\infty} f(t) \Leftrightarrow \lim_{s\rightarrow 0} sF(s)$
+
+Bounded-Input Bounded-Output Stability:\\
+\tab If the region of convergence contains the $j\omega$-axis, then the system is BIBO stable.
+
+\section{Fourier Series}
+\tab Fourier analysis in the steady state.
+
+Eigenfunction Property:\\
+\tab $\mathcal{S}[e^{j\omega_0t}] = H(j\omega_0)e^{j\omega_0t}$\\
+\tab $\ds x(t) = \sum_k X_k e^{j\omega_kt} \implies y(t) = \sum_k X_k H(j\omega_k)e^{j\omega_kt}$\\\hspace{3.5cm}$\ds = \sum_k X_k \abs{H(j\omega_k)}e^{j(\omega_kt + \angle H(\omega_k))}$
+
+Fourier Series Coefficients (for any $t_0$):\\
+\tab $\ds X_k = \frac{1}{T_0}\int_{t_0}^{t_0 + T_0}x(t)e^{-jk\omega_0t}\,dt$
+
+Parseval's Power Relation (for any $t_0$):\\
+\tab $\ds P = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}\abs{x(t)}^2\,dt = \sum_{k = -\infty}^{\infty}\abs{X_k}^2$
+
+Symmetry of Line Spectra:\\
+\tab $\abs{X_k} = \abs{X_{-k}}$\\
+\tab $\angle X_k = -\angle X_{-k}$
+
+Trigonometric Fourier Series:\\
+\tab $x(t) = X_0 + 2\sum_{k = 1}^{\infty}\abs{X_k}\cos(k\omega t + \Theta_k)$\\
+\tab $x(t) = c_0 + 2\sum_{k = 1}^{\infty}[c_k\cos(k\omega_0 t) + d_k\sin(k\omega_0 t)]$\\
+\tab $\ds c_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\cos(k\omega_0 t)\,dt$ \quad $k$ = 0,1,2$\ldots$\\
+\tab $\ds d_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\sin(k\omega_0 t)\,dt$\quad $k$ = 1,2,3$\ldots$\\
+\tab $\Theta_k = -\arctan(d_k/c_k)$
+\\~\\
+Fourier Coefficients from Laplace Transform:\\
+\tab If $x_1(t)$ is a single period of $x(t)$, then\\
+\tab $\ds X_k = \frac{1}{T_0}\mathcal{L}[x_1(t)] \big\rvert_{s = jk\omega_0}$
+
+Response of LTI Systems to Periodic Signals:\\
+\tab If the input to an LTI system has Fourier Series $x(t) = X_0 + 2\sum_{k=1}^{\infty}\abs{X_k}\cos(k\omega t + \angle X_k)$, then the steady state response is $y(t) = X_0\abs{H(j0)} + 2\sum_{k=1}^{\infty}\abs{X_k}\abs{H(jk\omega_0)}\cos(k\omega_0 t + \angle X_k + \angle H(jk\omega_0))$
+
+\section{Fourier Transform}
+\tab $\ds X(\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt$\\
+\tab $\ds x(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}X(\omega)e^{j\omega t}\,d\omega$
+
+Fourier Transform from Laplace Transform (if $X(s)$ contains the $j\omega$-axis):\\
+\tab $\mathcal{F}[x(t)] = \mathcal{L}[x(t)]\big\rvert_{s = j\omega} = X(s)\big\rvert_{s = j\omega}$
+
+Duality:\\
+\tab $\ds X(t) \xLeftrightarrow{\mathcal{F}} 2\pi x(-\omega)$
+
+Fourier Transform of Periodic Signals:\\
+\tab $\ds \sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi_k \delta(\omega - k\omega_0)$
+
+Parseval's Energy Relation:\\
+\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\abs{X(\omega)}^2\,d\omega$
+
+Symmetry of Spectral Representations:\\
+\tab $\abs{X(\omega)} = \abs{X(-\omega)}$\\
+\tab $\Re[X(\omega)] = \Re[X(-\omega)]$\\
+\tab $\angle X(\omega) = -\angle X(-\omega)$\\
+\tab $\Im[X(\omega)] = -\Im[X(-\omega)]$
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols*}
+\end{document}
