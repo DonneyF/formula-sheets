@@ -4,13 +4,13 @@
 \usepackage{ifthen}
 \usepackage[landscape]{geometry}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
-\usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{upgreek}
 \usepackage{physics}
 \usepackage{mathtools}
 \usepackage{newtxtext,newtxmath}
+\usepackage{xfrac}
 
 % This sets page margins to .5 inch if using letter paper, and to 1cm
 % if using A4 paper. (This probably isn't strictly necessary.)
@@ -167,7 +167,7 @@ Bounded-Input Bounded-Output Stability:\\
 
 Eigenfunction Property:\\
 \tab $\mathcal{S}[e^{j\omega_0t}] = H(j\omega_0)e^{j\omega_0t}$\\
-\tab $\ds x(t) = \sum_k X_k e^{j\omega_kt} \implies y(t) = \sum_k X_k H(j\omega_k)e^{j\omega_kt}$\\\hspace{3.5cm}$\ds = \sum_k X_k \abs{H(j\omega_k)}e^{j(\omega_kt + \angle H(\omega_k))}$
+\tab $\ds x(t) = \sum_k X_k e^{j\omega_kt} \implies y(t) = \sum_k X_k H(j\omega_k)e^{j\omega_kt}$\\\hspace{2.5cm}$\ds = \sum_k X_k \abs{H(j\omega_k)}e^{j(\omega_kt + \angle H(\omega_k))}$
 
 Fourier Series Coefficients (for any $t_0$):\\
 \tab $\ds X_k = \frac{1}{T_0}\int_{t_0}^{t_0 + T_0}x(t)e^{-jk\omega_0t}\,dt$
@@ -214,6 +214,57 @@ Symmetry of Spectral Representations:\\
 \tab $\Re[X(\omega)] = \Re[X(-\omega)]$\\
 \tab $\angle X(\omega) = -\angle X(-\omega)$\\
 \tab $\Im[X(\omega)] = -\Im[X(-\omega)]$
+
+\section{Sampling Theory}
+\tab $x_s(t) = x(nT_s) = x(t)\rvert_{t = nT_s} = x(t)\sum_n \delta(t - nT_s)$\\
+\tab $\ds X_s(\omega) = \frac{1}{T_s} \sum_{k=-\infty}^{\infty}X(\omega - k\omega_s)$
+
+Nyquist-Shannon Sampling Rate:\\
+\tab $\ds \omega_s = \frac{2\pi}{T_s} \geq 2\omega_\text{max}$\\
+\tab Aliasing occurs if $\omega_s < 2\omega_\text{max}$.
+
+Reconstruction $X(\omega)=X_s(\omega)H_\text{lp}(\omega)$:
+\begin{equation*}
+H_{\text{lp}}(\omega) =
+\begin{cases}
+T_s & -\frac{\omega_s}{2} < \omega < \frac{\omega_s}{2}\\
+0 & \text{otherwise}
+\end{cases}
+\end{equation*}
+
+Signal Reconstruction from Sinc Interpolation:\\
+\tab $\ds x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s))/T_s}{\pi(t-nT_s)/T_s}$
+
+\section{Discrete Time Signals}
+\tab Define $x[n] = x(nT_0)$.\\
+\tab $x[n] = \sum_{k=-\infty}^{\infty}x[k]\delta[n-k]$
+
+Periodicity:\\
+\tab $x[n + kN] = x[n]$ \qquad $\forall k\in \mathbb{Z}$
+
+When sampling an analog sinusoid of fundamental period $T_0$, we obtain a periodic discrete sinusoid provided that $m$, $N$ not divisible by each-other:\\
+\tab $\ds \frac{T_s}{T_0} = \frac{m}{N}$
+
+Aliasing occurs if:\\
+\tab $\ds T_s > \frac{T_0}{2}$
+
+Energy:\\
+\tab $E = \sum_{n = -\infty}^{\infty}\abs{x[n]}^2$
+
+Power:\\
+\tab $ P_x = \lim_{N \rightarrow \infty}\frac{1}{2N + 1}\sum_{n= -N}^{N}\abs{x[n]}^2$
+
+Convolutional Sum:\\\
+\tab $\ds y[n] = \sum_{k = -\infty}^{\infty} x[k]h[n-k]$
+
+Bounded-Input Bounded-Output Stability:\\
+\tab $\sum_k \abs{h[n]}^2 < \infty$
+
+\section{Z-Transform}
+\tab $\mathcal{Z}[x(nT_s)] = \mathcal{L}[x_s(t)]\rvert_{z=e^{sT_s}} = \sum_n x(nT_s)z^{-n}$
+
+Convergence:\\
+\tab $|X(z)| = \sum_n \abs{x[n]}r^{-n} < \infty$
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
