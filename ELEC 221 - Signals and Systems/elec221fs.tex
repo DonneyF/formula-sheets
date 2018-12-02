@@ -48,7 +48,8 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1pt plus 0.5ex}
 
-\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\tab}{\hspace{0.02\textwidth}}
+\newcommand{\tabm}{\hspace*{0.07\textwidth}}
 \newcommand{\ds}{\displaystyle}
 
 \renewcommand{\dv}[2]{\frac{d#1}{d#2}}
@@ -88,7 +89,7 @@ Energy:\\
 \tab $E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt$
 
 Power:\\
-\tab $ P = \lim_{T \rightarrow \infty} \frac{1}{2T} \int_{-T}^{T}\abs{x(t)}^2\,dt$
+\tab $\ds P = \lim_{T \rightarrow \infty} \frac{1}{2T} \int_{-T}^{T}\abs{x(t)}^2\,dt$
 
 Causality:\\
 \begin{itemize}
@@ -114,7 +115,7 @@ Zero-Input Response:\\
 \tab Due to the initial conditions as the input is zero.
 
 Convolution:\\
-\tab $y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)\,d\tau$
+\tab $\ds y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)\,d\tau$
 
 Causality:\\
 \tab A continuous time system $\mathcal{S}$ is causal if whenever $x(t) = 0$ and there are no initial conditions, $y(t) = 0$ and the output $y(t)$ does not depend on future inputs.
@@ -130,11 +131,12 @@ Eigenfunction Property:\\
 \tab $\mathcal{S}[e^{s_0t}] = H(s_0)e^{s_0t}$
 
 One Sided Laplace Transform:\\
-\tab $F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$
+\tab $\ds F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$
 
 Region of Convergence:
+\vspace{-0.5em}
 \begin{itemize}
-	\itemsep0em
+	\itemsep-0.33em
 	\item Finite support $\rightarrow$ Entire s-plane.
 	\item Causal function $\rightarrow$ $\sigma > \max(\sigma_i)$,  $-\infty < \omega < \infty$.
 	\item Anti-causal $\rightarrow$ $\sigma < \min(\sigma_i)$,  $-\infty < \omega < \infty$.
@@ -158,10 +160,10 @@ Eigenfunction Property:\\
 \tab $x(t) = \sum_k X_k e^{j\omega_kt} \implies y(t) = \sum_k X_k H(j\omega_k)e^{j\omega_kt}$\\\vspace{1mm}\hspace{2.5cm}$= \sum_k X_k \abs{H(j\omega_k)}e^{j(\omega_kt + \angle H(\omega_k))}$
 
 Fourier Series Coefficients (for any $t_0$):\\
-\tab $X_k = \frac{1}{T_0}\int_{t_0}^{t_0 + T_0}x(t)e^{-jk\omega_0t}\,dt$
+\tab $\ds X_k = \frac{1}{T_0}\int_{t_0}^{t_0 + T_0}x(t)e^{-jk\omega_0t}\,dt$
 
 Parseval's Power Relation (for any $t_0$):\\
-\tab $ P = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}\abs{x(t)}^2\,dt = \sum_{k = -\infty}^{\infty}\abs{X_k}^2$
+\tab $\ds P = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}\abs{x(t)}^2\,dt = \sum_{k = -\infty}^{\infty}\abs{X_k}^2$
 
 Symmetry of Line Spectra:\\
 \tab $\abs{X_k} = \abs{X_{-k}}$\\
@@ -179,7 +181,7 @@ Fourier Coefficients from Laplace Transform:\\
 \tab $X_k = \frac{1}{T_0}\mathcal{L}[x_1(t)] \big\rvert_{s = jk\omega_0}$
 
 Response of LTI Systems to Periodic Signals:\\
-\tab If the input to an LTI system has Fourier Series $x(t) = X_0 + 2\sum_{k=1}^{\infty}\abs{X_k}\cos(k\omega t + \angle X_k)$, then the steady state response is $y(t) = X_0\abs{H(j0)} + 2\sum_{k=1}^{\infty}\abs{X_k}\abs{H(jk\omega_0)}\cos(k\omega_0 t + \angle X_k + \angle H(jk\omega_0))$
+\tab If the input to an LTI system has Fourier Series $x(t) = X_0 + 2\sum_{k=1}^{\infty}\abs{X_k}\cos(k\omega t + \angle X_k)$, then the steady state response is $\ds y(t) = X_0\abs{H(j0)} + 2\sum_{k=1}^{\infty}\abs{X_k}\abs{H(jk\omega_0)}\cos(k\omega_0 t + \angle X_k + \angle H(jk\omega_0))$
 
 \section{Fourier Transform}
 \tab $X(\omega) = \int_{-\infty}^{\infty}x(t)e^{-j\omega t}\,dt$\\
@@ -188,14 +190,11 @@ Response of LTI Systems to Periodic Signals:\\
 Fourier Transform from Laplace Transform (if $X(s)$ contains the $j\omega$-axis):\\
 \tab $\mathcal{F}[x(t)] = \mathcal{L}[x(t)]\big\rvert_{s = j\omega} = X(s)\big\rvert_{s = j\omega}$
 
-Duality:\\
-\tab $\ds X(t) \xLeftrightarrow{\mathcal{F}} 2\pi x(-\omega)$
-
 Fourier Transform of Periodic Signals:\\
-\tab $\sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi_k \delta(\omega - k\omega_0)$
+\tab $\ds \sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi_k \delta(\omega - k\omega_0)$
 
 Parseval's Energy Relation:\\
-\tab $E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\abs{X(\omega)}^2\,d\omega$
+\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\abs{X(\omega)}^2\,d\omega$
 
 Symmetry of Spectral Representations:\\
 \tab $\abs{X(\omega)} = \abs{X(-\omega)}$\\
@@ -205,14 +204,16 @@ Symmetry of Spectral Representations:\\
 
 \section{Sampling Theory}
 \tab $x_s(t) = x(nT_s) = x(t)\rvert_{t = nT_s} = x(t)\sum_n \delta(t - nT_s)$\\
-\tab $X_s(\omega) = \frac{1}{T_s} \sum_{k=-\infty}^{\infty}X(\omega - k\omega_s)$
+\tab $\ds X_s(\omega) = \frac{1}{T_s} \sum_{k=-\infty}^{\infty}X(\omega - k\omega_s)$
 
 Nyquist-Shannon Sampling Rate:\\
 \tab $\omega_s = \frac{2\pi}{T_s} \geq 2\omega_\text{max}$\\
 \tab Aliasing occurs if $\omega_s < 2\omega_\text{max}$.
 
 Reconstruction $X(\omega)=X_s(\omega)H_\text{lp}(\omega)$:
+\vspace{-1em}
 \begin{equation*}
+\hspace{-8em}
 H_{\text{lp}}(\omega) =
 \begin{cases}
 T_s & -\frac{\omega_s}{2} < \omega < \frac{\omega_s}{2}\\
@@ -221,42 +222,49 @@ T_s & -\frac{\omega_s}{2} < \omega < \frac{\omega_s}{2}\\
 \end{equation*}
 
 Signal Reconstruction from Sinc Interpolation:\\
-\tab $x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s))/T_s}{\pi(t-nT_s)/T_s}$
+\tab $\ds x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s))/T_s}{\pi(t-nT_s)/T_s}$
 \end{multicols*}
 
 \newpage
 
-\begin{minipage}[t]{0.30\textwidth}
+\begin{minipage}[t]{0.27\textwidth}
 \section{Discrete Time Signals}
-\tab Define $x[n] = x(nT_0)$.\\
-\tab $x[n] = \sum_{k=-\infty}^{\infty}x[k]\delta[n-k]$
+\tabm Define $x[n] = x(nT_0)$.\\
+\tabm $x[n] = \sum_{k=-\infty}^{\infty}x[k]\delta[n-k]$
 
 Periodicity:\\
-\tab $x[n + kN] = x[n]$ \qquad $\forall k\in \mathbb{Z}$
+\tabm $x[n + kN] = x[n]$ \qquad $\forall k\in \mathbb{Z}$
 
 When sampling an analog sinusoid of fundamental period $T_0$, we obtain a periodic discrete sinusoid provided that $m$, $N$ not divisible by each-other:\\
-\tab $T_s/T_0 = m/N$
+\tabm $T_s/T_0 = m/N$
 
 Aliasing occurs if:\\
-\tab $T_s > T_0/2$
+\tabm $T_s > T_0/2$
 
 Energy:\\
-\tab $E = \sum_{n = -\infty}^{\infty}\abs{x[n]}^2$
+\tabm $\ds E = \sum_{n = -\infty}^{\infty}\abs{x[n]}^2$
 
 Power:\\
-\tab $ P_x = \lim_{N \rightarrow \infty}\frac{1}{2N + 1}\sum_{n= -N}^{N}\abs{x[n]}^2$
+\tabm $\ds P_x = \lim_{N \rightarrow \infty}\frac{1}{2N + 1}\sum_{n= -N}^{N}\abs{x[n]}^2$
 
 Convolutional Sum:\\\
-\tab $y[n] = \sum_{k = -\infty}^{\infty} x[k]h[n-k]$
+\tabm $\ds y[n] = \sum_{k = -\infty}^{\infty} x[k]h[n-k]$
 
 Bounded-Input Bounded-Output Stability:\\
-\tab $\sum_k \abs{h[n]}^2 < \infty$
+\tabm $\sum_k \abs{h[n]}^2 < \infty$
 
 \section{Z-Transform}
-\tab $\mathcal{Z}[x(nT_s)] = \mathcal{L}[x_s(t)]\rvert_{z=e^{sT_s}} = \sum_n x(nT_s)z^{-n}$
+\tabm $\mathcal{Z}[x(nT_s)] = \mathcal{L}[x_s(t)]\rvert_{z=e^{sT_s}} = \sum_n x(nT_s)z^{-n}$
 
 Convergence:\\
-\tab $|X(z)| = \sum_n \abs{x[n]}r^{-n} < \infty$
+\tabm $|X(z)| = \sum_n \abs{x[n]}r^{-n} < \infty$
+
+Initial Value Theorem:\\
+\tabm $\ds x[0] = \lim_{z\rightarrow \infty}X(z)$
+
+Final Value Theorem:\\
+\tabm $\ds \lim_{n\rightarrow \infty}x[n] = \lim_{z\rightarrow 1}(z-1)X(z)$
+
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize\\
@@ -270,6 +278,7 @@ Updated \today\\
 	   & Time Domain & Frequency Domain\\
 	\midrule
 	Expansion/Contraction & $x(\alpha t)$, $\alpha \neq 0$ & $\frac{1}{\abs{\alpha}} X(\frac{\omega}{\alpha})$ \\
+	Reflection & $x(-t)$ & $X(-\omega)$ \\
 	Duality & $X(t)$ & $2\pi x(-\omega)$\\
 	Differentiation ($t$) & $\ds \frac{d^nx}{dt^2}$& $(j\omega)^n X(\omega)$\\
 	Differentiation ($\omega$) & $-jtx(t)$ & $\ds \dv{X(\omega)}{\omega}$\\
@@ -277,6 +286,23 @@ Updated \today\\
 	Time shifting & $x(t - \alpha)$ & $e^{-j\alpha\omega}X(\omega)$\\
 	Frequency shifting &  $e^{j\omega_0 t}x(t)$ & $X(\omega-\omega_0)$\\
 	Modulation & $x(t)\cos(\omega_c t)$ & $0.5[X(\omega - \omega_c) + X(\omega + \omega_c)]$\\
+	Multiplication & $x(t)y(t)$ & $\frac{1}{2\pi}[X * Y](\omega)$\\
+	\bottomrule
+\end{tabular}
+\vspace{1cm}
+\subsection{Z-Transform Properties}
+\begin{tabular}{lll}  
+	\toprule
+	& Time Domain & Z-Domain\\
+	\midrule
+	Time Shifting (causal) & $x[n-N]$, $n\in \mathbb{Z}$ & $z^{-N}X(z)$\\
+	Time Shifting (acausal) & $x[n-N]$ & $z^NX(z) + x[-1]z^{-N + 1}$\\
+	& & $+x[-2]z^{-N+2} + \cdots x[-N]$\\
+	Time reversal & $x[-n]$ & $X(z^{-1})$ \\
+	Multiplication by $n$ & $nx[n]$ & $\ds -z\dv{X(z)}{z}$\\
+	Multiplication by $n^2$ & $n^2x[n]$ & $\ds z^2 \frac{d^2X(z)}{dz^2} + z\dv{X(z)}{z}$\\
+	Finite Difference & $x[n]-x[n-1]$ & $(1-z^{-1})X(z) - x[-1]$\\
+	Accumulation & $\sum_{k=0}^{n}x[k]$ & $\ds \frac{X(z)}{1-z^{-1}}$\\
 	\bottomrule
 \end{tabular}
 \end{minipage}%
@@ -291,14 +317,30 @@ Updated \today\\
 	$u(t)$ & $1/j\omega + \pi\delta(\omega)$\\
 	$u(t)$ & $-1/j\omega + \pi\delta(\omega)$\\
 	$\text{sign}(t)$ & $2/j\omega$\\
-	$e^{-a\abs{t}}$, $a > 0$ & $\frac{2a}{a^2 + \omega^2}$\\
+	$\alpha$ & $2\pi\alpha\delta(\omega)$\\  
+	$e^{-a\abs{t}}$, $a > 0$ & $\ds \frac{2a}{a^2 + \omega^2}$\\
 	$\cos(\omega_0 t)$ & $\pi[\delta(\omega - \omega_0)] + \delta(\omega + \omega_0)$\\
 	$\sin(\omega_0 t)$ & $-j\pi[\delta(\omega - \omega_0)] - \delta(\omega + \omega_0)$\\
-	$\frac{\sin(\omega t)}{\pi t}$ &  $u(\omega + \omega_0) - u(\omega - \omega_0)$\\
-	$u(\omega + \tau) - u(\omega - \tau)$ & $2\tau \frac{\sin(\omega\tau)}{\omega\tau}$\\
+	$\ds \frac{\sin(\omega t)}{\pi t}$ &  $u(\omega + \omega_0) - u(\omega - \omega_0)$\\
+	$u(\omega + \tau) - u(\omega - \tau)$ & $\ds 2\tau \frac{\sin(\omega\tau)}{\omega\tau}$\\
+	\bottomrule
+\end{tabular}
+\vspace{0.7cm}
+\subsection{One-sided Z-Transforms}
+\begin{tabular}{ll}  
+	\toprule
+	$f[n]$ & $F(z)$\\
+	\midrule
+	$\delta[n]$ & 1, Whole z-plane\\
+	$u[n]$ & $\ds \frac{1}{1-z^{-1}}$, $\abs{z} > 1$\\
+	$nu[n]$ & $\ds \frac{z^{-1}}{(1-z^{-1})^2}$, $\abs{z} > 1$\\
+	$n^2u[n]$ & $\ds \frac{z^{-1}(1+z^{-1})}{(1-z^{-1})^3}$, $\abs{z} > 1$\\
+	$\alpha^n u[n]$, $\abs{\alpha} < 1$ & $\ds \frac{1}{1-\alpha z^{-1}}$, $\abs{z} > \abs{\alpha}$\\
+	$n\alpha^nu[n]$, $\abs{\alpha} < 1$ & $\ds \frac{\alpha z^{-1}}{(1-\alpha z^{-1})^2}$, $\abs{z} > \abs{\alpha}$\\
+	$\cos(\omega_0 n)u[n]$ & $\ds \frac{1-\cos(\omega_0)z^{-1}}{1-2\cos(\omega_0)z^{-1} + z^{-2}}$, $\abs{z} > 1$\\
+	$\sin(\omega_0 n)u[n]$ & $\ds \frac{\sin(\omega_0)z^{-1}}{1-2\cos(\omega_0)z^{-1} + z^{-2}}$, $\abs{z} > 1$\\
 	\bottomrule
 \end{tabular}
 \end{minipage}
-
 
 \end{document}
