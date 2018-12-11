@@ -296,7 +296,7 @@ Updated \today\\
 	& Time Domain & Z-Domain\\
 	\midrule
 	Time Shifting (causal) & $x[n-N]$, $n\in \mathbb{Z}$ & $z^{-N}X(z)$\\
-	Time Shifting (acausal) & $x[n-N]$ & $z^NX(z) + x[-1]z^{-N + 1}$\\
+	Time Shifting (acausal) & $x[n-N]$ & $z^{-N}X(z) + x[-1]z^{-N + 1}$\\
 	& & $+x[-2]z^{-N+2} + \cdots x[-N]$\\
 	Time reversal & $x[-n]$ & $X(z^{-1})$ \\
 	Multiplication by $n$ & $nx[n]$ & $\ds -z\dv{X(z)}{z}$\\
