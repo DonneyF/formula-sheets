@@ -1,8 +1,7 @@
-\documentclass[12pt,landscape]{article}
+\documentclass[12pt,landscape,letterpaper]{article}
 \usepackage{multicol}
 \usepackage{calc}
-\usepackage{ifthen}
-\usepackage[landscape]{geometry}
+\usepackage[top=.25in,left=.25in,right=.25in,bottom=.25in]{geometry}
 \usepackage{amsmath,amsthm,amsfonts,amssymb}
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -11,16 +10,7 @@
 \usepackage{mathtools}
 \usepackage{newtxtext,newtxmath}
 \usepackage{booktabs}
-
-% This sets page margins to .5 inch if using letter paper, and to 1cm
-% if using A4 paper. (This probably isn't strictly necessary.)
-% If using another size paper, use default 1cm margins.
-\ifthenelse{\lengthtest { \paperwidth = 11in}}
-	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
-	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
-		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
-		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
-	}
+\usepackage{xfrac}
 
 % Turn off header and footer
 \pagestyle{empty}
@@ -270,6 +260,9 @@ Initial Value Theorem:\\
 Final Value Theorem:\\
 \tabm $\ds \lim_{n\rightarrow \infty}x[n] = \lim_{z\rightarrow 1}(z-1)X(z)$
 
+BIBO Stability:\\
+\tabm If the ROC contains radius $z=1$, then the system is BIBO stable.
+
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize\\
@@ -277,82 +270,23 @@ Updated \today\\
 \href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
 \end{minipage}%
 \begin{minipage}[t]{0.43\textwidth}
-\subsection{Fourier Transform Properties}
+\subsection{Two-Sided Z-Transforms}
 \begin{tabular}{lll}  
 	\toprule
-	   & Time Domain & Frequency Domain\\
-	\midrule
-	Expansion/Contraction & $x(\alpha t)$, $\alpha \neq 0$ & $\frac{1}{\abs{\alpha}} X(\frac{\omega}{\alpha})$ \\
-	Reflection & $x(-t)$ & $X(-\omega)$ \\
-	Duality & $X(t)$ & $2\pi x(-\omega)$\\
-	Differentiation ($t$) & $\ds \frac{d^nx}{dt^n}$& $(j\omega)^n X(\omega)$\\
-	Differentiation ($\omega$) & $-jtx(t)$ & $\ds \dv{X(\omega)}{\omega}$\\
-	Integration & $\ds \int_{-\infty}^{t} x(\tau)\,d\uptau$ & $\ds \frac{X(\omega)}{j\omega} + \pi X(0)\delta(\omega)$\\
-	Time shifting & $x(t - \alpha)$ & $e^{-j\alpha\omega}X(\omega)$\\
-	Frequency shifting &  $e^{j\omega_0 t}x(t)$ & $X(\omega-\omega_0)$\\
-	Modulation & $x(t)\cos(\omega_c t)$ & $0.5[X(\omega - \omega_c) + X(\omega + \omega_c)]$\\
-	Multiplication & $x(t)y(t)$ & $\frac{1}{2\pi}[X * Y](\omega)$\\
-	Conjugation & $x^*(t)$ & $X^{*}(-\omega)$\\
+	$f[n]$ & $F(z)$ & ROC\\
+	\midrule\vspace{1mm}
+	$-u[-n-1]$ & $\ds \frac{1}{1-z^{-1}}$ & $\abs{z} < 1$\\\vspace{1mm}
+	$-\alpha^nu[-n-1]$ & $\ds \frac{1}{1-\alpha z^{-1}}$ & $\abs{z} < \abs{\alpha}$\\\vspace{1mm}
+	$-n\alpha^nu[-n-1]$ & $\ds \frac{\alpha z^{-1}}{(1-\alpha z^{-1})^2}$ & $\abs{z} < \abs{\alpha}$\\\vspace{1mm}
+	$\alpha^\abs{n}$, $\abs{\alpha} < 1$ & $\ds \frac{1}{1-\alpha z^{-1}} - \frac{1}{1-\alpha^{-1} z^{-1}}$ & $\abs{\alpha} < z < \abs{\frac{1}{\alpha}}$\\
 	\bottomrule
 \end{tabular}
-\vspace{1cm}
-\subsection{Z-Transform Properties}
-\begin{tabular}{lll}  
-	\toprule
-	& Time Domain & Z-Domain\\
-	\midrule
-	Time Shifting (causal) & $x[n-N]$, $n\in \mathbb{Z}$ & $z^{-N}X(z)$\\
-	Time Shifting (acausal) & $x[n-N]$ & $z^{-N}X(z) + x[-1]z^{-N + 1}$\\
-	& & $+x[-2]z^{-N+2} + \cdots x[-N]$\\
-	Time reversal & $x[-n]$ & $X(z^{-1})$ \\
-	Multiplication by $n$ & $nx[n]$ & $\ds -z\dv{X(z)}{z}$\\
-	Multiplication by $n^2$ & $n^2x[n]$ & $\ds z^2 \frac{d^2X(z)}{dz^2} + z\dv{X(z)}{z}$\\
-	Finite Difference & $x[n]-x[n-1]$ & $(1-z^{-1})X(z) - x[-1]$\\
-	Accumulation & $\sum_{k=0}^{n}x[k]$ & $\ds \frac{X(z)}{1-z^{-1}}$\\
-	\bottomrule
-\end{tabular}
+
 \vspace{1cm}
 \section{Misc. Identities}
 \tabm $\ds \sum_{k=0}^{n}x^k = \frac{1-x^{n+1}}{1-x} \quad\xrightarrow{n\rightarrow\infty \text{ and } x < 1}\quad \frac{1}{1-x}$\\
-\tabm $\cos\theta = 1/2(e^{j\theta}+e^{-j\theta})$\\
-\tabm $\sin\theta = 1/2j(e^{j\theta}-e^{-j\theta})$
-\end{minipage}%
-\begin{minipage}[t]{0.20\textwidth}
-\subsection{Fourier Transform Pairs}
-\begin{tabular}{ll}  
-	\toprule
-	$f(t)$ & $F(\omega)$\\
-	\midrule
-	$\delta(t)$ & 1\\
-	$\delta(t - \tau)$ & $e^{-j\omega\tau}$\\
-	$u(t)$ & $1/j\omega + \pi\delta(\omega)$\\
-	$u(t)$ & $-1/j\omega + \pi\delta(\omega)$\\
-	$\text{sign}(t)$ & $2/j\omega$\\
-	$\alpha$ & $2\pi\alpha\delta(\omega)$\\  
-	$e^{-a\abs{t}}$, $a > 0$ & $\ds \frac{2a}{a^2 + \omega^2}$\\
-	$\cos(\omega_0 t)$ & $\pi[\delta(\omega - \omega_0)] + \delta(\omega + \omega_0)$\\
-	$\sin(\omega_0 t)$ & $-j\pi[\delta(\omega - \omega_0)] - \delta(\omega + \omega_0)$\\
-	$\ds \frac{\sin(\omega t)}{\pi t}$ &  $u(\omega + \omega_0) - u(\omega - \omega_0)$\\
-	$u(\omega + \tau) - u(\omega - \tau)$ & $\ds 2\tau \frac{\sin(\omega\tau)}{\omega\tau}$\\
-	$\rect(t/T)$ & $T \sinc(T\omega/2)$\\
-	\bottomrule
-\end{tabular}
-\vspace{0.7cm}
-\subsection{One-sided Z-Transforms}
-\begin{tabular}{ll}  
-	\toprule
-	$f[n]$ & $F(z)$\\
-	\midrule
-	$\delta[n]$ & 1, Whole z-plane\\
-	$u[n]$ & $\ds \frac{1}{1-z^{-1}}$, $\abs{z} > 1$\\
-	$nu[n]$ & $\ds \frac{z^{-1}}{(1-z^{-1})^2}$, $\abs{z} > 1$\\
-	$n^2u[n]$ & $\ds \frac{z^{-1}(1+z^{-1})}{(1-z^{-1})^3}$, $\abs{z} > 1$\\
-	$\alpha^n u[n]$, $\abs{\alpha} < 1$ & $\ds \frac{1}{1-\alpha z^{-1}}$, $\abs{z} > \abs{\alpha}$\\
-	$n\alpha^nu[n]$, $\abs{\alpha} < 1$ & $\ds \frac{\alpha z^{-1}}{(1-\alpha z^{-1})^2}$, $\abs{z} > \abs{\alpha}$\\
-	$\cos(\omega_0 n)u[n]$ & $\ds \frac{1-\cos(\omega_0)z^{-1}}{1-2\cos(\omega_0)z^{-1} + z^{-2}}$, $\abs{z} > 1$\\
-	$\sin(\omega_0 n)u[n]$ & $\ds \frac{\sin(\omega_0)z^{-1}}{1-2\cos(\omega_0)z^{-1} + z^{-2}}$, $\abs{z} > 1$\\
-	\bottomrule
-\end{tabular}
+\tabm $\ds \cos\theta = \frac{e^{j\theta}+e^{-j\theta}}{2}$\\
+\tabm $\ds \sin\theta = \frac{e^{j\theta}-e^{-j\theta}}{2j}$
 \end{minipage}
 
 \end{document}
