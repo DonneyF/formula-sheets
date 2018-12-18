@@ -209,10 +209,11 @@ Reconstruction $X(\omega)=X_s(\omega)H_\text{lp}(\omega)$:
 \hspace{-8em}
 H_{\text{lp}}(\omega) =
 \begin{cases}
-T_s & -\frac{\omega_s}{2} < \omega < \frac{\omega_s}{2}\\
+T_s & \ds -\frac{\omega_s}{2} \leq \omega \leq \frac{\omega_s}{2}\\
 0 & \text{otherwise}
 \end{cases}
 \end{equation*}
+\tab (Inclusive bounds. If represented by a unit step function the bounds are inclusive for filters (Refer to lecture notes))
 
 Signal Reconstruction from Sinc Interpolation:\\
 \tab $\ds x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s))/T_s}{\pi(t-nT_s)/T_s}$
