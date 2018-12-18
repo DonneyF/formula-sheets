@@ -124,15 +124,17 @@ Eigenfunction Property:\\
 One Sided Laplace Transform:\\
 \tab $\ds F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$
 
-Region of Convergence:
-\vspace{-0.5em}
-\begin{itemize}
-	\itemsep-0.33em
-	\item Finite support $\rightarrow$ Entire s-plane.
-	\item Causal function $\rightarrow$ $\sigma > \max(\sigma_i)$,  $-\infty < \omega < \infty$.
-	\item Anti-causal $\rightarrow$ $\sigma < \min(\sigma_i)$,  $-\infty < \omega < \infty$.
-	\item Non-causal $\rightarrow$ $\mathcal{R} = \mathcal{R}_\text{causal} \cap \mathcal{R}_\text{anti-causal}$.
-\end{itemize}
+\begin{tabular}{ll}  
+	\toprule
+	Signal Support & ROC\\
+	\midrule
+	Finite support & Entire s-plane.\\
+	Causal function & $\sigma > \max(\sigma_i)$,  $-\infty < \omega < \infty$\\
+	Anti-causal & $\sigma < \min(\sigma_i)$,  $-\infty < \omega < \infty$\\
+	Non-causal & $\mathcal{R} = \mathcal{R}_\text{causal} \cap \mathcal{R}_\text{anti-causal}$\\
+	\bottomrule
+\end{tabular}
+\vspace{0.5em}
 
 Initial Value Theorem:\\
 \tab $\ds f(0+) \Leftrightarrow \lim_{s\rightarrow\infty} sF(s)$
@@ -279,6 +281,30 @@ Updated \today\\
 	$-\alpha^nu[-n-1]$ & $\ds \frac{1}{1-\alpha z^{-1}}$ & $\abs{z} < \abs{\alpha}$\\\vspace{1mm}
 	$-n\alpha^nu[-n-1]$ & $\ds \frac{\alpha z^{-1}}{(1-\alpha z^{-1})^2}$ & $\abs{z} < \abs{\alpha}$\\\vspace{1mm}
 	$\alpha^\abs{n}$, $\abs{\alpha} < 1$ & $\ds \frac{1}{1-\alpha z^{-1}} - \frac{1}{1-\alpha^{-1} z^{-1}}$ & $\abs{\alpha} < z < \abs{\frac{1}{\alpha}}$\\
+	\bottomrule
+\end{tabular}
+\vspace{0.5em}
+\subsection{Interconnection of LTI Systems}
+\begin{tabular}{lll}  
+	\toprule
+	Connection & Time & Laplace/Z\\
+	\midrule\vspace{1mm}
+	Series & $[h_1 * h_2](t)$ & $H_1(s)H_2(s)$\\
+	Parallel & $h_1(t) + h_2(t)$ & $H_1(s) + H_2(s)$\\
+	\bottomrule
+\end{tabular}
+
+\vspace{0.5em}
+\subsection{Partial Fraction Decomposition}
+\begin{tabular}{ll}  
+	\toprule
+	Fraction & Partial Fraction\\
+	\midrule\vspace{1mm}
+	$\ds \frac{px + q}{(x-a)(x-b)}$ & $\ds \frac{A}{x-a} + \frac{B}{x-b}$\\\vspace{1mm}
+	$\ds \frac{px + q}{(x-a)^2}$ & $\ds \frac{A}{x-a} + \frac{B}{(x-a)^2}$\\\vspace{1mm}
+	$\ds \frac{px^2 + qx + r}{(x-a)(x-b)(x-c)}$ & $\ds \frac{A}{x-a} + \frac{B}{x-b} + \frac{C}{x-c}$\\\vspace{1mm}
+	$\ds \frac{px^2 + qx + r}{(x-a)^2(x-b)}$ & $\ds \frac{A}{x-a} + \frac{B}{(x-a)^2} + \frac{C}{x-b}$\\\vspace{1mm}
+	$\ds \frac{px^2 + qx + r}{(x-a)(x^2 + bx + c)}$ & $\ds \frac{A}{x-a} + \frac{Bx + C}{x^2 + bx + c}$\\
 	\bottomrule
 \end{tabular}
 
