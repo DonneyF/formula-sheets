@@ -70,14 +70,14 @@
 \section{Continuous Time Signals}
 
 Even and Odd Components:\\
-\tab $x_e(t) = \frac{1}{2}[x(t) + x(-t)]$\\
-\tab $x_o(t) = \frac{1}{2}[x(t) - x(-t)]$
+\tab $\ds x_e(t) = \frac{1}{2}[x(t) + x(-t)]$\\
+\tab $\ds x_o(t) = \frac{1}{2}[x(t) - x(-t)]$
 
 A signal is periodic with fundamental period $T_0$ if\\
 \tab $x(t + kT_0) = x(t) \quad \forall t \in (-\infty, \infty)$
 
 Energy:\\
-\tab $E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt$
+\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt$
 
 Power:\\
 \tab $\ds P = \lim_{T \rightarrow \infty} \frac{1}{2T} \int_{-T}^{T}\abs{x(t)}^2\,dt$
@@ -113,7 +113,7 @@ Causality:\\
 \\~\\
 Bounded-Input Bounded-Output Stability:\\
 \tab If an input $x(t)$ bounded then the output of an BIBO system is also bounded.\\
-\tab $\int_{-\infty}^{\infty} \abs{h(t)}\,dt < \infty$
+\tab $\ds \int_{-\infty}^{\infty} \abs{h(t)}\,dt < \infty$
 
 \section{Laplace Transform}
 $s = \sigma + j\omega$\\
@@ -122,7 +122,8 @@ Eigenfunction Property:\\
 \tab $\mathcal{S}[e^{s_0t}] = H(s_0)e^{s_0t}$
 
 One Sided Laplace Transform:\\
-\tab $\ds F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$
+\tab $\ds F(s) = \mathcal{L}[f(t)u(t)] = \int_{0^-}^{\infty}f(t)e^{-st}\,dt$\\
+\tab $\abs{H(s)}$ is greatest when $\omega$ is closest to the poles.
 
 \begin{tabular}{ll}  
 	\toprule
@@ -217,7 +218,7 @@ T_s & \ds -\frac{\omega_s}{2} \leq \omega \leq \frac{\omega_s}{2}\\
 \tab (Inclusive bounds. If represented by a unit step function the bounds are inclusive for filters (Refer to lecture notes))
 
 Signal Reconstruction from Sinc Interpolation:\\
-\tab $\ds x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s))/T_s}{\pi(t-nT_s)/T_s}$
+\tab $\ds x_r(t) = \sum_{n=-\infty}^{\infty} x(nT_s) \frac{\sin(\pi(t-nT_s)/T_s)}{\pi(t-nT_s)/T_s}$
 \end{multicols*}
 
 \newpage
@@ -267,6 +268,11 @@ Final Value Theorem:\\
 BIBO Stability:\\
 \tabm If the ROC contains radius $z=1$, then the system is BIBO stable.
 
+\section{Misc. Identities}
+\tabm $\ds \sum_{k=0}^{n}x^k = \frac{1-x^{n+1}}{1-x} \quad\xrightarrow{n\rightarrow\infty \text{ and } x < 1}\quad \frac{1}{1-x}$\\
+\tabm $\ds \cos\theta = \frac{e^{j\theta}+e^{-j\theta}}{2}$\\
+\tabm $\ds \sin\theta = \frac{e^{j\theta}-e^{-j\theta}}{2j}$
+
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize\\
@@ -274,7 +280,7 @@ Updated \today\\
 \href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
 \end{minipage}%
 \hspace{0.5em}
-\begin{minipage}[t]{0.43\textwidth}
+\begin{minipage}[t]{0.35\textwidth}
 \subsection{Partial Fraction Decomposition}
 \begin{tabular}{lll}  
 	\toprule
@@ -310,11 +316,24 @@ Updated \today\\
 	\bottomrule
 \end{tabular}
 
-\vspace{1cm}
-\section{Misc. Identities}
-\tabm $\ds \sum_{k=0}^{n}x^k = \frac{1-x^{n+1}}{1-x} \quad\xrightarrow{n\rightarrow\infty \text{ and } x < 1}\quad \frac{1}{1-x}$\\
-\tabm $\ds \cos\theta = \frac{e^{j\theta}+e^{-j\theta}}{2}$\\
-\tabm $\ds \sin\theta = \frac{e^{j\theta}-e^{-j\theta}}{2j}$
+
+\end{minipage}
+\begin{minipage}[t]{0.30\textwidth}
+	\vspace{18em}
+	\subsection{Finding Magnitudes}
+	\tabm If $\ds H(s) = \frac{N(s)}{D(s)}$, then $\ds \abs{H(s)} = \frac{\abs{N(s)}}{\abs{D(s)}} = \frac{\sqrt{(N(s))^2}}{\sqrt{(D(s))^2}}$\\
+	and $\angle H(s) = \angle N(s) - \angle D(s)$
+	
+	Complex Valued:\\
+	\tabm $\abs{H(s)}^2 = H(s)H(s)^*$
+	
+	\subsection{Long Division For Z-Transform Inverse}
+	Let $X(z) = B(z)/A(z)$ be a rational Z-Transform of a causal signal $x[n]$. We can then express $X(z)$ as
+	$$X(z) = x[0] + x[1]z^{-1} + x[2]z^{-2} + \cdots$$
+	by dividing $B(z)$ by $A(z)$. To perform the long division, we let $X(z)$ be the series of $z^{-n}$ as above, and multiply both sides throiugh by $A(z)$ to obtain $A(z)X(z) = B(z)$. We then compare the coefficients in front of $z^{-n}$ of both sides to obtain values for the sequence $\{x[0], x[1], x[2], x[3], \ldots\}$. Then the inverse can be taken by inspection.
+	
+	\subsection{Fourier Transform of a Periodic Signal}
+	Suppose $x(t)$ is periodic of period $T_0$. Let $x_p(t)$ be a single period of $x(t)$. Then $x(t) = \sum_k x_p(t - kT_0)$ and we can find $X(\omega)$ by using time shifting property and finding the Fourier Transform of $x_p(t)$ by using Laplace.
 \end{minipage}
 
 \end{document}
