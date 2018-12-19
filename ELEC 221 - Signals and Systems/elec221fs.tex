@@ -168,7 +168,8 @@ Trigonometric Fourier Series:\\
 \tab $c_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\cos(k\omega_0 t)\,dt$ \quad $k$ = 0,1,2$\ldots$\\
 \tab $d_k = \frac{1}{T_0} \int_{t_0}^{t_0 + T_0}x(t)\sin(k\omega_0 t)\,dt$\quad $k$ = 1,2,3$\ldots$\\
 \tab $\Theta_k = -\arctan(d_k/c_k)$
-\\~\\
+
+\columnbreak
 Fourier Coefficients from Laplace Transform:\\
 \tab If $x_1(t)$ is a single period of $x(t)$, then\\
 \tab $X_k = \frac{1}{T_0}\mathcal{L}[x_1(t)] \big\rvert_{s = jk\omega_0}$
@@ -184,7 +185,7 @@ Fourier Transform from Laplace Transform (if $X(s)$ contains the $j\omega$-axis)
 \tab $\mathcal{F}[x(t)] = \mathcal{L}[x(t)]\big\rvert_{s = j\omega} = X(s)\big\rvert_{s = j\omega}$
 
 Fourier Transform of Periodic Signals:\\
-\tab $\ds \sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi_k \delta(\omega - k\omega_0)$
+\tab $\ds \sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi X_k \delta(\omega - k\omega_0)$
 
 Parseval's Energy Relation:\\
 \tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\int_{-\infty}^{\infty}\abs{X(\omega)}^2\,d\omega$
