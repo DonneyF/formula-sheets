@@ -187,7 +187,7 @@ Fourier Transform of Periodic Signals:\\
 \tab $\ds \sum_k X_k e^{jk\omega_0 t} \xLeftrightarrow{\mathcal{F}} \sum_k 2\pi_k \delta(\omega - k\omega_0)$
 
 Parseval's Energy Relation:\\
-\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\abs{X(\omega)}^2\,d\omega$
+\tab $\ds E = \int_{-\infty}^{\infty} \abs{x(t)}^2\,dt = \frac{1}{2\pi}\int_{-\infty}^{\infty}\abs{X(\omega)}^2\,d\omega$
 
 Symmetry of Spectral Representations:\\
 \tab $\abs{X(\omega)} = \abs{X(-\omega)}$\\
@@ -272,7 +272,21 @@ BIBO Stability:\\
 Updated \today\\
 \href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
 \end{minipage}%
+\hspace{0.5em}
 \begin{minipage}[t]{0.43\textwidth}
+\subsection{Partial Fraction Decomposition}
+\begin{tabular}{lll}  
+	\toprule
+	Fraction & Partial Fraction & Solution\\
+	\midrule\vspace{1mm}
+	$\ds \frac{px + q}{(x-a)(x-b)}$ & $\ds \frac{A}{x-a} + \frac{B}{x-b}$ & $\ds A = \dfrac{pa + q}{a-b} \quad B =\dfrac{pb + q}{b-a}$\\\vspace{1mm}
+	$\ds \frac{px + q}{(x-a)^2}$ & $\ds \frac{A}{x-a} + \frac{B}{(x-a)^2}$  & $\ds A = p \qquad\quad B = pa + q$\\\vspace{1mm}
+	$\ds \frac{px^2 + qx + r}{(x-a)(x-b)(x-c)}$ & $\ds \frac{A}{x-a} + \frac{B}{x-b} + \frac{C}{x-c}$    & $A=\dfrac{pa^2 + qa +r}{(a-b)(a-c)} \quad B =\dfrac{pb^2 + qb +r}{(b-a)(b-c)} \quad C =\dfrac{pc^2 + qc +r}{(c-a)(c-b)}$\\\vspace{1mm}
+	$\ds \frac{px^2 + qx + r}{(x-a)^2(x-b)}$ & $\ds \frac{A}{x-a} + \frac{B}{(x-a)^2} + \frac{C}{x-b}$ & \\\vspace{1mm}
+	$\ds \frac{px^2 + qx + r}{(x-a)(x^2 + bx + c)}$ & $\ds \frac{A}{x-a} + \frac{Bx + C}{x^2 + bx + c}$ &\\
+	\bottomrule
+\end{tabular}
+\vspace{0.5em}
 \subsection{Two-Sided Z-Transforms}
 \begin{tabular}{lll}  
 	\toprule
@@ -292,20 +306,6 @@ Updated \today\\
 	\midrule\vspace{1mm}
 	Series & $[h_1 * h_2](t)$ & $H_1(s)H_2(s)$\\
 	Parallel & $h_1(t) + h_2(t)$ & $H_1(s) + H_2(s)$\\
-	\bottomrule
-\end{tabular}
-
-\vspace{0.5em}
-\subsection{Partial Fraction Decomposition}
-\begin{tabular}{lll}  
-	\toprule
-	Fraction & Partial Fraction & Solution\\
-	\midrule\vspace{1mm}
-	$\ds \frac{px + q}{(x-a)(x-b)}$ & $\ds \frac{A}{x-a} + \frac{B}{x-b}$ & $\ds A = \dfrac{pa + q}{a-b} \quad B =\dfrac{pb + q}{b-a}$\\\vspace{1mm}
-	$\ds \frac{px + q}{(x-a)^2}$ & $\ds \frac{A}{x-a} + \frac{B}{(x-a)^2}$  & $\ds A = p \qquad\quad B = pa + q$      \\\vspace{1mm}
-	$\ds \frac{px^2 + qx + r}{(x-a)(x-b)(x-c)}$ & $\ds \frac{A}{x-a} + \frac{B}{x-b} + \frac{C}{x-c}$    & $A=\dfrac{pa^2 + qa +r}{(a-b)(a-c)} \quad B =\dfrac{pb^2 + qb +r}{(b-a)(b-c)} \quad C =\dfrac{pc^2 + qc +r}{(c-a)(c-b)}$\\\vspace{1mm}
-	$\ds \frac{px^2 + qx + r}{(x-a)^2(x-b)}$ & $\ds \frac{A}{x-a} + \frac{B}{(x-a)^2} + \frac{C}{x-b}$    & \\\vspace{1mm}
-	$\ds \frac{px^2 + qx + r}{(x-a)(x^2 + bx + c)}$ & $\ds \frac{A}{x-a} + \frac{Bx + C}{x^2 + bx + c}$    &\\
 	\bottomrule
 \end{tabular}
 
