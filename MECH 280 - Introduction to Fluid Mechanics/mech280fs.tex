@@ -1,0 +1,189 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
+\newcommand{\mdv}[2]{\frac{\mathrm{D}#1}{\mathrm{D}#2}}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+\raggedcolumns
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{MECH 280 Formula Sheet}}
+\end{center}
+
+\section{Vectors \& Matrices}
+Inner Product (aka scalar or dot product):\\
+\tab $\vb{a}\cdot\vb{b} = \abs{\vb{a}}\abs{\vb{b}}\cos\theta$
+
+Cross Product (aka vector product):\\
+\tab $\vb{a}\cross\vb{b} = \abs{\vb{a}}\abs{\vb{b}}\sin\theta\,\vu{n}$
+
+Triple Product:\\
+\tab $\vb{a} \times (\vb{b} \times \vb{c}) = (\vb{a} \cdot \vb{c})\vb{b} - (\vb{a} \cdot \vb{b})\vb{c}$\\
+\tab $(\vb{a} \times \vb{b}) \cdot \vb{c} = (\vb{c} \times \vb{a}) \cdot \vb{b} = (\vb{b} \times \vb{c}) \cdot \vb{a}$
+
+Outer Product (aka tensor product):\\
+\tab $\vb{v} \otimes \vb{w} \begin{bmatrix}v_{1}w_{1}&&v_{1}w_{2}&&\cdots&&v_{1}w_{m}\\
+v_{2}w_{1}&&v_{2}w_{2}&&\cdots &&v_{2}w_{m}\\
+\vdots &&\vdots &&\ddots &&\vdots \\
+v_{n}w_{1}&&v_{n}w_{2}&&\cdots &&v_{n}w_{m}\end{bmatrix}$
+
+\section{Vector Derivatives}
+\subsection{Cartesian}
+Gradient:\\
+\tab $\ds \grad{f} =  \pdv{f}{x}\vu{x} + \pdv{f}{y}\vu{y} + \pdv{f}{z}\vu{z}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \pdv{v_x}{x} + \pdv{v_y}{y} + \pdv{v_z}{z}$
+
+Curl:\\
+\vspace{-3mm}
+\tab $\ds \curl{\vb{v}} = \left(\pdv{v_z}{y} - \pdv{v_y}{z}\right)\vu{x} + \left(\pdv{v_x}{z} - \pdv{v_z}{x}\right)\vu{y} + \left(\pdv{v_y}{x} - \pdv{v_x}{y}\right)\vu{z}$
+
+\subsection{Spherical}
+($\theta$ is the polar angle.)
+
+Gradient:\\
+\tab $\ds \grad{f} = \pdv{f}{r}\vu{r} + \frac{1}{r}\pdv{f}{\theta}\vu*{\theta} + \frac{1}{r\sin\theta}\pdv{f}{\phi}\vu*{\phi}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \frac{1}{r^2}\pdv{r}(r^2v_r) + \frac{1}{r\sin\theta}\pdv{\theta}(\sin\theta v_\theta) + \frac{1}{r\sin\theta}\pdv{v_\theta}{\phi}$
+
+Curl:\\
+\tab $\ds \curl{\vb{v}} = \frac{1}{r\sin\theta}\left[\pdv{\theta}(\sin\theta\, v_\phi)- \pdv{v_\theta}{\phi}\right]\vu{r}\,+$\\
+\tab \tab $\ds \frac{1}{r}\left[\frac{1}{\sin\theta}\pdv{v_r}{\phi}-\pdv{r}(r v_\phi)\right]\vu*{\theta} + \frac{1}{r}\left[\pdv{r}(r v_\theta)-\pdv{v_r}{\theta}\right]\vu*{\phi}$
+
+Tensor:\\
+\tab $\grad\vb{u} = \begin{bmatrix}
+\vspace{2mm}
+\ds \pdv{u_x}{x} &&\ds \pdv{u_y}{x}&&\ds \pdv{u_z}{x}\\
+\vspace{2mm}
+\ds \pdv{u_x}{y} &&\ds \pdv{u_y}{y}&&\ds \pdv{u_z}{y} \\
+\ds \pdv{u_x}{z} &&\ds \pdv{u_y}{z}&&\ds \pdv{u_z}{z}\\
+\end{bmatrix}$
+
+\subsection{Cylindrical}
+Gradient:\\
+\tab $\ds \grad{f} = \pdv{f}{s}\vu{s}+\frac{1}{s}\pdv{f}{\phi}\vu*{\phi}+\pdv{f}{z}\vu{z}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \frac{1}{s}\pdv{s}(sv_s)+\frac{1}{s}\pdv{v_\phi}{\phi} + \pdv{v_z}{z}$
+
+Curl:\\
+\tab $\ds \curl{\vb{v}} = \left[\frac{1}{s}\pdv{v_z}{\phi}-\pdv{v_\phi}{z}\right]\vu{s}+\left[\pdv{v_s}{z}-\pdv{v_z}{s}\right]\vu*{\phi}+\frac{1}{s}\left[\pdv{s}(sv_\phi)-\pdv{v_s}{\phi}\right]\vu{z}$
+
+\section{Vector Calculus}
+Divergence Theorem:\\
+\tab $\ds \int (\div \vb{A})\, dV = \oint \vb{A}\cdot d\vb{S}$
+
+Stoke's Theorem:\\
+\tab $\ds \int (\curl{\vb{A}})\cdot d\vb{S} = \oint \vb{A}\cdot d\vb{l}$
+
+Directional Derivative (slope of a scalar field in the direction of the vector $\vb{u}$):\\
+\tab $\grad f \cdot \vb{u}$
+
+Material Derivative:\\
+\tab $\ds \mdv{\rho}{t} = \pdv{\rho}{t} + \vb{u}\cdot \grad\rho$
+\tab $\ds \mdv{\vb{A}}{t} = \pdv{\vb{A}}{t} + \vb{u}\cdot \grad\vb{A}$
+
+Liebniz Rule:\\
+\tab $\ds \frac{d}{dt} \int_\text{CV(t)}\rho dV = \int_\text{CV}\pdv{\rho}{t}dt + \rho\int_\text{CS} \vb{u}_\text{CS}\cdot d\vb{S}$
+
+\section{Integral Equations of Motion}
+Flux:\\
+\tab $\ds \phi = \int_\text{CS} \rho \vb{u}\cdot d\vb{S}$
+
+Conservation of Mass:\\
+\tab $\ds \int_\text{CV}\pdv{\rho}{t} = - \int_\text{CS} \rho \vb{u}\cdot d\vb{S}$
+
+Conservation of Momentum:\\
+$\ds \frac{d}{dt} \int_\text{CV}\rho \vb{u}dV = - \int_\text{CS}(\rho\vb{u})\vu{u}\cdot d\vb{S} + \int_\text{CV}\vb{f}_b\,dV + \int_\text{CS}\vb{t}\,dS$
+
+\section{Differential Equations of Motion}
+Conservation of Mass:\\
+\tab $\ds \mdv{\rho}{t} + \rho\div{\vb{u}} = 0$
+
+Conservation of Momentum:\\
+\tab $\ds \rho \mdv{\vb{u}}{t} = \vb{f}_b + \vb{f}_c$
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}
