@@ -1,0 +1,164 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\ap}{a_+}
+\newcommand{\am}{a_-}
+
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{PHYS 304 Formula Sheet}}
+\end{center}
+
+\section{The Wave Function}
+Time dependent Schrodinger Equation:\\
+\tab $\ds i\hbar \pdv{\Psi}{t} = -\frac{\hbar^2}{2m}\pdv[2]{\Psi}{x}+ V\Psi$
+
+Standard Deviation:\\
+\tab $\sigma = \sqrt{\expval{j^2} - \expval{j}^2}$
+
+Momentum: \\
+\tab $\ds \expval{p} = m \dv{\expval{x}}{t} = \int\Psi^* \left(\frac{\hbar}{i}\pdv{}{x}\right)\Psi\,dx$
+
+\section{Infinite Square Well}
+Time Independent Schrodinger Equation:\\
+\tab $\ds -\frac{\hbar^2}{2m}\pdv[2]{\psi}{x}+ V\psi = E\psi$
+
+Eigenstate Expansion:\\
+\tab $\ds \Psi(x,t) = \sum_{n=1}^{\infty} c_n \psi_n(x)e^{-iE_nt/\hbar} = \sum_{n=1}^{\infty} c_n \Psi_n(x,t)$
+
+Energy In Infinite Square Well:\\
+\tab $\ds E_n = \frac{n^2\pi^2\hbar^2}{2ma^2}$
+
+Stationary States:\\
+\tab $\ds \psi_n(x) = \sqrt{\frac{2}{a}}\sin\left(\frac{n\pi}{a}x\right)$
+
+Determining Coefficients:\\
+\tab $\ds c_n = \sqrt{\frac{2}{a}}\int_{0}^{a}\sin\left(\frac{n\pi}{a}x\right)\Psi(x,0)\,dx$
+
+Expectation Value of Energy:\\
+\tab $\expval{H} = \sum_{n=1}^{\infty}\abs{c_n}^2E_n$
+
+\section{Harmonic Oscillator}
+\tab $k = \omega^2m$
+
+Ladder Operators:\\
+\tab $a_\pm = \frac{1}{\sqrt{2\hbar m\omega}}(\mp ip + m\omega x)$\\
+\tab $\ap \psi_n = \sqrt{n+1}\,\psi_{n+1}$\\
+\tab $\am \psi_n = \sqrt{n}\,\psi_{n-1}$
+
+Operators:\\
+\tab $\ds x = \sqrt{\frac{\hbar}{2m\omega}}(\ap + \am)$\\
+\tab $\ds p = i\sqrt{\frac{\hbar m\omega}{2}}(\ap - \am)$\\
+\tab $\ds x^2 = \frac{\hbar}{2m\omega}\left[(\ap)^2 + (\ap\am) + (\am\ap) + (\am)^2\right]$
+
+Commutation:\\
+\tab $\comm{x}{p} = i\hbar$\\
+\tab $\comm{\am}{\ap} = 1$
+
+Hamiltonian:\\
+\tab $\ds H = \hbar \omega \left(\ap \am + \frac{1}{2}\right)$\\
+\tab $\ds \ap \am + \am\ap = 2 \left(\frac{H}{\hbar \omega}\right)$\\
+
+States:\\
+\tab $\ds \psi_0(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}e^{-\frac{m\omega}{2\hbar}x^2}$\\
+\tab $\ds \psi_n = \frac{1}{\sqrt{n!}}(\ap)^n\psi_0$
+
+Energy:\\
+\tab $E_n = \left(n + \frac{1}{2}\right)\hbar\omega$
+
+\section{Generalized Statistical Interpretation}
+Momentum Expansion:\\
+\tab $\ds \Phi(p,t) = \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}e^{-ipx/\hbar}\,\Psi(x,t)\,dx$\\
+\tab $\ds \Psi(x,t) = \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}e^{ipx/\hbar}\,\Phi(p,t)\,dp$
+
+\section{Trig Identities}
+\tab $2\cos\theta\cos\phi = \cos(\theta - \phi) + \cos(\theta + \phi)$\\
+\tab $2\sin\theta\sin\phi = \cos(\theta - \phi) - \cos(\theta + \phi)$\\
+\tab $2\sin\theta\cos\phi = \sin(\theta + \phi) + \sin(\theta - \phi)$\\
+\tab $2\cos\theta\sin\phi = \sin(\theta + \phi) - \sin(\theta - \phi)$\\
+
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}

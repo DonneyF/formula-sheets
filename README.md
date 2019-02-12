@@ -7,6 +7,7 @@ A collection of formula sheets from some UBC courses.
 | MATH 217 | Multivariable and Vector Calculus | 2017W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MATH%20217%20-%20Multivariable%20and%20Vector%20Calculus/math217fs.pdf) |
 | MECH 360 | Mechanics of Materials | 2018W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MECH%20360%20-%20Mechanics%20of%20Materials/mech360fs.pdf) |
 | PHYS 250 | Introduction to Modern Physics | 2018S1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20250%20-%20Introduction%20to%20Modern%20Physics/phys250finalfs.pdf) |
+| PHYS 301 | Electricity and Magnetism | 2018W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20304%20-%20Introduction%20to%20Quantum%20Mechanics/phys304fs.pdf) |
 | PHYS 301 | Electricity and Magnetism | 2018W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20301%20-%20Electricity%20and%20Magnetism/phys301fs.pdf) |
 
 Adapted from [this great template](https://wch.github.io/latexsheet/).
