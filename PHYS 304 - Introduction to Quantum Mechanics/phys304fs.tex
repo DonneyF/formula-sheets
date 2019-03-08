@@ -148,12 +148,46 @@ Momentum Expansion:\\
 \tab $\ds \Phi(p,t) = \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}e^{-ipx/\hbar}\,\Psi(x,t)\,dx$\\
 \tab $\ds \Psi(x,t) = \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty}e^{ipx/\hbar}\,\Phi(p,t)\,dp$
 
+\section{Angular Momentum}
+$L_x = yp_z -zp_y$ \quad $L_y = zp_x - xp_z$ \quad $L_z = xp_y - yp_x$
+
+Commutators:\\
+\tab $\comm{L_x}{L_y} = i\hbar L_z$ \quad $\comm{L_y}{L_z} = i\hbar L_x$ \quad $\comm{L_z}{L_x} = i\hbar L_y$\\
+\tab $\comm{L_z}{x} = i\hbar y$ \quad $\comm{L_z}{y} = -i\hbar x$ \quad $\comm{L_z}{z} = 0$\\
+\tab $\comm{L_z}{p_x} = i\hbar p_y$ \quad $\comm{L_z}{p_y} = -i\hbar p_x$ \quad $\comm{L_z}{p_z} = 0$
+
+Square of Angular Momentum:\\
+\tab $L^2 \equiv L_x^2 + L_y^2 + L_z^2$ \qquad $\comm{L^2}{\vb{L}} = 0$
+
+Ladder Operators:\\
+\tab $L_\pm = L_x \pm iL_y$ \qquad $\comm{L_z}{L_\pm} = \pm i\hbar L_\pm$\\
+\tab $L^2 = L_\pm L_\mp + L_z^2 \mp \hbar L_z$
+
+Eigenvalues:\\
+\tab $L^2 f_l^m = \hbar^2 l(l+1)f_l^m$\\
+\tab $L_z f_l^m = \hbar m f_l^m$\\
+\tab $L_\pm f_l^m = (A_l^m)f_l^{m+1}$ \qquad $A_l^m = \hbar \sqrt{l(l+1) - m(m\pm 1)}$
+
+Spherical Coordinate Representation:\\
+\tab $L_x = \ds \frac{\hbar}{i}\left(-\sin\phi \pdv{\theta} - \cos\phi\cot\theta\pdv{\phi}\right)$\\
+\tab $L_y = \ds \frac{\hbar}{i}\left(+\cos\phi \pdv{\theta} - \sin\phi\cot\theta\pdv{\phi}\right)$\\
+\tab $\ds L_z = \frac{\hbar}{i}\pdv{\theta}$\\
+\tab $\ds L_\pm = \pm\hbar e^{\pm i \theta}\left(\pdv{\theta} \pm i\cot\theta\pdv{\phi}\right)$\\
+\tab $\ds L_+L_- = -\hbar^2\left(\pdv[2]{\theta}+\cot\theta\pdv{\theta} + \cot^2\theta\pdv[2]{\phi} + i\pdv{\phi}\right)$\\
+\tab $\ds L^2 = -\hbar^2\left[\frac{1}{\sin\theta}\pdv{\theta}\left(\sin\theta\pdv{\theta}\right) + \frac{1}{\sin^2\theta}\pdv[2]{\phi}\right]$
+
+
 \section{Trig Identities}
 \tab $2\cos\theta\cos\phi = \cos(\theta - \phi) + \cos(\theta + \phi)$\\
 \tab $2\sin\theta\sin\phi = \cos(\theta - \phi) - \cos(\theta + \phi)$\\
 \tab $2\sin\theta\cos\phi = \sin(\theta + \phi) + \sin(\theta - \phi)$\\
 \tab $2\cos\theta\sin\phi = \sin(\theta + \phi) - \sin(\theta - \phi)$\\
 
+\section*{Integral Identities}
+\tab $\ds \int \sin ^{2}{ax}\,dx={\frac {x}{2}}-{\frac {1}{4a}}\sin 2ax+C$\\
+\tab $\ds \int \sin ^{3}{ax}\,dx={\frac {\cos 3ax}{12a}}-{\frac {3\cos ax}{4a}}+C$\\
+\tab $\ds \int \cos ^{2}{ax}\,dx={\frac {x}{2}}+{\frac {1}{4a}}\sin 2ax+C$\\
+\tab $\ds \int \cos^3{ax}\,dx = \frac{\sin ax}{a} - \frac{\sin^3{ax}}{3a} + C$
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
