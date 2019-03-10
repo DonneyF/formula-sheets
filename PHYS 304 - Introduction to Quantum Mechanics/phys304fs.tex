@@ -121,7 +121,7 @@ Expectation Value of Energy:\\
 Ladder Operators:\\
 \tab $a_\pm = \frac{1}{\sqrt{2\hbar m\omega}}(\mp ip + m\omega x)$\\
 \tab $\ap \psi_n = \sqrt{n+1}\,\psi_{n+1}$\\
-\tab $\am \psi_n = \sqrt{n}\,\psi_{n-1}$
+\tab $\am \psi_n = \sqrt{n}\,\psi_{n-1}$\\
 
 Operators:\\
 \tab $\ds x = \sqrt{\frac{\hbar}{2m\omega}}(\ap + \am)$\\
@@ -161,12 +161,18 @@ Square of Angular Momentum:\\
 
 Ladder Operators:\\
 \tab $L_\pm = L_x \pm iL_y$ \qquad $\comm{L_z}{L_\pm} = \pm i\hbar L_\pm$\\
-\tab $L^2 = L_\pm L_\mp + L_z^2 \mp \hbar L_z$
+\tab $L^2 = L_\pm L_\mp + L_z^2 \mp \hbar L_z$\\
+\tab $\ds L_x = \frac{L_+ + L_-}{2}$ \qquad $\ds L_y = \frac{L_+ - L_-}{2i}$\\
+\tab $L_+ \ket{l,l} = 0$ \qquad $L_- \ket{l,-l} =0$
 
 Eigenvalues:\\
-\tab $L^2 f_l^m = \hbar^2 l(l+1)f_l^m$\\
-\tab $L_z f_l^m = \hbar m f_l^m$\\
-\tab $L_\pm f_l^m = (A_l^m)f_l^{m+1}$ \qquad $A_l^m = \hbar \sqrt{l(l+1) - m(m\pm 1)}$
+\tab $L^2 \ket{l,m} = \hbar^2 l(l+1)\ket{l,m}$\\
+\tab $L_z \ket{l,m} = \hbar m \ket{l,m}$\\
+\tab $L_\pm \ket{l,m} = A_l^m\ket{l,m+1}$\\
+\tab $A_l^m = \hbar \sqrt{l(l+1) - m(m\pm 1)}$
+
+Expectation Value when $L_x\ket{\psi} = L_y\ket{\psi}$:\\
+\tab $\ds \bra{\psi}L_x^2\ket{\psi} = \bra{\psi}L_y^2\ket{\psi} = \frac{1}{2}\bra{\psi}L^2 - L_z^2\ket{\psi}$
 
 Spherical Coordinate Representation:\\
 \tab $L_x = \ds \frac{\hbar}{i}\left(-\sin\phi \pdv{\theta} - \cos\phi\cot\theta\pdv{\phi}\right)$\\
@@ -187,7 +193,11 @@ Spherical Coordinate Representation:\\
 \tab $\ds \int \sin ^{2}{ax}\,dx={\frac {x}{2}}-{\frac {1}{4a}}\sin 2ax+C$\\
 \tab $\ds \int \sin ^{3}{ax}\,dx={\frac {\cos 3ax}{12a}}-{\frac {3\cos ax}{4a}}+C$\\
 \tab $\ds \int \cos ^{2}{ax}\,dx={\frac {x}{2}}+{\frac {1}{4a}}\sin 2ax+C$\\
-\tab $\ds \int \cos^3{ax}\,dx = \frac{\sin ax}{a} - \frac{\sin^3{ax}}{3a} + C$
+\tab $\ds \int \cos^3{ax}\,dx = \frac{\sin ax}{a} - \frac{\sin^3{ax}}{3a} + C$\\
+\tab $\ds \int \cos^{n}(ax)\sin(ax)\,dx = -\frac{\cos^{n+1}(ax)}{a(n+1)} + C$\\
+\tab $\ds \int \sin^{n}(ax)\cos(ax)\,dx= \frac{\sin^{n+1}(ax)}{a(n+1)} + C$\\
+\tab $\ds \int_0^\pi \cos^{2n+1}(ax)\sin(ax)\,dx = 0 \qquad n = 0, 1, 2 \ldots$\\
+\tab $\ds \int_0^\pi \cos^{2n}(x)\sin(x)\,dx = \frac{2}{2n+1} \qquad n = 0, 1, 2 \ldots$
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
