@@ -82,6 +82,8 @@
 \setlength{\multicolsep}{1pt}
 \setlength{\columnsep}{2pt}
 
+\raggedcolumns
+
 \begin{center}
 	\Large{\underline{PHYS 304 Formula Sheet}}
 \end{center}
@@ -130,7 +132,8 @@ Operators:\\
 
 Commutation:\\
 \tab $\comm{x}{p} = i\hbar$\\
-\tab $\comm{\am}{\ap} = 1$
+\tab $\comm{\am}{\ap} = 1$\\
+\tab $\comm{AB}{C} = A\comm{B}{C} + \comm{A}{C}B$
 
 Hamiltonian:\\
 \tab $\ds H = \hbar \omega \left(\ap \am + \frac{1}{2}\right)$\\
@@ -195,12 +198,17 @@ Square of Angular Momentum:\\
 \tab $S^2 \equiv S_x^2 + S_y^2 + S_z^2$ \qquad $\comm{S^2}{\vb{S}} = 0$
 
 \section*{Spin 1/2}
-Spinors:\\
-\tab $\ds \chi = \begin{bmatrix}a \\ b\end{bmatrix},\, \abs{a}^2 + \abs{b}^2 = 1 \qquad  \chi_+ = \begin{bmatrix}1 \\ 0\end{bmatrix} \qquad \chi_- = \begin{bmatrix}0 \\ 1\end{bmatrix}$
+Spinors \& Eigenspinors:\\
+\tab $\ds \chi = \begin{bmatrix}a \\ b\end{bmatrix},\, \abs{a}^2 + \abs{b}^2 = 1 \qquad \chi^z_+ = \begin{bmatrix}1 \\ 0\end{bmatrix} \qquad \chi^z_- = \begin{bmatrix}0 \\ 1\end{bmatrix}$\\
+\tab $\ds \chi^x_+ = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ 1\end{bmatrix} \qquad \chi^x_- = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ -1\end{bmatrix}$\\
+\tab $\ds \chi^y_+ = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ i\end{bmatrix} \qquad \chi^y_- = \frac{1}{\sqrt{2}}\begin{bmatrix}1 \\ -i\end{bmatrix}$\\
 
 Spin Operators:\\
 \tab $\ds \vb{S}_x = \frac{\hbar}{2}\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix} \quad \vb{S}_y = \frac{\hbar}{2}\begin{bmatrix}0 & -i \\ i & 0 \end{bmatrix} \quad \vb{S}_z = \frac{\hbar}{2}\begin{bmatrix}1 & 0 \\ 0 & -1 \end{bmatrix}$\\
 \tab $\ds \vb{S}^2 = \frac{3}{4}\hbar^2\begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix} \quad \vb{S_+} = \hbar\begin{bmatrix}0 & 1 \\ 0 & 0 \end{bmatrix} \quad \vb{S_-} = \hbar\begin{bmatrix}0 & 0 \\ 1 & 0 \end{bmatrix}$
+
+Lamor Precession:\\
+\tab $\chi(t) = \begin{bmatrix}\cos(\alpha/2)e^{i\gamma B_0t/2} \\ \sin(\alpha/2)e^{-i\gamma B_0t/2}\end{bmatrix}$
 
 \section*{The Hydrogen Atom}
 $n = j_{\text{max}} + l +1$
@@ -233,6 +241,8 @@ Combined state with total spin $s$, and $z$-component $m$:\\
 \tab $2\sin\theta\cos\phi = \sin(\theta + \phi) + \sin(\theta - \phi)$\\
 \tab $2\cos\theta\sin\phi = \sin(\theta + \phi) - \sin(\theta - \phi)$\\
 
+\columnbreak
+
 \section*{Integral Identities}
 \tab $\ds \int \sin ^{2}{ax}\,dx={\frac {x}{2}}-{\frac {1}{4a}}\sin 2ax+C$\\
 \tab $\ds \int \sin ^{3}{ax}\,dx={\frac {\cos 3ax}{12a}}-{\frac {3\cos ax}{4a}}+C$\\
@@ -242,6 +252,7 @@ Combined state with total spin $s$, and $z$-component $m$:\\
 \tab $\ds \int \sin^{n}(ax)\cos(ax)\,dx= \frac{\sin^{n+1}(ax)}{a(n+1)} + C$\\
 \tab $\ds \int_0^\pi \cos^{2n+1}(ax)\sin(ax)\,dx = 0 \qquad n = 0, 1, 2 \ldots$\\
 \tab $\ds \int_0^\pi \cos^{2n}(x)\sin(x)\,dx = \frac{2}{2n+1} \qquad n = 0, 1, 2 \ldots$\\
+\tab $\ds \int_0^\pi \sin^{n}(ax)\cos(ax)\,dx = 0 \qquad n = 0, 1, 2 \ldots$\\
 \tab $\ds \int_0^\infty x^n e^{-x/a}\,dx = n! a^{n+1}$\\
 \tab $\ds \int_0^\infty x^{2n}e^{-x^2/a^2}\,dx=\sqrt{\pi}\frac{(2n)!}{n!}\left(\frac{a}{2}\right)^{2n+1}$\\
 \tab $\ds \int_0^\infty x^{2n+1}e^{-x^2/a^2}\,dx = \frac{n!}{2}a^{2n+2}$
