@@ -171,8 +171,7 @@ Ladder Operators:\\
 Eigenvalues:\\
 \tab $L^2 \ket{l,m} = \hbar^2 l(l+1)\ket{l,m}$\\
 \tab $L_z \ket{l,m} = \hbar m \ket{l,m}$\\
-\tab $L_\pm \ket{l,m} = A_l^m\ket{l,m+1}$\\
-\tab $A_l^m = \hbar \sqrt{l(l+1) - m(m\pm 1)}$
+\tab $L_\pm \ket{l,m} = \hbar \sqrt{l(l+1) - m(m\pm 1)}\ket{l,m\pm1}$\\
 
 Expectation Value when $L_x\ket{\psi} = L_y\ket{\psi}$:\\
 \tab $\ds \bra{\psi}L_x^2\ket{\psi} = \bra{\psi}L_y^2\ket{\psi} = \frac{1}{2}\bra{\psi}L^2 - L_z^2\ket{\psi}$
@@ -192,7 +191,7 @@ Commutators:\\
 Eigenvalues:\\
 \tab $S^2 \ket{s,m} = \hbar^2 s(s+1)\ket{s,m}$\\
 \tab $S_z \ket{s,m} = \hbar m \ket{s,m}$\\
-\tab $S_\pm \ket{s,m} = \hbar \sqrt{s(s+1) - m(m\pm 1)}\ket{s,m+1}$\\
+\tab $S_\pm \ket{s,m} = \hbar \sqrt{s(s+1) - m(m\pm 1)}\ket{s,m\pm1}$\\
 
 Square of Angular Momentum:\\
 \tab $S^2 \equiv S_x^2 + S_y^2 + S_z^2$ \qquad $\comm{S^2}{\vb{S}} = 0$
@@ -206,6 +205,10 @@ Spinors \& Eigenspinors:\\
 Spin Operators:\\
 \tab $\ds \vb{S}_x = \frac{\hbar}{2}\begin{bmatrix}0 & 1 \\ 1 & 0\end{bmatrix} \quad \vb{S}_y = \frac{\hbar}{2}\begin{bmatrix}0 & -i \\ i & 0 \end{bmatrix} \quad \vb{S}_z = \frac{\hbar}{2}\begin{bmatrix}1 & 0 \\ 0 & -1 \end{bmatrix}$\\
 \tab $\ds \vb{S}^2 = \frac{3}{4}\hbar^2\begin{bmatrix}1 & 0 \\ 0 & 1\end{bmatrix} \quad \vb{S_+} = \hbar\begin{bmatrix}0 & 1 \\ 0 & 0 \end{bmatrix} \quad \vb{S_-} = \hbar\begin{bmatrix}0 & 0 \\ 1 & 0 \end{bmatrix}$
+
+Spin along $\vu{r}$:\\
+\tab $\ds \vb{S}_r = \vb{S} \cdot \vu{r} = \frac{\hbar}{2}\begin{bmatrix}\cos\theta & e^{-i\phi}\sin\theta \\ e^{i\theta}\sin\theta  & -\cos\theta\end{bmatrix}$\\
+\tab $\ds \chi^r_+ = \begin{bmatrix}\cos(\theta/2) \\ e^{i\phi}\sin(\theta/2)\end{bmatrix} \qquad \chi^r_- = \begin{bmatrix} e^{-i\phi}\sin(\theta/2) \\ -\cos(\theta/2) \end{bmatrix}$
 
 Lamor Precession:\\
 \tab $\chi(t) = \begin{bmatrix}\cos(\alpha/2)e^{i\gamma B_0t/2} \\ \sin(\alpha/2)e^{-i\gamma B_0t/2}\end{bmatrix}$
