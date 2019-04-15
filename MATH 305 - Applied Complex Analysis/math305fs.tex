@@ -1,0 +1,242 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{mdframed}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\defn}[1]{\textbf{Def} (\emph{#1})}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\DeclareMathOperator{\Arg}{Arg}
+
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
+
+\mdfsetup{skipabove=2pt,skipbelow=2pt, innertopmargin=-6pt, innerbottommargin=2pt, innerleftmargin=2pt, innerrightmargin=2pt}
+\theoremstyle{definition}
+\newmdtheoremenv{theorem}{Theorem}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\raggedcolumns
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{MATH 305 Formula Sheet}}
+\end{center}
+
+\section{Complex Numbers}
+Operators:\\
+\tab $\ds \Re(z) = \frac{1}{2}(z + \conj{z})$ \qquad $\ds \Im(z) = \frac{1}{2i}(z - \conj{z})$
+
+Conjugation:\\
+\tab $\conj{z_1z_1} = \conj{z_1}\cdot\conj{z_2}$ \qquad $\conj{z_1/z_1} = \conj{z_1}/\conj{z_2}$
+
+Modulus:\\
+\tab $\abs{z} = \sqrt{x^2 + y^2} = \sqrt{z\cdot\conj{z}}$ \qquad $\abs{z} = \abs{\conj{z}}$\\
+\tab $\abs{z_1z_1} = \abs{z_1}\abs{z_2}$\\
+\tab $\abs{z_1 + z_2} \leq \abs{z_1} + \abs{z_2}$
+
+Argument Function:\\
+\tab $\arg(z) = \arg(\abs{z}e^{i\varphi}) = \set{\varphi + 2\pi k \,\vert\, k\in \mathbb{Z}}$\\
+\tab $\Arg(z) = \set{\arg(z) + 2\pi k \,\vert\, k \in \mathbb{Z} \land -\pi < \Arg(z) \leq \pi}$
+
+De Moivre's Formula:\\
+\tab $(\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)$
+
+Roots of Unity:\\
+For $z = re^{i\theta}$, the $n$-th root of $z$ is\\
+\tab $\ds z^{1/n} = r^{1/n}\exp\left(i\frac{\theta + 2\pi k}{n}\right)$ \qquad $k = 0, 1, 2, \ldots , n-1$\\
+\tab $1^{1/n} = e^{i2\pi k/m}$
+
+\section{Complex Functions}
+\defn{Continuity}: Suppose $f(z)$ is defined on a domain $D$ and $z_0 \in D$. Then $f(z)$ is continuous at $z_0$ if:\\
+\tab $\ds \lim_{z\rightarrow z_0}f(z) = f(z_0)$
+
+\defn{Differentiability}: Let $f$ be defined in a neighborhood of $z_0$. Then $f$ is differentiable at $z_0$ if the following limit exists:\\
+\tab $\ds \dv{f}{z}(z_0) \equiv f'(z_0) = \lim_{\Delta z\rightarrow 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}$ 
+
+\defn{Analyticity}: A complex valued function $f(z)$ is said to be analytic on an open domain $D$ if it has a derivative at every point in $D$.
+
+Cauchy-Riemann Equations:\\
+For $f(z) = U(x,y) + iV(x,y)$, the CR equations are\\
+\tab $\ds \pdv{U}{x} =\pdv{V}{y} \qquad \pdv{U}{y} = -\pdv{V}{x}$
+
+\begin{theorem}
+	Let $f(z) = U(x,y) + iV(x,y)$ be defined in some open set $G$ containing the point $z_0$. If the first partial derivatives of $U$ and $V$ exist in $G$, are continuous at $z_0$, and satisfy the Cauchy-Riemann equations at $z_0$, then $f$ is differentiable at $z_0$.
+\end{theorem}
+
+\begin{theorem}
+	If $\ds \pdv{f}{\conj{z}} = 0$, then $f$ is differentiable.
+\end{theorem}
+
+\defn{Harmonic}: A function $u(x,y)$ is harmonic if $\Delta{u} = 0$.
+
+\begin{theorem}
+	If $f(z) = U(x,y) + iV(x,y)$ is analytic, then $U$ and $V$ are harmonic functions.
+\end{theorem}
+
+Harmonic Conjugate:\\
+\tab Let $f(z) = U + Vi$ be an analytic function. Then $V$ is a harmonic conjugate of $U$.
+
+\section{Elementary Functions}
+\tab $e^z = e^x(\cos y + i\sin y)$\\
+\tab $\ds \sin z = \frac{e^{iz} - e^{-iz}}{2i} \qquad \cos z = \frac{e^{iz} + e^{-iz}}{2}$\\
+\tab $\ds \sinh z = \frac{e^{z} - e^{-z}}{2} \qquad \cosh z = \frac{e^{z} + e^{-z}}{2}$\\
+\tab $\log z = \ln|z| + i\arg(z)$\\
+\tab $\sin^{-1}z = 	-i\log(iz \pm \sqrt{1-z^2})$\\
+\tab $\cos^{-1}z = -i\log(z + \sqrt{z^2-1})$\\
+\tab $\ds \tan^{-1}z = \frac{i}{2}\log\left(\frac{1-iz}{1+iz}\right)$
+
+\begin{theorem}
+	$\Arg(z)$ is harmonic in $\mathbb{C} - \set{x < 0 \,\vert\, x\in\mathbb{R}}$.
+\end{theorem}
+\defn{Branch}: A function $F(z)$ is a branch of a multiple-valued function $f(z)$ if $F(z)$ is single-valued, continuous in some domain, and $F(z) \in f(z)$.
+\defn{Branch Cut}: Discontinuous points of an argument function.
+
+\section{Complex Integration}
+Fundamental Theorem of Calculus:\\
+\tab $\ds \int_{a}^{b} f(z)\,dz = F(b) - F(a)$
+
+Contour Integral:\\
+\tab $\ds \int_{\Gamma}f(z) = \int_{a}^{b} f(r(t))r'(t)\,dt$
+
+\begin{theorem}
+	If $f$ is continuous on the contour $\Gamma$ and if $\abs{f(z)} < M$ for all $z$ on $\Gamma$, then $\abs{\int_\Gamma f(z)\,dz} \leq M\ell(\Gamma)$, where $\ell(\Gamma)$ is the length of $\Gamma$.
+\end{theorem}
+
+Path Independence:\\
+\tab If $f(z)$ is continuous in an domain $D$ and has an anti-derivative $F(z)$ throughout $D$, then with initial point $z_I$ and terminal point $z_T$, for any $\Gamma \in D$, $\int_\Gamma f(z)\,dz = F(z_T) - F(z_I)$ 
+
+Deformation Invariance:\\
+\tab Let $f$ be analytic in a domain $D$ containing the loops $\Gamma_0$ and $\Gamma_1$. If the loops can be deformed continuously to one-another, then $\int_{\Gamma_0} f(z)\,dz = \int_{\Gamma_1}f(z)\,dz$
+
+Cauchy's Theorem:\\
+\tab If $f$ is analytic in a simply connected domain $D$ and $\Gamma$ is any closed contour, then $\int_\Gamma f(z)\,dz = 0$.
+
+Cauchy's Integral Formula:\\
+\tab Let $\Gamma$ be a simple closed positively oriented contour. If $f$ is analytic in the domain enclosed by $\Gamma$, and $z_0$ is any point inside $\Gamma$, then\\
+\tab $\ds f(z_0) = \frac{1}{2\pi i}\int_{\Gamma}\frac{f(z)}{z-z_0}dz$\\
+\tab $\ds f^{(n)}(z) = \frac{n!}{2\pi i}\int_{\Gamma}\frac{f(\sigma)}{(\sigma-z)^{n+1}}\,d\sigma$
+
+\section{Complex Analysis}
+\begin{theorem}
+	A bounded entire function must be constant.
+\end{theorem}
+
+Maximum Modulus Principle:\\
+\tab If $f$ is analytic in a domain $D$ and $\abs{f(z)}$ achieves its maximum value at a point $z_0$ in $D$, then $f$ is constant in $D$.
+
+\begin{theorem}
+	A function analytic in a bounded domain and continuous up to and including its boundary attains its maximum modulus on the boundary.
+\end{theorem}
+
+\begin{theorem}
+	Suppose at each point in some closed domain enclosed by $\Gamma$ $f$ is analytic or is a pole. Then $\ds N_0(f) - N_p(f)= \frac{1}{2\pi i}\int_{\Gamma}\frac{f'(z)}{f(z)}\,dz$
+\end{theorem}
+
+Argument Principle:\\
+\tab $\ds \int_{\Gamma}\frac{f'(z)}{f(z)}\,dz = i(\text{Total change of }\arg(f(z))\text{ along }\Gamma)$
+
+Nyquist Stability Criterion:\\
+\tab Let $\Gamma_+$ be the countour from $(0, \infty)$ to $(0,0)$. For a polynomial function $p(z)$ of order $n$, the number of zeroes in the right-half plane is given by:\\
+\tab $\ds N_0(p(z)) = \frac{1}{2\pi}\left(n\pi + 2\Delta_{\Gamma_+}(\arg(p(z)))\right)$
+
+Rouche's Theorem:\\
+\tab Suppose $f$ and $h$ are analytic functions on a domain enclosed by $\Gamma$ and that $\abs{h(z)} < \abs{f(z)} \, \forall z \in \Gamma$. Then $N_0(f) = N_0(f + h)$.  
+
+Laurent Series:\\
+\tab Assume $f$ is analytic in some annulus $r < \abs{z - z_0} < R$. Then we can write $\ds \sum_{j=-\infty}^{\infty}a_j(z-z_0)^j$.
+
+Singularities:\\
+\tab Let $f$ have an isolated singularity at $z_0$, and let $f$ have a Laurent series expansion in $r < \abs{z - z_0} < R$. Then
+\begin{itemize}[leftmargin=2em]
+	\itemsep0em
+	\item If $a_j = 0$ for all $j < 0$, we say $z_0$ is a removable singularity.
+	\item If $a_{-m}\neq0 $ for some positive integer $m$, but $a_j = 0$ for all $j < -m$, we say that $z_0$ is a pole of order $m$ for $f$.
+	\item If $a_j \neq 0$ for all $j < 0$, then we say $z_0$ is an essential singularity of $f$.
+\end{itemize}
+
+\section{Residue Theory}
+\defn{Residue}: Suppose $f$ has a Laurent series expansion around a point $z_0$. Then $\Res(f, z_0) = a_{-1}$.
+
+\begin{theorem}
+	Suppose $f(z) = P(z)/Q(z)$ and $Q(z)$ has a simple zero at $z_0$. Then $\ds \Res(f, z_0)= \frac{P(z_0)}{Q'(z_0)}$.
+\end{theorem}
+\begin{theorem}
+	If $f$ has a pole of order $m$ at $z_0$, then $\ds \Res(f, z_0) = \lim_{ z\rightarrow z_0}\frac{1}{(m-1)!} \frac{d^{m-1}}{dz^{m-1}}[f(z)(z-z_0)^m]$
+\end{theorem}
+
+Cauchy's Residue Theorem:\\
+\tab If $\Gamma$ is a simple closed positively oriented contour and $f$ is analytic inside and on $\Gamma$ except at the points $z_1, z_2, \ldots , z_n$, then $\ds \int_{\Gamma}f(z)\,dz = 2\pi i \sum_{j=1}^{n}\Res(f, z_j)$
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}

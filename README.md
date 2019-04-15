@@ -1,10 +1,11 @@
 # Formula Sheets
-A collection of formula sheets from some UBC courses.
+A collection of formula sheets and quick review notes from some UBC courses. Few courses allowed such sheets in an examination environment.
 
 | Course | Title | Term | Formula Sheet |
 | --- | --- | --- | --- |
 | ELEC 221 | Signals and Systems| 2018W1| [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/ELEC%20221%20-%20Signals%20and%20Systems/elec221fs.pdf) |
 | MATH 217 | Multivariable and Vector Calculus | 2017W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MATH%20217%20-%20Multivariable%20and%20Vector%20Calculus/math217fs.pdf) |
+| MATH 305 | Applied Complex Analysis | 2018W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MATH%20305%20-%20Applied%20Complex%20Analysis/math305fs.pdf) |
 | MECH 280 | Introduction to Fluid Mechanics | 2018W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MECH%20280%20-%20Introduction%20to%20Fluid%20Mechanics/mech280fs.pdf) |
 | MECH 360 | Mechanics of Materials | 2018W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MECH%20360%20-%20Mechanics%20of%20Materials/mech360fs.pdf) |
 | PHYS 250 | Introduction to Modern Physics | 2018S1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20250%20-%20Introduction%20to%20Modern%20Physics/phys250finalfs.pdf) |
