@@ -1,0 +1,231 @@
+% !Tex program = pdflatex
+
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage[italicdiff]{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{booktabs}
+\usepackage{mdframed}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+
+\newcommand{\Var}[1]{\mathrm{Var}(#1)}
+\newcommand{\Cov}[1]{\mathrm{Cov}(#1)}
+
+\mdfsetup{skipabove=2pt,skipbelow=2pt, innertopmargin=-6pt, innerbottommargin=2pt, innerleftmargin=2pt, innerrightmargin=2pt}
+\theoremstyle{definition}
+\newmdtheoremenv{theorem}{Theorem}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\raggedcolumns
+
+\begin{center}
+	\Large{\underline{MATH 318 Formula Sheet}}
+\end{center}
+
+\section{Probability Theory}
+Probability Function:\\
+\begin{itemize}
+	\itemsep 0em
+	\item $0 \leq P \leq 1$
+	\item $P(S) = 1$
+	\item $E_1 \cap E_2 = \emptyset \implies P(E_1 \cup E_2) = P(E_1) + P(E_2)$
+	\item $P(E_1) + P(E_2) = P(E_1 \cup E_2) + P(E_1 \cap E_2)$
+\end{itemize}
+
+Conditional Probability:\\
+\tab $\ds P(E|F) = \frac{P(E \cap F)}{P(F)}$
+
+Two events are said to be independent if:\\
+\tab $P(E \cap F) = P(E)P(F)$
+
+\begin{theorem}
+	Let $F_1, F_2 \ldots F_n$ be a partition of the sample space $S$. Assume $F_i \cap F_j = \emptyset$ for any $i \neq j$. Then for any event $E \subset S$,
+	\begin{enumerate}
+		\itemsep 0em
+		\item $P(E) = \sum_{i}^{n} P(E|F_i)P(F_i)$
+		\item $\ds P(F_j|E) = \frac{P(E|F_j)P(F_j)}{\sum_{i}^{n}P(E|F_i)P(F_i)}$ (Bayes'
+		 Formula)
+	\end{enumerate}
+\end{theorem}
+
+\section{Random Variables}
+Memory-less Property:\\
+\tab $P(X > m + n | X > n) = P(x > m)$
+
+Expectation Value:\\
+\tab $\expval{X} = \sum_{i=0}^{\infty} x_i p(X = x_i) = \sum_{i=0}^{\infty} x_i p(x_i)$\\
+\tab $\expval{X} = \int_{-\infty}^\infty xf(x)\,dx$
+
+Cumulative Distribution Function:\\
+\tab $F(x) = \int_{-\infty}^{x} f(t),dt$
+
+Law of the Unconscious Statistician:\\
+\tab $\expval{g(X)} = \int_{-\infty}^{\infty}g(x)f(x)\,dx$
+
+Linearity of Expectation:\\
+\tab $\expval{aX+b} = a\expval{X} + b$
+
+Moments:\\
+\tab $n$-th moment of $X = \begin{cases}
+\int_{-\infty}^{\infty}x^n f(x)\,dx & \,\\
+\sum_{i}^{\infty} x_i^n p(x_i) & \,
+\end{cases}$
+
+Variance:\\
+\tab $\Var{X} = \expval{(X-\expval{X})^2} = \expval{X^2} - \expval{X}^2$
+
+Joint Continuity:\\
+\tab $P((X,Y)\in C) = \iint_C f(x,y)\,dx\,dy$
+
+Marginal Distribution:\\
+\tab $P(X\in A) = P(X \in A, Y \in \mathbb{R}) = \int_A \int_{-\infty}^{\infty}f(x,y)\,dy\,dx$
+
+Independence:\\
+If $X,Y$ are independent, then\\
+\tab $P(X\leq a, Y\leq b) = P(X\leq a)P(Y\leq b)$\\
+\tab $\expval{g(X)h(Y)} = \expval{g(X)}\expval{h(Y)}$
+
+Covariance:\\
+\tab $\Cov{X,Y} = \expval{(X-\expval{X})(Y-\expval{Y})} = \expval{XY} - \expval{X}\expval{Y}$
+
+Correlation Coefficient:\\
+\tab $\ds \rho(X,Y) = \frac{\Cov{X,Y}}{\sqrt{\Var{X}\Var{Y}}} \in [-1,1]$
+
+Cauchy-Swartz Inequality:\\
+\tab $\abs{\expval{XY}}^2 \leq \expval{X^2}\expval{Y^2}$
+
+Sum of Random Variables:\\
+\tab $\Var{X+Y} = \Var{X} + \Var{Y} + 2\Cov{X,Y}$\\
+\tab $\ds F_{X+Y}(a) = P(X+Y \leq a) = \int_{-\infty}^{\infty}\int_{-\infty}^{x+y}f_{X+Y}(x,y)\,dx\,dy = \int_{-\infty}^{\infty}f_x(a-y)f_Y(y)\,dy$
+
+\subsection{Characteristic Functions}
+Extracting Moments:
+\tab $\ds \dv[n]{}{x}\rvert_{t=0} \phi(t) = \expval{i^nX^n}$
+
+Inversion Theorem:\\
+\tab $f(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty}\phi(t) e^{-itx}\,dt$
+
+Shifting:\\
+\tab $\ds \phi_{aX+b}(t) = e^{itb}\phi_X(at)$
+
+Convergence in Distribution:\\
+\tab $\lim_{n\rightarrow\infty}F_n(x) = F(x) \hspace{0.5em}\forall x \hspace{0.5em}\text{cont.} \iff X_n \xrightarrow{D} X$
+
+
+\end{multicols}
+
+\newpage
+
+\begin{minipage}[t]{0.27\textwidth}
+\section{Reserved}
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{minipage}%
+\hspace{0.5em}
+\begin{minipage}[t]{0.35\textwidth}
+\subsection{Random Variables}
+\begin{tabular}{lllll}  
+	\toprule
+	Distribution & Mass/Density Function & Mean & Variance & Characteristic Function\\
+	\midrule\vspace{1mm}
+	
+	Binomial$(n,p)$ & $p(i) = \binom{n}{i}p^i (1-p)^{n-i}$ & $np$ & $np(1-p)$ & $(1-p+e^{it})^n$\\
+	
+	Geometric$(p)$ & $p(k) = (1-p)^{k-1}p$ & $1/p$ & $\ds \frac{1-p}{p^2}$ & $\ds \frac{pe^{it}}{1-(1-p)e^{it}}$\\
+	
+	Poisson$(\lambda)$ & $\ds p(i) = \frac{\lambda^i}{i!}e^{-\lambda}$ & $\lambda$ & $\lambda$ & $e^{\lambda(e^{it} - 1)}$\\
+	
+	Uniform$(a,b)$ &
+	$\ds f(x) = \begin{cases}
+		\frac{1}{b-a} & x \in [a,b]\\
+		0 & \text{otherwise}
+	\end{cases}$ & $\ds \frac{a+b}{2}$ & $\ds \frac{(b-a)^2}{12}$ & $\ds \frac{e^{ita}-e^{itb}}{it(b-a)}$\\
+	
+	Exponential$(\lambda)$ &
+	$\ds f(x) = \begin{cases}
+	\lambda e^{-\lambda x} & x \geq 0\\
+		0 & x < 0
+	\end{cases}$ & $1/\lambda$ & $1/\lambda^2$ & $\ds \frac{\lambda}{\lambda - it}$\\
+	
+	Normal$(\mu, \sigma^2)$ & $\ds f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$  & $\mu$ & $\sigma^2$ & $e^{i\mu t-\sigma^2 t^2/2}$\\
+	\bottomrule
+\end{tabular}
+\end{minipage}
+\end{document}

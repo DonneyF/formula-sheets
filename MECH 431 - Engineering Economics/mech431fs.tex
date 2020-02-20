@@ -132,6 +132,23 @@ Single-Payment Present Worth:\\
 Effective Annual Interest Rate for a nominal interest rate ($r$) and $m$ compounding subperiods:\\
 \tab $\ds i_a = \left(1+ \frac{r}{m}\right)^m -1$ \qquad $i_a = (1 + i)^m-1$
 
+Uniform Series Compound Amount/Sinking Fund:\\
+\tab $\ds F = A\left[\frac{(1+i)^n-1}{i}\right]$ \qquad $\ds A = F\left[\frac{i}{(1+i)^n-1}\right]$
+
+Uniform Series Capital Recovery/Present Worth:\\
+\tab $\ds A = P\left[\frac{i(1+i)^n}{(1+i)^n-1}\right]$ \qquad $\ds P = A\left[\frac{(1+i)^n-1}{i(1+i)^n}\right]$
+
+Arithmetic Gradient Present Worth:\\
+\tab $\ds P = G\left[\frac{(1+i)^n-in-1}{i^2(1+i)^n}\right]$
+
+Arithmetic Gradient Uniform Series:\\
+\tab $\ds A = G\left[\frac{(1+i)^n-in-1}{i(1+i)^n-i}\right]$
+
+Geometric Gradient Present Worth:\\
+\tab $\ds P = A_1\left[\frac{1-(1+g)^n(1+i)^{-n}}{i-g}\right]$ \quad for $i\neq g$\\
+\tab $\ds P = A_1n(1+i)^{-1}$ \hspace{2.27cm} for $i = g$
+
+
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize\\
