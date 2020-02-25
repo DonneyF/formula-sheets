@@ -10,6 +10,7 @@ A collection of formula sheets and quick review notes from some UBC courses. Few
 | MECH 280 | Introduction to Fluid Mechanics | 2018W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MECH%20280%20-%20Introduction%20to%20Fluid%20Mechanics/mech280fs.pdf) |
 | MECH 360 | Mechanics of Materials | 2018W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MECH%20360%20-%20Mechanics%20of%20Materials/mech360fs.pdf) |
 | MECH 431 | Engineering Economics | 2019S1-2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MECH%20431%20-%20Engineering%20Economics/mech431fs.pdf) |
+| MECH 466 | Automatic Control | 2019W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MECH%20466%20-%20Automatic%20Control/mech466fs.pdf) |
 | PHYS 250 | Introduction to Modern Physics | 2018S1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20250%20-%20Introduction%20to%20Modern%20Physics/phys250finalfs.pdf) |
 | PHYS 304 | Introduction to Quantum Mechanics | 2018W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20304%20-%20Introduction%20to%20Quantum%20Mechanics/phys304fs.pdf) |
 | PHYS 301 | Electricity and Magnetism | 2018W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20301%20-%20Electricity%20and%20Magnetism/phys301fs.pdf) |
