@@ -59,11 +59,8 @@
 \newcommand{\tab}{\hspace{.02\textwidth}}
 \newcommand{\ds}{\displaystyle}
 
-% Redefine some commands for newtxmath boldness
-\renewcommand{\grad}{\nabla}
-\renewcommand{\curl}[1]{\nabla\times#1}
-\renewcommand{\div}[1]{\nabla\cdot#1}
-\renewcommand{\cross}{\times}
+% Change itemize indent
+\setlist[itemize]{leftmargin=1.5em, itemsep=0em}
 
 \newcommand{\Var}[1]{\mathrm{Var}(#1)}
 \newcommand{\Cov}[1]{\mathrm{Cov}(#1)}
@@ -111,7 +108,6 @@ Final Value Theorem:\\
 
 \section{Stability}
 \begin{itemize}
-	\itemsep 0em
 	\item BIBO stability: any bounded input provides a bounded output
 	\item Asymptotic stability: Initial conditions generates $y(t)$ converges to zero.
 \end{itemize}
@@ -125,7 +121,6 @@ Stability Condition in $s$-Domain:\\
 
 Marginal Stability:\\
 \begin{itemize}
-	\itemsep 0em
 	\item $G(s)$ has no pole in the open RHP
 	\item $G(s)$ has at least one simple pole on the imaginary axis
 	\item $G(s)$ has no repeated pole on the imaginary axis
@@ -135,7 +130,6 @@ Marginal Stability:\\
 
 Polynomials:\\
 \begin{itemize}
-	\itemsep 0em
 	\item For 1st and 2nd order polynomials, all roots are in LHP $\iff$ coefficients have the same sign
 	\item For 3rd and higher orders, all roots are in LHP $\implies$ coefficients have the same sign
 \end{itemize}
@@ -194,6 +188,19 @@ Overshoot:\\
 \tab 5\%: $\zeta = \sqrt{2}/2$\\
 \tab $\ds y_\text{max} = 1+e^{-\zeta\pi/\sqrt{1-\zeta^2}}$\\
 \tab Percent overshoot = $100 e^{-\zeta\pi/\sqrt{1-\zeta^2}}$
+
+\section{Root Locus Method}
+A graphical method to show how the poles move of a feedback system when K varies from 0 to $\infty$ in the form\\
+\tab $\ds H(S) = \frac{KL(s)}{1+KL(s)}$ \hspace{1cm} $\ds L(s) = \frac{N(s)}{D(s)}$
+\begin{itemize}
+	\item RL includes all points on real axis to the left of an odd number of real poles/zeros
+	\item RL originates from the poles of $L$ and terminates at the zeros of $L$, including infinity zeros.
+	\item Number of asymptotes: $r = \text{deg}(D(S)) - \text{deg}(N(s))$
+	\item Intersection of asymptotes: $\ds \frac{\sum \text{poles} - \sum \text{zeroes}}{r}$
+	\item Angle of asymptotes: $\ds \frac{\pi(2k+1)}{r}\quad k = 0,1,\ldots r-1$ 
+	\item Breakaway points: Each root of $L'(s^{\star}) = 0$, where $K = -1/L(s^\star) > 0$
+	\item Angle condition: $s_0$ is on the root locus $\iff$ $\angle L(s_0) = 180^\circ$
+\end{itemize}
 
 \end{multicols}
 
