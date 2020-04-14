@@ -56,7 +56,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1pt plus 0.5ex}
 
-\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\tab}{\hspace*{1em}}
 \newcommand{\ds}{\displaystyle}
 
 % Change itemize indent
@@ -65,9 +65,9 @@
 \newcommand{\Var}[1]{\mathrm{Var}(#1)}
 \newcommand{\Cov}[1]{\mathrm{Cov}(#1)}
 
-\mdfsetup{skipabove=2pt,skipbelow=2pt, innertopmargin=-6pt, innerbottommargin=2pt, innerleftmargin=2pt, innerrightmargin=2pt}
-\theoremstyle{definition}
-\newmdtheoremenv{theorem}{Theorem}
+\newenvironment{Figure}
+{\par\medskip\noindent\minipage{\linewidth}}
+{\endminipage\par\medskip}
 
 % -----------------------------------------------------------------------
 
@@ -169,7 +169,8 @@ Settling Time:\\
 \section{Second Order System}
 \tab $\ds G(s) = \frac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}$
 
-Underdamped Step Response:\\
+\subsection{Underdamped Case ($0 < \zeta < 1$)}
+Step Response:\\
 \tab $\ds y(t) = 1-\frac{e^{-\zeta\omega_n t}}{\sqrt{1-\zeta^2}}\sin\left(\omega_d t + \arccos\zeta\right)$\\
 \tab $\omega_d = \omega_n\sqrt{1-\zeta^2}$
 
@@ -202,21 +203,98 @@ A graphical method to show how the poles move of a feedback system when K varies
 	\item Angle condition: $s_0$ is on the root locus $\iff$ $\angle L(s_0) = 180^\circ$
 \end{itemize}
 
-\end{multicols}
+\section{Lead \& Lag Compensators}
+\tab $\ds C(s) = K\frac{s + z}{s + p} \quad \text{or} \quad C(s) = K\frac{\frac{s}{z} +1 }{\frac{s}{p} + 1}$
 
-\newpage
+\subsection{Lead ($z < p$)}
+\begin{itemize}
+	\item Moves intersection of asymptotes to the left
+	\item Improves transient response (faster)
+\end{itemize}
+\subsection{Lag ($z > p$)}
+\begin{itemize}
+	\item Moves intersection of asymptotes to the right
+	\item Reduces steady state error
+\end{itemize}
 
-\begin{minipage}[t]{0.27\textwidth}
-\section{Reserved}
+Phase-lag design:
+\begin{enumerate}
+	\item Adjust DC gain of OL system by a constant gain $K$ to satisfy low-frequency requirement.
+	\item On Bode plot, find the frequency $\omega_g$ where $\angle G(j\omega_g) = -180^\circ + \phi_m + 5^\circ$ for the required PM $\phi_m$.
+	\item Select $z$ and $p$: $z = 0.1 \omega_g$, $p = z/\abs{KG(j\omega_g)}$.
+\end{enumerate}
+
+Phase-lead design:
+\begin{enumerate}
+	\item Select $z$ near uncompensated $\omega_g$.
+	\item Select $p > z$ by trial and error.
+	\item Check PM and setting time.
+\end{enumerate}
+
+\section{Frequency Response}
+For a sinusoidal input $A\sin(\omega t)$ and system $G(s)$, the output is $A\abs{G(j\omega)}\sin(\omega t + \angle G(j\omega))$\\
+
+First Order System with corner frequency $1/T$:\\
+\tab $\ds G(j\omega) = \frac{K}{j\omega T + 1}\approx \begin{cases}
+K & 1 \gg \omega T \\
+\frac{K}{j\omega T} & 1 \ll \omega T
+\end{cases}$
+
+\subsection{Basic Functions}
+Constant Gain:\\
+\tab $\abs{G(j\omega)} = K, \; \angle G(j\omega) = 0^\circ$
+
+Differentiator:\\
+\tab $\abs{G(j\omega)} = \omega, \; \angle G(j\omega) = \angle j\omega = 90^\circ$
+
+Integrator:\\
+\tab $\abs{G(j\omega)} = \frac{1}{\omega}, \; \angle G(j\omega) = \angle\frac{1}{j\omega} = -90^\circ$
+
+Double Integrator:\\
+\tab $\abs{G(j\omega)} = \frac{1}{\omega^2}, \; \angle G(j\omega) = \angle\frac{1}{(j\omega)^2} = -180^\circ$
+
+Time Delay:\\
+\tab $\abs{G(j\omega)} = 1, \; \angle G(j\omega) = -\omega T$
+
+Second Order System:\\
+\begin{Figure}
+	\centering
+	\includegraphics[width=\linewidth]{SecondOrderFreqResponse.jpg}
+\end{Figure}
+Resonant Frequency: $\omega_n \sqrt{1 - 2 \zeta^2} \approx \omega_n$
+
+Peak Gain: \tab $\ds \frac{1}{2\zeta\sqrt{1-\zeta^2}} \approx \frac{1}{2\zeta}$
+
+At the resonant frequency, the gain is unity when $\zeta = 1/\sqrt{2}$.
+
+\subsection{Nyquist Stability}
+For a open-loop transfer function $L(s)$:
+\begin{itemize}
+	\item CL system is stable $\iff Z := P + N = 0$
+	\item $Z$: \# of CL poles in open RHP.
+	\item $P$: \# of OL poles in open RHP.
+	\item $N$: \# of clockwise encirclement of -1
+	\item $N = -1$ is a counter-clockwise encirclement.
+\end{itemize}
+
+\subsection{Relative Stability}
+Gain crossover frequency $\omega_g$:\\
+\tab $\abs{L(j\omega_g)} = 1$
+
+Phase crossover frequency $\omega_p$\\
+\tab $\angle L(j\omega_p) = -180^\circ$
+
+Gain Margin:\\
+\tab $\ds \text{GM} = 20\log_{10}\frac{1}{\abs{L(j\omega_p)}}$
+
+Phase Margin:\\
+\tab $\ds \text{PM} = \angle L(j\omega_g) + 180^\circ$
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
 \scriptsize\\
 Updated \today\\
 \href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
-\end{minipage}%
-\hspace{0.5em}
-\begin{minipage}[t]{0.35\textwidth}
-\subsection{Reserved}
-\end{minipage}
+
+\end{multicols}
 \end{document}
