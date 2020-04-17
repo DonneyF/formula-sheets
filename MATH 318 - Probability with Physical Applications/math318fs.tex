@@ -14,6 +14,7 @@
 \usepackage{newtxtext,newtxmath}
 \usepackage{booktabs}
 \usepackage{mdframed}
+\usepackage{amsbsy}
 
 % This sets page margins to .5 inch if using letter paper, and to 1cm
 % if using A4 paper. (This probably isn't strictly necessary.)
@@ -56,7 +57,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1pt plus 0.5ex}
 
-\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\tab}{\hspace*{1em}}
 \newcommand{\ds}{\displaystyle}
 
 % Redefine some commands for newtxmath boldness
@@ -64,6 +65,8 @@
 \renewcommand{\curl}[1]{\nabla\times#1}
 \renewcommand{\div}[1]{\nabla\cdot#1}
 \renewcommand{\cross}{\times}
+\newcommand{\defn}[1]{\textbf{Def} (\emph{#1})}
+\newcommand{\thm}[1]{\textbf{Thm} (\emph{#1})}
 
 \newcommand{\Var}[1]{\mathrm{Var}(#1)}
 \newcommand{\Cov}[1]{\mathrm{Cov}(#1)}
@@ -171,7 +174,19 @@ Sum of Random Variables:\\
 \tab $\Var{X+Y} = \Var{X} + \Var{Y} + 2\Cov{X,Y}$\\
 \tab $\ds F_{X+Y}(a) = P(X+Y \leq a) = \int_{-\infty}^{\infty}\int_{-\infty}^{x+y}f_{X+Y}(x,y)\,dx\,dy = \int_{-\infty}^{\infty}f_x(a-y)f_Y(y)\,dy$
 
+Conditional Probability Distribution:\\
+\tab $\ds f_{X|Y}(x|y) = \frac{f_{X,Y}(x,y)}{f_Y(y)}$
+
+Conditional Expectation:\\
+\tab $\expval{X|Y} = \sum_x xp_{X|Y}(x,y)$\\
+\tab $\expval{X|Y} = \int_{\infty}^{\infty}xf_{X|Y}(x,y)\,dx$\\
+\tab $\expval{X} = \expval{\expval{X|Y}} = \sum_y\expval{X|Y=y}P(Y=y)$\\
+\tab $\expval{X} = \expval{\expval{X|Y}} = \int_\infty^\infty \expval{X|Y=y}f_Y(y)\,dy$
+
 \subsection{Characteristic Functions}
+\tab $\phi_X(t) = \expval{e^{itX}}$
+\tab $M(t) = \expval{e^{tX}}$
+
 Extracting Moments:
 \tab $\ds \dv[n]{}{x}\rvert_{t=0} \phi(t) = \expval{i^nX^n}$
 
@@ -181,16 +196,95 @@ Inversion Theorem:\\
 Shifting:\\
 \tab $\ds \phi_{aX+b}(t) = e^{itb}\phi_X(at)$
 
+\subsection{Convergence of Random Variables}
 Convergence in Distribution:\\
 \tab $\lim_{n\rightarrow\infty}F_n(x) = F(x) \hspace{0.5em}\forall x \hspace{0.5em}\text{cont.} \iff X_n \xrightarrow{D} X$
+
+\thm{Continuity Theorem}:\\
+\tab  Let $X_1, X_2, \ldots$ be random variables with CDFs $F_1, F_2, \ldots$ and characteristics functions $\phi_1, \phi_2, \ldots$. Then
+\tab $\cdot$ If $F_n \rightarrow F$, where $F$ is the CDF of some random variable $X$, then $\lim\limits_{n\rightarrow\infty} \phi_n(t) = \phi(t)$.\\
+\tab $\cdot$ If $\lim\limits_{n\rightarrow\infty} \phi_n(t) = \phi(t)$ and $\phi(t)$ is continuous at $t = 0$, then $\phi$ is the characteristic function of some random variable $X$ and $F_n \rightarrow X$ and $X_n \xrightarrow{D} X$.
+
+\thm{Weak Law of Large Numbers}: Let $X_1, X_2, \ldots X_n$ be iid random variables. Assume $\expval{X} = \mu < \infty$. Let $S_n = \sum_{i=1}^{n}X_i$. Then $\frac{S}{n} \xrightarrow{D} \mu$.
+
+\thm{Central Limit Theorem}: Let $X_i$ be iid random variables. Let $\expval{X_i} = \mu < \infty$, $\Var{X_i} = \sigma^2 < \infty$, and $S_n = \sum_{i=1}^{n}X_i$. Then\\
+\tab $\ds \frac{S_n - n\mu}{\sigma\sqrt{n}} \xrightarrow{D} N(0,1)$.
+
+\section{Statistical Estimation}
+\defn{Estimator}: A function of the data that is used to estimate the unknown parameter.
+
+Estimator of the mean $\mu$:\\
+\tab Sample Mean $\ds \bar{X} = \frac{1}{n}\sum_{1}^{n}X_i$
+
+Estimator of the variance $\sigma^2$:\\
+\tab Sample Variance $\ds S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \bar{X})^2$
+
+\defn{Confidence Interval}: For some interval $A \subset \mathbb{R}$, an estimator is in the $a\%$ confidence level if $P(\bar{X} \in A) = a\%$.
+
+\section{Random Walks}
+\textbf{Symmetric random walks in $\mathbb{Z}^d$}:\\
+\tab Number of visits to the origin $M$: $\expval{M} = (1-u)^{-1}$.\\
+\tab Probability walk returns to the origin $u = 1 - 1/\expval{M}$.\\
+\tab If $u = 1$, the walk is recurrent, otherwise transient.
+
+\section{Markov Chains}
+Transition Matrix $P$: Rows add to 1.\\
+One-Step Transition Probability:\\
+\tab $P_{ij} = P(X_{n+1} = j | X_n = i)$ \quad $\sum_j P_{ij} = 1$
+
+N-Step Transition Probability:\\
+\tab $P^n = P(X_{l+n} = j | X_l = i)$
+
+Chapman-Kolmogorov Equation:\\
+\tab $P_{ij}^{n+m} = \sum_{k} P_{ik}^n P_{kj}^n$\\
+\tab $P^{n+m} = P^nP^m$
 
 
 \end{multicols}
 
 \newpage
 
-\begin{minipage}[t]{0.27\textwidth}
-\section{Reserved}
+\begin{minipage}[t]{0.33\textwidth}
+Classification of States:
+\begin{itemize}
+	\item A state $i$ is absorbing if $P_{ii} = 1$
+	\item $j$ is accessible from $i$ if $P_{ij}^n > 0$ for some $n$.
+	\item $i$ and $j$ communicate ($i \leftrightarrow j$) if $j$ is accessible from $i$ and $i$ is accessible from $j$.
+	\item If $i$ is recurrent and $j$ is accessible from $i$, $i \leftrightarrow j$.
+	\item If $i$ is recurrent and $i \leftrightarrow j$, then $j$ is also recurrent.
+\end{itemize}
+
+Irreducibility:\\
+\tab A Markov chain is irreducible if there is only one state (all states communicate).
+
+Periodicity of state $i$:\\
+\tab Period $d = \gcd\{n \geq 1 : P_{ii}^n > 0\}$\\
+\tab $d = 1 \implies i$ is aperiodic
+
+Transience and Recurrence:\\
+\tab $f_i = P(\exists n \text{ s.t. } X_n = i | X_0 = i)$\\
+\tab $f_i = 1 \implies i$ is recurrent (every path leads to $i$)\\
+\tab $f_i < 1 \implies i$ is transient
+
+Recurrent State for $T_i$ = time of first return to $i$:\\
+\tab $\expval{T_i | X_0 = i} < \infty \implies$ positive recurrent\\
+\tab $\expval{T_i | X_0 = i} = \infty \implies$ null recurrent
+
+\defn{Ergodic}: A aperiodic, positive recurrent state is called ergodic. A Markov chain is ergodic if all its states are ergodic.
+
+\thm{Existence of Equilibrium Distribution}: For an irreducible, ergodic Markov chain, the limit\\
+\tab $\pi_j = \lim\limits_{n\rightarrow\infty} P_{ij}^n$\\
+exists for all $j$ and is independent of state $i$.
+\begin{enumerate}
+	\item $\boldsymbol{\pi}$ is the unique solution of $\boldsymbol{\pi} = \boldsymbol{\pi}P$ and $\sum_{j} \pi_j = 1$
+	\item Let $N_j(n)$ be the number of visits to state $j$ after $n$ steps. Then $\ds \pi_j = \lim_{n\rightarrow\infty} \frac{N_j(n)}{n}$
+	\item $\pi_j = 1/m_j$ where $m_j = \expval{T_j | X_0 = j}$
+\end{enumerate}
+
+Time Reversal:\\
+\tab Given a Markov chain $(X_n)^N_{n=0}$ with stationary distribution $\boldsymbol{\pi}$ and with $P(X_0 = j) = \pi_j$, let $Y_n = X_{N-n}$. Then $(Y_n)^N_{n=0}$ is a Markov chain with transition probabilities $Q_{ij} = P_{ji}\frac{\pi_j}{\pi_i}$ and stationary distribution $\boldsymbol{\pi}$.
+
+\defn{Time Reversibility}: A markov chain is time reversible if $Q_{ij} = P_{ij}$ $\forall i,j$. In this case, $\pi_i P_{ij} = \pi_j P_{ji}$.
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
@@ -227,5 +321,14 @@ Updated \today\\
 	Normal$(\mu, \sigma^2)$ & $\ds f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$  & $\mu$ & $\sigma^2$ & $e^{i\mu t-\sigma^2 t^2/2}$\\
 	\bottomrule
 \end{tabular}
+\vspace{0.5em}
+\section{Reserved}
+
+
 \end{minipage}
+\begin{minipage}[t]{0.30\textwidth}
+\vspace{19em}
+\subsection{Reserved}
+\end{minipage}
+
 \end{document}
