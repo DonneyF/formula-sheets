@@ -1,0 +1,242 @@
+% !Tex program = pdflatex
+
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage[italicdiff]{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{mdframed}
+\usepackage{amsbsy}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace*{1em}}
+\newcommand{\ds}{\displaystyle}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+\newcommand{\defn}[1]{\textbf{Def} (\emph{#1})}
+\newcommand{\thm}[1]{\textbf{Thm} (\emph{#1})}
+
+\newcommand{\Var}[1]{\mathrm{Var}(#1)}
+\newcommand{\Cov}[1]{\mathrm{Cov}(#1)}
+
+\mdfsetup{skipabove=2pt,skipbelow=2pt, innertopmargin=-6pt, innerbottommargin=2pt, innerleftmargin=2pt, innerrightmargin=2pt}
+\theoremstyle{definition}
+\newmdtheoremenv{theorem}{Theorem}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+\raggedcolumns
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{APSC 278 Formula Sheet}}
+\end{center}
+
+\section{Bonding and Properties}
+Equilibrium at $r_0$:\\
+\tab $F_\text{net} = \dv{E}{r} = 0$
+
+Thermal Expansion:\\
+\tab $\Delta L = L_0 \alpha \Delta T$
+
+\section{Mechanical Properties}
+Hooke's Law:\\
+\tab $\sigma = E \epsilon$
+
+Poisson's Ratio:\\
+\tab $\ds \nu = - \frac{\epsilon_x}{\epsilon_z} = -\frac{\epsilon_y}{\epsilon_z}$
+
+Shear Modulus:\\
+\tab $\ds G = \frac{\tau}{\gamma} = \frac{F}{A_0 \tan\theta}$
+
+\tab $E = 2G(1+\nu)$
+
+Toughness:\\
+\tab $\ds \text{Toughness} = \int_{0}^{\epsilon_f}\sigma\mathop{d\epsilon}\approx \frac{\sigma_\text{YS} + \sigma_\text{UTS}}{2}\epsilon_f $
+
+Modulus of Resilience:\\
+\tab $\ds U_r = \int_{0}^{\epsilon_Y}\sigma\mathop{d\epsilon} \approx \frac{\sigma_\text{YS}^2}{2E}$
+
+Work Hardening:\\
+\tab $\sigma_T = K \epsilon_T^n$
+
+True Stress and Strain:\\
+\tab $\ds \epsilon_\text{true} = \int_{L_0}^{L_i}\frac{dL}{L} = \ln(\epsilon_\text{Eng} + 1)$
+
+\tab $\sigma_\text{true} = \sigma_\text{eng}(\epsilon_\text{eng} + 1)$
+
+\section{Crystal Structures}
+\bgroup
+\def\arraystretch{1.2}%
+\tab \begin{tabular}{|l|c | c | c |} 
+	\hline
+	& \begin{tabular}[x]{@{}c@{}}Lattice\\Parameter ($a$)\end{tabular} & \begin{tabular}[x]{@{}c@{}}Atoms per\\unit cell\end{tabular} & APF\\
+	\hline
+	BCC & $\frac{4\sqrt{3}}{3} R$ & 2  & 0.68\\
+	\hline
+	FCC & $2\sqrt{2}R$ & 4  & 0.74\\
+	\hline
+	HCP & -  & 6  & 0.74\\
+	\hline
+\end{tabular}
+\egroup
+
+Density (g/cm$^3$):\\
+\tab $\ds \rho_\text{Th} = \frac{NMW_i}{V_c N_A}$\\
+\vspace{2mm}
+\tab $n$ = number of atoms per unit cell\\
+\tab $MW_i$ = Atomic weight (g/mol)\\
+\tab $V_c$ = unit cell volume\\
+\tab $N_A$ = Avogadro's Number ($6.023 \cdot 10^{23}$ atoms/mol)
+
+\section{Effect of Temperature on Deformation}
+Homologous Temperature:\\
+\tab $\ds T_H = \frac{T_\text{deformation}}{T_\text{melt}}$
+
+Homologous Temperature for pure metals:\\
+\tab $\begin{cases}
+\text{Cold working} & T_H < 0.4\\
+\text{Hot working} & T_H > 0.4
+\end{cases}$
+
+Homologous Temperature for alloys:\\
+\tab $\begin{cases}
+\text{Cold working} & T_H < 0.6\\
+\text{Hot working} & T_H > 0.6
+\end{cases}$
+
+Cold Working (rolling):\\
+\tab \% cold work = $\ds \frac{t_0 - t_f}{t_0} \times 100\%$
+
+Recrystallization rate:\\
+\tab rate $\ds = A\exp(-\frac{Q}{RT})$\\
+\tab $t_\text{recrx} = 1/\text{rate}$\\
+\tab $Q = $ thermal activation energy
+
+Grain Growth:\\
+\tab $D(t) = D_0t^m$
+
+Hall-Petch Equation for grain size $d$:\\
+\tab $\sigma_\text{YS} = \sigma_0 + k_y d^{-1/2}$
+
+Creep rate:\\
+\tab $\ds \dot{\epsilon}_{c,ss} = K_2\sigma^n\exp(-\frac{Q_c}{RT})$
+
+Larson Miller parameter ($C \approx 20$):\\
+\tab $m = T(C + \log_{10}(t_r))$
+
+\section{Fracture}
+
+Stress Concentration Factor for an elliptical notch:\\
+\tab $\ds \sigma_m = \sigma_\text{net} \left(1 + 2 \sqrt{\frac{a}{r_t}}\right) = \sigma_\text{net}K_t$
+
+Griffith Equation for surface energy $\gamma_s$:\\
+\tab $\ds \sigma_\text{critical} = \sqrt{\frac{2E\gamma_s}{\pi a_c}}$
+
+Griffith Equation extension to ductile materials:\\
+\tab $\ds \sigma_\text{critical} = \sqrt{\frac{2EG_c}{\pi a_c}}$\\
+\tab $G_c$ = critical strain  energy release rate
+
+Stress Intensity Factor:\\
+\tab $K = Y\sigma\sqrt{\pi a_c}$
+
+Paris Equation (crack growth in steady state creep):\\
+\tab $\ds \dv{a}{N} = C(\Delta K)^N$
+
+\section{Composites}
+Isostrain:\\
+\tab $\epsilon_c = \epsilon_m = \epsilon_f$\\
+\tab $F_c = F_f + F_m$\\
+\tab $E_c = E_ff_f + E_mf_m$\\
+\tab $\ds \frac{F_f}{F_c} = \frac{f_f}{f_f + \frac{E_m}{E_f}f_m}$
+
+Isostress:\\
+\tab $\sigma_c = \sigma_m = \sigma_f$\\
+\tab $\epsilon_c = \epsilon_m f_m + \epsilon_f f_f$\\
+\tab $\ds E_c = \frac{E_m E_f}{E_mf_f + E_f f_m}$\\
+
+\section{Electrical Properties}
+Resistance in a straight conductor:\\
+\tab $\ds R = \frac{\rho l}{A}$
+
+Transmission Line Sag:\\
+\tab $\ds \delta \approx \frac{wl^2}{8H}$\\
+\tab $L = l + \frac{8\delta^2}{3l}$\\
+\tab $L_\text{total} = L(1 + \epsilon_\sigma + \epsilon_T)$
+
+Conductivity in metals and semiconductors:\\
+\tab $\sigma = n\abs{e}\mu_e + p\abs{e}\mu_p$\\
+\tab For metals, $p = 0$. For intrinsic semiconductors, $n = p$.
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols*}%
+
+\end{document}

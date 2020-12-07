@@ -1,8 +1,9 @@
 # Formula Sheets
 A collection of formula sheets and quick review notes from some UBC courses. Few courses allowed such sheets in an examination environment.
 
-| Course | Title | Term | Formula Sheet |
+| Course | Title | Term | Formula Sheet | 
 | --- | --- | --- | --- |
+| APSC 278 | Engineering Materials | 2020W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/APSC%20278%20-%20Engineering%20Materials/apsc278fs.pdf) |
 | ELEC 221 | Signals and Systems | 2018W1| [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/ELEC%20221%20-%20Signals%20and%20Systems/elec221fs.pdf) |
 | ELEC 401 | Analog CMOS Integrated Circuit Design | 2020W1| [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/ELEC%20401%20-%20Analog%20CMOS%20Integrated%20Circuit%20Design/elec401fs.pdf) |
 | MATH 217 | Multivariable and Vector Calculus | 2017W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/MATH%20217%20-%20Multivariable%20and%20Vector%20Calculus/math217fs.pdf) |
