@@ -138,8 +138,14 @@ Long Channel Current Equations:\\
 \end{cases}
 \end{equation*}
 
-Transconductance:\\
-\tab $\ds g_m = \eval{\pdv{I_D}{V_{GS}}}_{V_{DS}}$
+Transconductance (NMOS):\\
+\tab $\ds g_m = \eval{\pdv{I_D}{V_{GS}}}_{V_{DS}}$\\
+\tab $\ds g_m = \mu_n C_\text{ox} \frac{W}{L} (V_{GS} - V_{TH})$\\
+\tab $\ds g_m = \sqrt{2\mu_n C_\text{ox} \frac{W}{L} I_D} = \frac{2I_D}{V_{GS} - V_{TH}}$
+
+Body Effect:\\
+\tab $V_\text{TH} = V_\text{TH0} + \gamma\left(\sqrt{\abs{2\Phi_F + V_{SB}}} - \sqrt{\abs{2\Phi_F}}\right)$
+\tab $\ds \gamma = \frac{\sqrt{2q\varepsilon_\text{si}N_\text{sub}}}{C_\text{ox}}$
 
 Channel Length Modulation:\\
 \tab $\ds I_D = \frac{1}{2} \mu_n C_\text{ox} \frac{W}{L} (V_{GS} - V_{TH})^2 (1 + \lambda V_{DS})$
@@ -169,6 +175,7 @@ $C_{DB}$ & $C_6$ & $C_6 + \frac{C_2}{2}$ & $C_6$\\
 
 Small-Signal Model:\\
 \tab $\ds i_D = g_m v_{GS} + \frac{v_{DS}}{r_o} + g_{mb}v_{BS}$
+\tab $\ds g_{mb} = \eta g_m = \frac{\gamma}{2\sqrt{\abs{2\Phi_F + V_{SB}}}} g_m$
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}

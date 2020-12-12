@@ -1,0 +1,404 @@
+% !Tex program = pdflatex
+
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{mathtools}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage[italicdiff]{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{mdframed}
+\usepackage{amsbsy}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace*{1em}}
+\newcommand{\ds}{\displaystyle}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+\newcommand{\defn}[1]{\textbf{Def} (\emph{#1})}
+\newcommand{\thm}[1]{\textbf{Thm} (\emph{#1})}
+
+\newcommand{\Var}[1]{\mathrm{Var}(#1)}
+\newcommand{\Cov}[1]{\mathrm{Cov}(#1)}
+
+\mdfsetup{skipabove=2pt,skipbelow=2pt, innertopmargin=-6pt, innerbottommargin=2pt, innerleftmargin=2pt, innerrightmargin=2pt}
+\theoremstyle{definition}
+\newmdtheoremenv{theorem}{Theorem}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols*}{3}
+
+\raggedcolumns
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{MATH 400 Formula Sheet}}
+\end{center}
+
+\section{Linear First Order Equations}
+First Order Linear PDE:\\
+\tab $a(x,y)u_x + b(x,y)u_y + c(x,y)u = f(x,y)$
+
+\subsection{Simple Transport Equation}
+$$u_t + cu_x = 0 \,, -\infty < x < \infty, t > 0$$
+$$u(x,0) = \phi(x) \,, -\infty < x < \infty$$
+Solution:\\
+\tab $u(x,t) = \phi(x - ct)$
+
+\section{Linear Second Order Equations}
+Quasilinear PDE:\\
+\tab $a_{11}(x, y, u, u_x, u_y)u_{xx} + 2a_{12}(x, y, u, u_x, u_y)u_{xy} + a_{22}(x, y, u, u_x, u_y)u_{yy} + a_{00}(x, y, u, u_x, u_y) = 0$
+
+Semilinear PDE:\\
+\tab $a_{11}(x, y)u_{xx} + 2a_{12}(x, y)u_{xy} + a_{22}(x, y)u_{yy} + a_{00}(x, y, u, u_x, u_y) = 0$
+
+Linear PDE:\\
+\tab $a_{11}(x, y)u_{xx} + 2a_{12}(x, y)u_{xy} + a_{22}(x, y)u_{yy} + a_{1}(x,y)u_x +  a_{2}(x,y)u_y + a_{0}(x,y)u = f(x,y)$
+
+Discriminant for semilinear PDEs:\\
+\tab $\mathcal{D}(x,y) = [a_{12}(x,y)]^2 - a_{11}(x,y)a_{22}(x,y)$
+
+Classification of semilinear PDEs:
+\begin{equation*}
+\begin{cases}
+\mathcal{D}(x,y) > 0 & \text{Hyperbolic}\\
+\mathcal{D}(x,y) < 0 & \text{Elliptic}\\
+\mathcal{D}(x,y) = 0 & \text{Parabolic}
+\end{cases}
+\end{equation*}
+
+Change of variables:
+\begin{equation*}
+\begin{cases}
+U_{\xi\eta} + b_{00}(\xi, \eta, U, U_\xi, U_\eta)  = 0 & \text{Hyperbolic}\\
+U_{\xi\xi} + U_{\eta\eta} + b_{00}(\xi, \eta, U, U_\xi, U_\eta)  = 0 & \text{Elliptic}\\
+U_{\xi\xi} + b_{00}(\xi, \eta, U, U_\xi, U_\eta)= 0 & \text{Parabolic}
+\end{cases}
+\end{equation*}
+
+\subsection{Wave Equation}
+General Solution:\\
+\tab $u(x,t) = f(x + ct) + g(x-ct)$
+
+Initial Value Problem on the real line:\\
+\begin{equation*}
+\begin{cases}
+u_{tt} - c^2u_{xx} = f(x,t) \,, -\infty < x < \infty, t > 0 &\\
+u(x,0) = \phi(x) \,, u_t(x,0) = \psi(x) -\infty < x < \infty&\\
+\end{cases}
+\end{equation*}
+
+d'Alembert's Formula:\\
+\tab $\ds u(x,t) = \frac{1}{2}[\phi(x-ct) + \phi(x+ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct}\psi(s)\mathop{ds} + \frac{1}{2c} \int_{0}^{t}\int_{x-c(t-s)}^{x+c(t-s)}f(y,s)\mathop{dy}\mathop{ds}$
+
+\subsection{Non-Homogenous Boundary Conditions}
+\tab Shift the data ($u = v + w$):
+
+Dirichlet, $u(0,t) = a(t)$, $u(L,t) = b(t)$:\\
+\tab $\ds w(x,t) = a(t) + \frac{x}{L}[b(t) - a(t)]$
+
+Neumann, $u_x(0,t) = a(t)$, $u_x(L,t) = b(t)$\\
+\tab $\ds w(x,t) = xa(t) + \frac{x^2}{2L}[b(t) - a(t)]$
+
+Mixed 1, $u(0,t) = a(t)$, $u_x(L,t) = b(t)$\\
+\tab $w(x,t) = a(t) + xb(t)$
+
+Mixed 2, $u_x(0,t) = a(t)$, $u(L,t) = b(t)$\\
+\tab $w(x,t) = (x-L)a(t) + b(t)$
+
+\subsection{Sturm-Liouville Theory}
+Consider the homogeneous linear second-order PDE:\\
+\tab $r(x)u_t - (p(x)u_x)_x + q(x)u = 0$
+
+Separation of Variables:\\
+\tab $\ds -\frac{T'(t)}{T(t)} = -\frac{(p(x)X'(x))'}{r(x)X(x)} + \frac{q(x)}{r(x)} = \lambda$
+
+ODEs:
+\begin{equation*}
+\begin{cases}
+T' + \lambda T = 0 &\\
+-(p(x)X')' + q(x)X = \lambda r(x)X &\\
+\end{cases}
+\end{equation*}
+
+Associated Eigenvalue Problem:\\
+\tab $-(p(x)X')' + q(x)X = \lambda r(x) X$
+
+General Boundary Conditions:\\
+\tab $\mathcal{B}_1X = \alpha_1 X(a) + \beta_1 X(b) + \gamma_1 X'(a) + \delta_1 X'(b) = 0$\\
+\tab $\mathcal{B}_2X = \alpha_2 X(a) + \beta_2 X(b) + \gamma_2 X'(a) + \delta_2 X'(b) = 0$
+
+Boundary conditions are separated when:\\
+\tab $\beta_1 = \delta_1 = 0 \hspace{1cm} \alpha_2 = \gamma_2 = 0$
+
+Lagrange's Identity. BCs are symmetric if for all functions $f$, $g$ that satisfy the BCs:\\
+\tab $\tab \left[-p\left(f'g - fg'\right)\right]_a^b = 0$
+
+Sturm-Liouville Problem ($p(x) > 0, r(x) > 0$):
+\begin{equation*}
+\begin{cases}
+\mathcal{L}X(x) = \lambda r(x)X, \, a < x < b &\\
+\mathcal{B}_1 X = 0, \,\mathcal{B}_2 X = 0&\\
+\end{cases}
+\end{equation*}
+
+Theorem 5.3.1:\\
+\tab If you have symmetric BCs, then any to eigenfunctions of a SL problem that correspond to distinct eigenvalues are orthogonal. If any function is expanded in a series of these eigenfunctions, the coefficients are determined.
+
+Theorem 5.3.2:\\
+\tab Under Theorem 5.3.1, all the eigenvalues are real numbers and the eigenfunctions can be chosen to be real-valued.
+
+Theorem 5.3.3:\\
+\tab Under 5.3.1, if $q(x) \geq 0$ for all $a \leq x \leq b$ and if for all real-valued functions $f$ satisfying the BCs we satisfy
+$$[p(x)f(x)f'(x)]_a^b \leq 0$$
+then there can be no negative eigenvalues.
+
+Theorem 5.4.1:\\
+\tab For any regular of periodic SL problem, there are an infinite amount of eigenvalues.
+
+\section{Laplace's Equation}
+
+Polar Coordinates:\\
+\tab $\ds u_{rr} + \frac{1}{r}u_r + \frac{1}{r^2} u_{\theta \theta} = 0$
+
+Spherical Coordinates:\\
+\tab $\ds u_{rr} + \frac{2}{r}u_r + \frac{1}{r^2 \sin\theta}\left[\sin\theta \,u_\theta\right]_\theta + \frac{1}{r^2\sin^2\theta}u_{\phi\phi} = 0$
+
+Maximum Principle:\\
+\tab Let $D$ be a connected bounded open set of $\mathbb{R}^n$, $n = 2, 3$. If $u(\vb{x})$ is harmonic in $D$ and continuous on $D \cup \partial D$ then $u(\vb{x})$ attains its maximum and minimum values on $\partial D$.
+
+\section{PDEs in 3 Dimensions}
+Elliptic PDE:\\
+\tab $-\div[p(\vb{x})\grad{u}] + q(\vb{x}) u = f(\vb{x})$
+
+Parabolic PDE:\\
+\tab $r(\vb{x})u_t -\div[p(\vb{x})\grad{u}] + q(\vb{x}) u = f(\vb{x}, t)$
+
+Hyperbolic PDE:\\
+\tab $r(\vb{x})u_{tt} -\div[p(\vb{x})\grad{u}] + q(\vb{x}) u = f(\vb{x}, t)$
+
+Eigenvalue Problem:\\
+\tab $-\div[p(\vb{x})\grad{X}] + q(\vb{x}) X = \lambda r(\vb{x})X$
+
+Green's First Identity:\\
+\tab Let $D$ be an open connected domain in $\mathbb{R}^3$ and let $\partial D$ be its piecewise smooth boundary Let $f$ and $g$ be smooth functions on $D \cup \partial D$. Then\\
+\tab $\ds \oint_{\partial D} f \pdv{g}{n}\mathop{ds} = \iint_{D}\grad{F}\cdot\grad{g}\mathop{d\vb{x}} + \iint_{D} f \grad^2{g}\mathop{d\vb{x}}$
+
+Bessel's Equation:\\
+\tab $\rho^2 y'' + \rho y + (\rho^2 -n^2)y = 0$\\
+\tab $y(\rho) = c_1 J_n(\rho) + c_2 Y_n(\rho)$
+
+Associated Legendre Equation:\\
+\tab $\ds \dv{x}\left[(1-x^2)\dv{x}P_l^m(x)\right] + \left[l(l+1) - \frac{m^2}{1-x^2}\right]P_l^m(x)=0$
+
+Spherical Harmonics:\\
+\tab $\ds \grad^2_{S^2} Y_l^m = \frac{1}{\sin\theta}[\sin\theta\,Y]_\theta + \frac{1}{\sin^2\theta}Y_{\phi\phi} = l(l+1)Y_l^m$
+\tab $Y_l^m(\theta,\phi) = P_l^\abs{m}(\cos\theta)e^{im\phi}$
+\tab $l = 0, 1, 2 \ldots \quad m = -l, -l+1,\ldots, l-1, l$
+
+\section{Integral Transform Methods}
+Fourier Transform:\\
+\tab $\ds \hat{f}(k) = \int_{-\infty}^{\infty} f(x)e^{-ikx}\mathop{dx}$
+
+Inverse Fourier Transform:\\
+\tab $\ds \hat{f}(k) = \frac{1}{2\pi}\int_{-\infty}^{\infty} f(x)e^{ikx}\mathop{dx}$
+
+Error Function:\\
+\tab $\ds \erf(x) = \frac{2}{\sqrt{\pi}}\int_{0}^{x} e^{-p^2} \mathop{dp}$
+\tab $\erf(0) = 0 \quad \lim_{x\rightarrow\infty}\erf(x) = 1$
+
+Laplace Transform:\\
+\tab Let $f(t)$ be a piecewise continuous function on $[0,\infty)$ and suppose $\exists K, \gamma$ such that $\abs{f(t)} \leq K e^{\gamma t} \, \forall t > 0$. Then
+\tab $\ds F(s) = \int_{0}^{\infty}f(t)e^{-st}\mathop{dt}$
+
+Inverse Laplace Transform:\\
+\tab $\ds f(t) = \frac{1}{2\pi i}\int_{\alpha - i\infty}^{\alpha + i \infty}F(s)e^{st}\mathop{ds} \quad \alpha > \gamma$
+
+
+
+
+\newpage
+
+\section{Solved 1D Eigenvalue Problems}
+\subsection{Dirichlet}
+\begin{equation*}
+	\begin{rcases}
+		-X'' = \lambda X\\
+		X(0) = 0, X(L) = 0
+	\end{rcases} \implies \begin{cases}
+		\lambda_n = \frac{n\pi}{L}, \, n = 1, 2, 3 \ldots\\
+		X_n(x) = \sin(\frac{n\pi}{L}x) 
+	\end{cases}
+\end{equation*}
+
+\subsection{Neumann}
+\begin{equation*}
+	\begin{rcases}
+		-X'' = \lambda X\\
+		X'(0) = 0, X'(L) = 0
+	\end{rcases} \implies \begin{cases}
+		\lambda_n = \frac{n\pi}{L}, \, n = 0, 1, 2 \ldots\\
+		X_n(x) = \cos(\frac{n\pi}{L}x) 
+	\end{cases}
+\end{equation*}
+
+\subsection{Periodic}
+\begin{equation*}
+	\begin{rcases}
+		-X'' = \lambda X\\
+		X(-\pi) = X(\pi)\\
+		X'(-\pi) = X'(\pi)
+	\end{rcases} \implies \begin{cases}
+		\lambda_n = n^2, \, n = 0, 1, 2 \ldots\\
+		X_n(x) \in \{1, \cos(n\theta), \sin(n\theta)\}
+	\end{cases}
+\end{equation*}
+
+\subsection{Mixed 1}
+\begin{equation*}
+	\begin{rcases}
+		-X'' = \lambda X\\
+		X(0) = 0, X'(L) = 0
+	\end{rcases} \implies \begin{cases}
+		\lambda_n = \frac{(2n+1)\pi}{2L}, \, n = 0, 1, 2 \ldots\\
+		X_n(x) = \sin(\frac{(2n+1)\pi}{2L}x)
+	\end{cases}
+\end{equation*}
+
+\subsection{Mixed 2}
+\begin{equation*}
+	\begin{rcases}
+		-X'' = \lambda X\\
+		X'(0) = 0, X(L) = 0
+	\end{rcases} \implies \begin{cases}
+		\lambda_n = \frac{(2n+1)\pi}{2L}, \, n = 0, 1, 2 \ldots\\
+		X_n(x) = \cos(\frac{(2n+1)\pi}{2L}x)
+	\end{cases}
+\end{equation*}
+
+
+\section{Solved PDE Problems}
+\subsection{Problem 1}
+$$\Delta u = 0 \quad x^2 + y^2 < a^2$$
+$$u = h(x,y) \quad \text{on} \quad x^2 + y^2 = a^2$$
+Solution (Oct 21):\\
+\tab $\ds u(r,\theta) = \frac{a^2 - r^2}{2\pi} \int_{-\pi}^{\pi} \frac{h(\phi)}{a^2 - 2ar\cos(\phi - \theta) + r^2}\mathop{d\phi}$
+
+\subsection{Problem 2}
+$$\Delta u = 0 \quad 0 < r < a, \quad 0 < \theta < \beta$$
+$$u(r, 0) = 0, \quad u(r, \beta) = 0, \quad 0 < r < a$$
+$$u_r(a,\theta) = h(\theta) \quad 0 < \theta < \beta$$
+Solution (Oct 23):\\
+\tab $\ds u(r,\theta) = \sum_{n=1}^{\infty} C_n r^{n\pi/\beta}\sin\left(\frac{n\pi}{\beta}\theta\right)$\\
+\tab $\ds C_n = \frac{2}{n\pi}a^{-n\pi/\beta + 1}\int_{0}^{\beta}h(\phi)\sin\left(\frac{n\pi}{\beta}\theta\right)$
+
+\subsection{Problem 3}
+$$\Delta u = 0 \quad a < r < b, \quad 0 < \theta < 2\pi$$
+General Solution (Oct 23):\\
+\tab $\ds u(r, \theta) = \frac{1}{2} \left(C_0 + D_0\ln(r)\right) + \sum_{n=1}^{\infty}\left(C_n^{(1)}r^n + D_n^{(1)} r^{-n}\right)\cos(n\theta) + \left(C_n^{(2)}r^n + D_n^{(2)}r^{-n}\right)\sin(n\theta)$
+
+\subsection{Problem 4}
+$$S_t - DS_{xx}=0 \quad -\infty < x < \infty, \quad t > 0$$
+$$S(x, 0) = \delta(x - y), \quad y \geq 0$$
+Solution (Nov 16):\\
+\tab $\ds S(x,t) = \frac{1}{\sqrt{4\pi Dt}}e^{-(x - y)^2/(4Dt)}$
+
+\subsection{Problem 5}
+$$u_t - Du_{xx}=0 \quad -\infty < x < \infty, \quad t > 0$$
+$$u(x, 0) = \varphi(x), \quad -\infty < x < \infty$$
+Solution (Nov 18):\\
+\tab $\ds u(x,t) =\int_{-\infty}^{\infty} \varphi(y)S(x - y, t)\mathop{dy}$
+
+\subsection{Problem 6}
+$$u_t - Du_{xx}=0 \quad 0 < x < \infty, \quad t > 0$$
+$$u(0, t) = 0, \quad t > 0$$
+$$u(x, 0) = \varphi(x), \quad -\infty < x < \infty$$
+Solution (Nov 18):\\
+\tab $\ds u(x,t) =\int_{0}^{\infty} \phi(y)[S(x-y, t) - S(x + y, t)]\mathop{dy}$
+
+\subsection{Problem 7}
+$$\Delta u =0 \quad -\infty < x < \infty, \quad y > 0$$
+$$u(x,0) = h(x), \quad -\infty < x < \infty$$
+Solution (Nov 20):\\
+\tab $\ds u(x,y) = \int_{-\infty}^{\infty}h(z) \frac{y}{\pi [(x - z)^2 - y^2]}\mathop{dz}$
+
+\subsection{Problem 8}
+$$u_t - Du_{xx}=0 \quad 0 < x < \infty, \quad t > 0$$
+$$u(0, t) = h(t), \quad t > 0$$
+$$u(x, 0) = 0, \quad -\infty < x < \infty$$
+Solution (Nov 23):\\
+\tab $\ds u(x,t) = \begin{cases}
+	0 & t < b\\
+	1 - \erf\left(\frac{x}{\sqrt{4D(t-b)}}\right) & t > b
+\end{cases}$
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols*}%
+
+\end{document}
