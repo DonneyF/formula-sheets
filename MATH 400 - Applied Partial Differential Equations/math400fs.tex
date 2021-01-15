@@ -143,12 +143,8 @@ General Solution:\\
 \tab $u(x,t) = f(x + ct) + g(x-ct)$
 
 Initial Value Problem on the real line:\\
-\begin{equation*}
-\begin{cases}
-u_{tt} - c^2u_{xx} = f(x,t) \,, -\infty < x < \infty, t > 0 &\\
-u(x,0) = \phi(x) \,, u_t(x,0) = \psi(x) -\infty < x < \infty&\\
-\end{cases}
-\end{equation*}
+$$u_{tt} - c^2u_{xx} = f(x,t) \,, -\infty < x < \infty, t > 0$$
+$$u(x,0) = \phi(x) \,, u_t(x,0) = \psi(x) -\infty < x < \infty$$
 
 d'Alembert's Formula:\\
 \tab $\ds u(x,t) = \frac{1}{2}[\phi(x-ct) + \phi(x+ct)] + \frac{1}{2c}\int_{x-ct}^{x+ct}\psi(s)\mathop{ds} + \frac{1}{2c} \int_{0}^{t}\int_{x-c(t-s)}^{x+c(t-s)}f(y,s)\mathop{dy}\mathop{ds}$
@@ -176,12 +172,8 @@ Separation of Variables:\\
 \tab $\ds -\frac{T'(t)}{T(t)} = -\frac{(p(x)X'(x))'}{r(x)X(x)} + \frac{q(x)}{r(x)} = \lambda$
 
 ODEs:
-\begin{equation*}
-\begin{cases}
-T' + \lambda T = 0 &\\
--(p(x)X')' + q(x)X = \lambda r(x)X &\\
-\end{cases}
-\end{equation*}
+$$T' + \lambda T = 0$$
+$$-(p(x)X')' + q(x)X = \lambda r(x)X$$
 
 Associated Eigenvalue Problem:\\
 \tab $-(p(x)X')' + q(x)X = \lambda r(x) X$
@@ -287,8 +279,8 @@ Inverse Laplace Transform:\\
 	\begin{rcases}
 		-X'' = \lambda X\\
 		X(0) = 0, X(L) = 0
-	\end{rcases} \implies \begin{cases}
-		\lambda_n = \frac{n\pi}{L}, \, n = 1, 2, 3 \ldots\\
+	\end{rcases} \Rightarrow \begin{cases}
+		\lambda_n = \left(\frac{n\pi}{L}\right)^2, \, n = 1, 2, 3 \ldots\\
 		X_n(x) = \sin(\frac{n\pi}{L}x) 
 	\end{cases}
 \end{equation*}
@@ -298,8 +290,8 @@ Inverse Laplace Transform:\\
 	\begin{rcases}
 		-X'' = \lambda X\\
 		X'(0) = 0, X'(L) = 0
-	\end{rcases} \implies \begin{cases}
-		\lambda_n = \frac{n\pi}{L}, \, n = 0, 1, 2 \ldots\\
+	\end{rcases} \Rightarrow \begin{cases}
+		\lambda_n = \left(\frac{n\pi}{L}\right)^2, \, n = 0, 1, 2 \ldots\\
 		X_n(x) = \cos(\frac{n\pi}{L}x) 
 	\end{cases}
 \end{equation*}
@@ -310,7 +302,7 @@ Inverse Laplace Transform:\\
 		-X'' = \lambda X\\
 		X(-\pi) = X(\pi)\\
 		X'(-\pi) = X'(\pi)
-	\end{rcases} \implies \begin{cases}
+	\end{rcases} \Rightarrow \begin{cases}
 		\lambda_n = n^2, \, n = 0, 1, 2 \ldots\\
 		X_n(x) \in \{1, \cos(n\theta), \sin(n\theta)\}
 	\end{cases}
@@ -321,8 +313,8 @@ Inverse Laplace Transform:\\
 	\begin{rcases}
 		-X'' = \lambda X\\
 		X(0) = 0, X'(L) = 0
-	\end{rcases} \implies \begin{cases}
-		\lambda_n = \frac{(2n+1)\pi}{2L}, \, n = 0, 1, 2 \ldots\\
+	\end{rcases} \Rightarrow \begin{cases}
+		\lambda_n = \left(\frac{(2n+1)\pi}{2L}\right)^2, \, n = 0, 1, 2 \ldots\\
 		X_n(x) = \sin(\frac{(2n+1)\pi}{2L}x)
 	\end{cases}
 \end{equation*}
@@ -332,8 +324,8 @@ Inverse Laplace Transform:\\
 	\begin{rcases}
 		-X'' = \lambda X\\
 		X'(0) = 0, X(L) = 0
-	\end{rcases} \implies \begin{cases}
-		\lambda_n = \frac{(2n+1)\pi}{2L}, \, n = 0, 1, 2 \ldots\\
+	\end{rcases} \Rightarrow \begin{cases}
+		\lambda_n = \left(\frac{(2n+1)\pi}{2L}\right)^2, \, n = 0, 1, 2 \ldots\\
 		X_n(x) = \cos(\frac{(2n+1)\pi}{2L}x)
 	\end{cases}
 \end{equation*}
@@ -393,6 +385,8 @@ Solution (Nov 23):\\
 	0 & t < b\\
 	1 - \erf\left(\frac{x}{\sqrt{4D(t-b)}}\right) & t > b
 \end{cases}$
+
+
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
