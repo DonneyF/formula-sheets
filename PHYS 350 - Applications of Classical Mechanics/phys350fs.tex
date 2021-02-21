@@ -100,11 +100,11 @@ Hamilton's Principle: $\Lagr(\mathbf{q}, \mathbf{\dot{q}}, t)$ minimizes\\
 \tab $\Lagr(\mathbf{q}, \dot{\mathbf{q}}, t) \rightarrow S[t] = \int_{t_1}^{t_2} \Lagr(\mathbf{q}, \dot{\mathbf{q}}, t)\,dt$
 
 Euler-Lagrangian Equation:\\
-\tab $\ds \dv{t}\left(\dv{\Lagr}{\dot{q}_i}\right) - \dv{\Lagr}{q_i} \quad i = 1,2,\ldots,s$
+\tab $\ds \dv{t}\left(\pdv{\Lagr}{\dot{q}_i}\right) - \pdv{\Lagr}{q_i} = 0 \qquad i = 1,2,\ldots,s$
 
 Conservation of Energy:\\
 \tab $\ds \pdv{\Lagr}{t} = 0$\\
-\tab $\ds E = T + U = \sum_{i=1}^{s}q_i \pdv{\Lagr}{q_i} - \Lagr$
+\tab $\ds E = T + U = \sum_{i=1}^{s}\dot{q}_i \pdv{\Lagr}{q_i} - \Lagr$
 
 Conservation of Momentum:\\
 \tab $\ds \pdv{\Lagr}{q_i} = 0$\\
@@ -148,6 +148,8 @@ Eccentricity when $\ell \leq 0$:\\
 	\text{Hyperbola} & e > 1
 \end{cases}$
 
+% Column break
+\vfill\null
 \section{Small Oscillations}
 Equilibrium Point:\\
 \tab $\ds \dv{U}{q}\bigg\rvert_{q = q_0} = 0$
