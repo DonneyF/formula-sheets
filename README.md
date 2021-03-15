@@ -18,6 +18,7 @@ A collection of formula sheets and quick review notes from some UBC courses. Few
 | PHYS 304 | Introduction to Quantum Mechanics | 2018W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20304%20-%20Introduction%20to%20Quantum%20Mechanics/phys304fs.pdf) |
 | PHYS 301 | Electricity and Magnetism | 2018W1 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20301%20-%20Electricity%20and%20Magnetism/phys301fs.pdf) |
 | PHYS 350 | Applications of Classical Mechanics | 2019W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20350%20-%20Applications%20of%20Classical%20Mechanics/phys350fs.pdf) |
+| PHYS 401 | Electromagnetic Theory | 2020W2 | [View](https://docs.google.com/viewer?url=https://github.com/DonneyF/formula-sheets/raw/master/PHYS%20401%20-%20Electromagnetic%20Theory/phys401fs.pdf) |
 
 
 Adapted from [this great template](https://wch.github.io/latexsheet/).
