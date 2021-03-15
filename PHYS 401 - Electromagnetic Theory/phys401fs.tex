@@ -39,6 +39,7 @@
                                 {-1ex plus -.5ex minus -.2ex}%
                                 {1ex plus .2ex}%
                                 {\normalfont\footnotessize\bfseries}}
+\renewcommand\small{\@setfontsize\small{10}{11}}                           
 \makeatother
 
 % Define BibTeX command
@@ -47,7 +48,6 @@
 
 % Don't print section numbers
 \setcounter{secnumdepth}{0}
-
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1pt plus 0.5ex}
@@ -142,23 +142,35 @@ Intensity:\\
 \tab $I = \frac{1}{2}v\epsilon E_0^2$
 
 Law of Refraction:\\
-\tab $\theta_I = \theta_B$
+\tab $\theta_I = \theta_R$
 
 Snell's Law:\\
 \tab $n_I \sin\theta_I = n_T\sin\theta_T$
+
+Complex Index of Refraction:\\
+\tab $\ds n \approx \sqrt{\varepsilon_r} = n_R + in_I$
+
+Reflection and Transmission Coefficients:\\
+\tab $\ds R = \frac{I_R}{I_I} = \frac{I^\text{beam}_R\cos\theta_R}{I^\text{beam}_I\cos\theta_I} =\frac{I^\text{beam}_R}{I^\text{beam}_I}$\\
+\tab $\ds T = \frac{I_T}{I_I} = \frac{I^\text{beam}_T\cos\theta_T}{I^\text{beam}_I\cos\theta_I}$
 
 Misc. Constants:\\
 \tab $\ds \alpha = \frac{\cos\theta_T}{\cos\theta_I} \qquad \beta = \frac{\mu_1 v_1}{\mu_2 v_2}$
 
 
 \subsection{Boundary Conditions}
-\begin{itemize}
-	\itemsep0em
-	\item $\varepsilon_1\vb{E}_1^\perp = \varepsilon_2\vb{E}_2^\perp$
-	\item $\vb{E}_1^\parallel = \vb{E}_2^\parallel$
-	\item $\vb{B}_1^\perp = \vb{B}_2^\perp$
-	\item $\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
-\end{itemize}
+\hspace{3mm}\begin{tabular}{p{3cm}p{4cm}}
+	$\bullet \; \varepsilon_1\vb{E}_1^\perp = \varepsilon_2\vb{E}_2^\perp$ & $\bullet \;\vb{E}_1^\parallel = \vb{E}_2^\parallel$\\
+	$\bullet \;\vb{B}_1^\perp = \vb{B}_2^\perp$ & $\bullet \;\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
+\end{tabular}
+
+%\begin{itemize}
+%	\itemsep0em
+%	\item $\varepsilon_1\vb{E}_1^\perp = \varepsilon_2\vb{E}_2^\perp$
+%	\item $\vb{E}_1^\parallel = \vb{E}_2^\parallel$
+%	\item $\vb{B}_1^\perp = \vb{B}_2^\perp$
+%	\item $\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
+%\end{itemize}
 \subsection{$\vb{E}$ Parallel to Plane of Incidence}
 \tab $\vb{k}_I = k_I(\cos\theta_I\vu{z} + \sin\theta_I\vu{x})$\\
 \tab $\vb{E}_I = E_Ie^{i[k_I(\cos\theta_I z + \sin\theta_I x) - \omega t]}(\cos\theta_I\vu{x}-\sin\theta_I\vu{z})$\\
@@ -173,7 +185,7 @@ Field Magnitudes (Fresnel Equations):\\
 Reflection and Transmission Coefficients:\\
 \tab $\ds R = \left(\frac{\alpha-\beta}{\alpha+\beta}\right)^2 \qquad T = \alpha\beta\left(\frac{2}{\alpha + \beta}\right)^2$
 
-Brewster's Angle (no reflected wave):\\
+Brewster's Angle (no reflected wave, $\alpha = \beta$):\\
 \tab $\tan\theta_B = n_2/n_1$
 
 \subsection{$\vb{E}$ Perpendicular to Plane of Incidence}
@@ -205,9 +217,6 @@ Field Magnitudes (Fresnel Equations):\\
 
 Reflection and Transmission Coefficients:\\
 \tab $\ds R = \abs{\frac{1 - \tilde{\beta}}{1+\tilde{\beta}}}^2 \qquad T = 1 - \abs{\frac{1 - \tilde{\beta}}{1+\tilde{\beta}}}^2$
-
-Complex Index of Refraction:\\
-\tab $\ds n \approx \sqrt{\varepsilon_r} = n_R + in_I$
 
 \section{Polarization of Hydrogen}
 Complex permittivity for N/2 molecules of H$_2$.\\
@@ -258,6 +267,9 @@ $x$-components:\\
 $y$-components:\\
 \tab $\ds E_y = \frac{iv^2}{\omega_{mn}^2}\left(k\pdv{E_z}{y} - \omega\pdv{B_z}{x}\right)$\\
 \tab $\ds B_y = \frac{iv^2}{\omega_{mn}^2}\left(k\pdv{B_z}{y} + \frac{\omega}{v^2}\pdv{E_z}{x}\right)$
+
+Intensity:\\
+\tab $\langle\vb{S}\cdot\vu{z}\rangle = \langle \frac{1}{\mu} \left(E_xB_y-E_yB_x\right)\rangle$
 
 \section{Transmission Lines}
 Fields of a coaxial-cable:\\
