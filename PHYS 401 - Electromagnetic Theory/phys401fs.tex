@@ -102,10 +102,10 @@
 
 \section{Electromagnetic Waves}
 Wave Speed:\\
-\tab $\ds v = \frac{1}{\sqrt{\mu\varepsilon}} = \frac{c}{n}$
+\tab $v = \frac{1}{\sqrt{\mu\varepsilon}} = c/n$
 
 Poynting Vector:\\
-\tab $\ds \vb{S} = \frac{1}{\mu}\vb{E}\cross\vb{B}$
+\tab $\vb{S} = \frac{1}{\mu}\vb{E}\cross\vb{B}$
 
 Momentum Density:\\
 \tab $\ds \ds \vb{P} = \frac{1}{c^2}\vb{S}$
@@ -115,6 +115,9 @@ Energy per unit volume:\\
 
 Intensity:\\
 \tab $I = \langle \vb{S}\cdot\vu{n}\rangle$
+
+Potentials:\\
+\tab $\ds \vb{E} = -\grad{V} - \pdv{\vb{A}}{t} \qquad \vb{B} = \curl{\vb{B}}$
 
 Gauge Transformation:\\
 \tab $\ds \vb{A^\prime} = \vb{A} + \grad{\Lambda} \qquad V^\prime = V - \pdv{\Lambda}{t}$
@@ -129,17 +132,16 @@ Lorentz Transformation:\\
 \section{Plane Waves}
 $\vb{E} = \vb{E}_0e^{i(\vu{k}\cdot\vu{r} - \omega t)} \qquad \vb{B} = \vb{B}_0e^{i(\vu{k}\cdot\vu{r} - \omega t)}$
 
-Phase Velocity:\\
-\tab $v_p = \omega/k$
+Phase and Group Velocity:\\
+\tab $\ds v_p = \frac{\omega}{k} \qquad \ds v_g = \dv{\omega}{k}$
 
-Group Velocity:\\
-\tab $\ds v_g = \dv{\omega}{k}$
+\columnbreak
 
 Magnetic Field from Electric Field:\\
 \tab $\ds \vb{B}_0 = \frac{\vb{k}\cross\vb{E}_0}{\omega}$
 
 Intensity:\\
-\tab $I = \frac{1}{2}v\epsilon E_0^2$
+\tab $I = \frac{1}{2}v\varepsilon E_0^2$
 
 Law of Refraction:\\
 \tab $\theta_I = \theta_R$
@@ -164,13 +166,6 @@ Misc. Constants:\\
 	$\bullet \;\vb{B}_1^\perp = \vb{B}_2^\perp$ & $\bullet \;\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
 \end{tabular}
 
-%\begin{itemize}
-%	\itemsep0em
-%	\item $\varepsilon_1\vb{E}_1^\perp = \varepsilon_2\vb{E}_2^\perp$
-%	\item $\vb{E}_1^\parallel = \vb{E}_2^\parallel$
-%	\item $\vb{B}_1^\perp = \vb{B}_2^\perp$
-%	\item $\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
-%\end{itemize}
 \subsection{$\vb{E}$ Parallel to Plane of Incidence}
 \tab $\vb{k}_I = k_I(\cos\theta_I\vu{z} + \sin\theta_I\vu{x})$\\
 \tab $\vb{E}_I = E_Ie^{i[k_I(\cos\theta_I z + \sin\theta_I x) - \omega t]}(\cos\theta_I\vu{x}-\sin\theta_I\vu{z})$\\
@@ -203,13 +198,14 @@ Reflection and Transmission Coefficients:\\
 \tab $\ds R = \left(\frac{1 - \alpha\beta}{1+\alpha\beta}\right)^2 \qquad T = \alpha\beta\left(\frac{2}{1 + \alpha\beta}\right)^2$
 
 \section{Electromagnetic Waves in Ohmic Conductors}
+(Follow are applicable only to normal incidence waves with $\vb{E}$ perpendicular to plane of incidence)\\
 Wave Number:\\
-\tab $\tilde{k}^2 = \mu\varepsilon\omega^2 + i\mu\sigma\omega \qquad \tilde{k} = k + i/\delta$\\
+\tab $\tilde{k}^2 = \mu\varepsilon\omega^2 + i\mu\sigma\omega \qquad \tilde{k} = k + i/\delta =(n_R + in_I)\omega/c$\\
 \tab $\ds k = \omega \sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1 + \left(\frac{\sigma}{\varepsilon\omega}\right)^2} + 1\right]^{1/2}$\\
 \tab $\ds \frac{1}{\delta} = \omega \sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1 + \left(\frac{\sigma}{\varepsilon\omega}\right)^2} - 1\right]^{1/2}$
 
 Good and Poor Conductors:\\
-\tab $\ds \delta_\text{good} \approx \frac{2}{\sigma}\sqrt{\frac{\varepsilon}{\mu}} \qquad  \delta_\text{poor} \approx \sqrt{\frac{2}{\sigma\mu\omega}}$
+\tab $\ds \delta_\text{good} \approx \sqrt{\frac{2}{\sigma\mu\omega}} \qquad  \delta_\text{poor} \approx \frac{2}{\sigma}\sqrt{\frac{\varepsilon}{\mu}}$
 
 Field Magnitudes (Fresnel Equations):\\
 \tab $\ds \frac{E_R}{E_I} = \left(\frac{1 - \tilde{\beta}}{1+\tilde{\beta}}\right) \qquad \frac{E_T}{E_I} = \left(\frac{2}{1 + \tilde{\beta}}\right)$
@@ -258,7 +254,7 @@ Frequencies:\\
 
 $z$-components:\\
 \tab $\ds E_z = E_0\sin\left(\frac{m\pi x}{a}\right)\sin\left(\frac{n\pi y}{b}\right)e^{i(kz-\omega t)}$\\
-\tab $\ds E_B = B_0\cos\left(\frac{m\pi x}{a}\right)\cos\left(\frac{n\pi y}{b}\right)e^{i(kz-\omega t)}$
+\tab $\ds B_z = B_0\cos\left(\frac{m\pi x}{a}\right)\cos\left(\frac{n\pi y}{b}\right)e^{i(kz-\omega t)}$
 
 $x$-components:\\
 \tab $\ds E_x = \frac{iv^2}{\omega_{mn}^2}\left(k\pdv{E_z}{x} + \omega\pdv{B_z}{y}\right)$\\
@@ -273,7 +269,7 @@ Intensity:\\
 
 \section{Transmission Lines}
 Fields of a coaxial-cable:\\
-\tab $\ds \vb{E} = \frac{\lambda}{2\pi\epsilon s}e^{i(kz -\omega t)}\vu{s} \qquad \vb{B} = \frac{\lambda}{2\pi\epsilon s v}e^{i(kz -\omega t)}\vu{\phi}$
+\tab $\ds \vb{E} = \frac{\lambda}{2\pi\varepsilon s}e^{i(kz -\omega t)}\vu{s} \qquad \vb{B} = \frac{\lambda}{2\pi\varepsilon s v}e^{i(kz -\omega t)}\vu{\phi}$
 
 Inductance and Capacitance per unit length:\\
 \tab $\ds C\pdv{V}{t} = -\pdv{I}{z} \qquad \pdv{V}{z} = -L\pdv{I}{t} - RI$
@@ -282,7 +278,7 @@ Impedance of a perfectly conductive transmission line:\\
 \tab $Z = \sqrt{L/C}$
 
 Conservation of Charge:\\
-\tab $\ds \pdv{\rho}{t} = -\div{\vb{J}}$
+\tab $\ds \pdv{\rho}{t} = -\div{\vb{J}} \qquad \dv{\lambda}{t} + \dv{I}{z} = 0$
 
 \newpage
 \section{Vector Derivatives}
