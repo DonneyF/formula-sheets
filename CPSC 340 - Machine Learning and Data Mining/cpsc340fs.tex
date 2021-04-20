@@ -1,0 +1,261 @@
+% !Tex program = pdflatex
+
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage[italicdiff]{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{mdframed}
+\usepackage{amsbsy}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\renewcommand\small{\@setfontsize\small{10}{11}}                           
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace*{1em}}
+\newcommand{\ds}{\displaystyle}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+\newcommand{\defn}[1]{\textbf{Def} (\emph{#1})}
+\newcommand{\thm}[1]{\textbf{Thm} (\emph{#1})}
+
+\newcommand{\Var}[1]{\mathrm{Var}(#1)}
+\newcommand{\Cov}[1]{\mathrm{Cov}(#1)}
+
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\mdfsetup{skipabove=2pt,skipbelow=2pt, innertopmargin=-6pt, innerbottommargin=2pt, innerleftmargin=2pt, innerrightmargin=2pt}
+\theoremstyle{definition}
+\newmdtheoremenv{theorem}{Theorem}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+\raggedcolumns
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{CPSC 340 Formula Sheet}}
+\end{center}
+
+Norms:\\
+\tab $\ds \norm{\vb{y}}_2 = \sqrt{\sum_{i=1}^{n}y_i^2} \qquad\qquad \norm{\vb{y}}_1 = \sum_{i=1}^{n}\abs{y_i}$\\
+\tab $\ds \norm{\vb{y}}_0 = \sum_{i=1}^{n} (1 \text{ if } y_i \neq 0)$\\
+\tab $\ds \norm{\vb{y}}_\infty = \max(\abs{y_1}, \abs{y_2}, \ldots, \abs{y_n})$
+\tab $\ds \norm{W}_F = \sqrt{\sum_{j=1}^{d}\sum_{c=1}^{k}w_{jc}^2}$
+
+\section{Supervised Learning}
+\subsection{K-Nearest Neighbors}
+\begin{itemize}
+	\itemsep 0em
+	\item Find $k$ nearest values of $\vb{x}_i$ that are most similar to $\tilde{\vb{x}}_i$
+	\item Use mode of corresponding $y_i$
+\end{itemize}
+
+\subsection{Naive Bayes}
+\tab $\ds P(y_i \mid \vb{x_i}) = \frac{P(\vb{x}_i \mid y_i)P(y_i)}{P(\vb{x}_i)} \propto P(\vb{x}_i \mid y_i)P(y_i)$
+
+Conditional Independence Assumption:\\
+\tab $\ds P(\vb{x}_i \mid y_i) \approx \prod_{j=1}^{d}P(x_{ij} \mid y_i)$
+
+Probability Assumption:\\
+\tab $\ds P(x_{ij} = k \mid y_i = c) = \frac{\text{\# times } (y_i = c, x_{ij} = k)}{n}$
+
+Laplace Smoothing:\\
+\tab $\bullet$ Add $\beta$ to numerator, and add 1 for each possible label to denominator.
+
+\section{Regression}
+Linear Regression:\\
+\tab $\hat{y}_i = \vb{w}^T\vb{x}$
+
+Least Squares Objective:\\
+\tab $f(\vb{w}) = \frac{1}{2}\sum_{i=1}^{n}(\vb{w}^T\vb{x}_i - y_i)^2$
+
+Normal Equations:\\
+\tab $X^TX\vb{w} = X^T\vb{y}$
+
+Huber Loss Approximation:\\
+\tab $h(z) = \begin{cases}
+	\frac{1}{2}z^2 & \abs{z} < 1\\
+	\abs{z} - \frac{1}{2} & \abs{z} > 1
+\end{cases}$
+
+Log-sum-exp Approximation:\\
+\tab $\max_i\{z_i\} \approx \log\left(\sum_{i}\exp(z_i)\right)$
+
+\columnbreak
+Gradient Descent:\\
+\tab $\vb{w}^{t+1} = \vb{w}^t - \alpha^t\grad{f(\vb{w}^t)}$
+
+General Polynomial Features ($d = 1$):\\
+\tab $\ds Z = \begin{bmatrix}
+	1 & x_1 & x_1^2 & \dots & x_1^p \\
+	1 & x_2 & x_2^2 & \dots & x_2^p \\
+	\vdots & \vdots & \vdots & \ddots & \vdots \\
+	1 & x_n & x_n^2 & \dots & x_n^p \\
+\end{bmatrix}$
+
+Gaussian Radial Basis Functions:\\
+\tab $\ds g(\varepsilon) = \exp(-\frac{\varepsilon^2}{2\sigma^2})$
+
+Gaussian Radial Basis Transform:\\
+\tab $\ds Z = \begin{bmatrix}
+	g(\norm{\vb{x}_1 - \vb{x}_1}) & \dots & g(\norm{\vb{x}_1 - \vb{x}_n}) \\
+	g(\norm{\vb{x}_2 - \vb{x}_1}) &  \dots & g(\norm{\vb{x}_2 - \vb{x}_n}) \\
+	\vdots & \ddots & \vdots \\
+	g(\norm{\vb{x}_n - \vb{x}_1}) &  \dots & g(\norm{\vb{x}_n - \vb{x}_n}) \\
+\end{bmatrix}$
+
+Gram Matrix:\\
+\tab $K = XX^T$
+
+Kernel Trick:\\
+\tab $\hat{\vb{y}} = \tilde{Z}\vb{v} = \tilde{Z}Z^T(ZZ^T+\lambda I)\vb{y} = \tilde{K}(K+\lambda I)\vb{y}$
+
+Kernel Trick with Polynomials:\\
+\tab $K_{ij} = (1 + \vb{x}_i^T\vb{x}_j)^p \qquad \tilde{K}_{ij} = (1 + \tilde{\vb{x}_i}^T\vb{x}_j)^p$
+
+\section{Linear Classifiers}
+Binary Classification:\\
+\begin{itemize}[noitemsep, topsep=0pt]
+	\itemsep 0em
+	\item Encode using $y_i \in \{-1, 1\}$
+	\item Use $\text{sign}(\vb{w}^T\vb{x}_i)$ as prediction.
+\end{itemize}
+
+0-1 Loss Function (\# of classification errors):\\
+\tab $f(\vb{w}) = \norm{\text{sign}(X\vb{w}) - \vb{y}}_0$
+
+Hinge Loss (convex upper bound on 0-1 loss):\\
+\tab $f(\vb{w}) = \sum_{i=1}^{n}\max\{0, 1 - y_i\vb{w}^T\vb{x}_i\}$
+
+Support Vector Machine:\\
+\tab $f(\vb{w}) = \sum_{i=1}^{n}\max\{0, 1 - y_i\vb{w}^T\vb{x}_i\} + \frac{\lambda}{2}\norm{\vb{w}}_2^2$
+
+Logistic Loss:\\
+\tab $f(\vb{w}) = \sum_{i=1}^{n}\log(1 + \exp(-y_i\vb{w}^T\vb{x}_i))$
+
+Softmax for class $c$:\\
+\tab $\ds P(y_i = c) = \frac{\exp(\vb{w}_c^T\vb{x}_i)}{\sum_{c=1}^{k}\exp(\vb{w}_c^T\vb{x}_i)}$
+
+Softmax Loss for classes $y_i$:\\
+\tab $f(\vb{w}) = - \vb{w}_{y_i}^T\vb{x}_i + \log(\sum_{c=1}^{k}\exp(\vb{w}_c^T\vb{x}_i))$
+
+\section{MLE and MAP}
+Maximum Likelihood Estimation:\\
+\tab $\ds \hat{\vb{w}} \in \argmax_{\vb{w}} \{P(D \mid \vb{w})\}$
+
+Minimizing Negative Log Likelihood to maximize likelihood:\\
+\tab $\ds \hat{\vb{w}} \in \argmin_{\vb{w}} \{-\log(P(D \mid \vb{w}))\}$
+
+Maximum a Posteriori Estimation:\\
+\tab $\ds \hat{\vb{w}} \in \argmax_{\vb{w}} \{P(\vb{w} \mid D)\}$\\
+
+Minimizing Negative Log Likelihood to maximize a posteriori:\\
+\tab $\ds \vb{w} \in \argmin_{\vb{w}} \left\{-\sum_{i=1}^{n}\log(P(\vb{D}_i \mid \vb{w})) - \log(P(\vb{w}))\right\}$
+
+\section{Matrix Factorization}
+\tab $X \approx ZW \qquad \vb{x}_i \approx W^T\vb{z}_i \qquad x_{ij} \approx (\vb{w}^j)^T\vb{z}_i$
+\subsection{Principal Component Analysis}
+PCA Objective Function:\\
+\tab $f(W,Z) = \sum_{i=1}^{n}\norm{W^T\vb{z}_i - \vb{x}_i}_2^2 = \norm{ZW-X}_F^2$
+
+Prediction:\\
+\begin{itemize}[noitemsep, topsep=0pt]
+	\item Center: replace each $\tilde{x}_{ij}$ with $(\tilde{x}_{ij} - \mu_j)$
+	\item Find $\tilde{Z}$ minimizing squared error: $\tilde{Z} = \tilde{X}W^T(WW^T)^{-1}$
+\end{itemize}
+
+Gradients:\\
+\tab $\grad{f(W, Z_0)} = Z^TZW - Z^TX$\\
+\tab $\grad{f(W_0, Z)} = ZWW^T-XW^T$
+
+Variance Explained:\\
+\tab $\ds 1 - \frac{\norm{ZW-X}_F^2}{\norm{X}_F^2}$
+
+\subsection{Non-Negative Matrix Factorization}
+\tab Require $Z, W$ to have non-negative values.
+
+Projected Gradient Algorithm:\\
+\tab $\vb{w}^{t+1/2} = \vb{w}^t - \alpha^t\grad{f(\vb{w}^t)}$\\
+\tab $\vb{w}_j^{t+1} = \max\{0, \vb{w}_j\}$
+
+\subsection{Multi-Dimensional Scaling}
+Traditional MDS cost function:\\
+\tab $f(Z) = \sum_{i=1}^{n}\sum_{j=i+1}^{n}(\norm{\vb{z}_i - \vb{z}_j} - \norm{\vb{x}_i - \vb{x}_j})^2$
+
+\section{Neural Networks}
+Objective function for one hidden layer:\\
+\tab $f(\vb{v},W) = \frac{1}{2}\sum_{i=1}^{n}(\vb{v}^T \vb{h}(W\vb{x}_i)-y_i)^2$
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}%
+
+\end{document}

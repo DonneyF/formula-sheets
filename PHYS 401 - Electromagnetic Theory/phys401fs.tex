@@ -141,7 +141,7 @@ Magnetic Field from Electric Field:\\
 \tab $\ds \vb{B}_0 = \frac{\vb{k}\cross\vb{E}_0}{\omega}$
 
 Intensity:\\
-\tab $I = \frac{1}{2}v\varepsilon E_0^2$
+\tab $\ds I = \frac{1}{2}v\varepsilon E_0^2 = \frac{1}{2}\frac{E_0^2}{\mu v}$
 
 Law of Refraction:\\
 \tab $\theta_I = \theta_R$
@@ -159,12 +159,13 @@ Reflection and Transmission Coefficients:\\
 Misc. Constants:\\
 \tab $\ds \alpha = \frac{\cos\theta_T}{\cos\theta_I} \qquad \beta = \frac{\mu_1 v_1}{\mu_2 v_2}$
 
-
+\vspace{-1mm}
 \subsection{Boundary Conditions}
-\hspace{3mm}\begin{tabular}{p{3cm}p{4cm}}
+\vspace{-2mm}\hspace{3mm}\begin{tabular}{p{3cm}p{4cm}}
 	$\bullet \; \varepsilon_1\vb{E}_1^\perp = \varepsilon_2\vb{E}_2^\perp$ & $\bullet \;\vb{E}_1^\parallel = \vb{E}_2^\parallel$\\
 	$\bullet \;\vb{B}_1^\perp = \vb{B}_2^\perp$ & $\bullet \;\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
 \end{tabular}
+\vspace{-1mm}
 
 \subsection{$\vb{E}$ Parallel to Plane of Incidence}
 \tab $\vb{k}_I = k_I(\cos\theta_I\vu{z} + \sin\theta_I\vu{x})$\\
@@ -204,7 +205,7 @@ Wave Number:\\
 \tab $\ds k = \omega \sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1 + \left(\frac{\sigma}{\varepsilon\omega}\right)^2} + 1\right]^{1/2}$\\
 \tab $\ds \frac{1}{\delta} = \omega \sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1 + \left(\frac{\sigma}{\varepsilon\omega}\right)^2} - 1\right]^{1/2}$
 
-Good and Poor Conductors:\\
+Good ($\sigma \gg \varepsilon\omega$ or $k\approx 1/\delta$) and poor conductors:\\
 \tab $\ds \delta_\text{good} \approx \sqrt{\frac{2}{\sigma\mu\omega}} \qquad  \delta_\text{poor} \approx \frac{2}{\sigma}\sqrt{\frac{\varepsilon}{\mu}}$
 
 Field Magnitudes (Fresnel Equations):\\
@@ -212,7 +213,7 @@ Field Magnitudes (Fresnel Equations):\\
 \tab $\ds \tilde{\beta} = \frac{\mu_1v_1}{\mu_2\omega}\tilde{k}_2$
 
 Reflection and Transmission Coefficients:\\
-\tab $\ds R = \abs{\frac{1 - \tilde{\beta}}{1+\tilde{\beta}}}^2 \qquad T = 1 - \abs{\frac{1 - \tilde{\beta}}{1+\tilde{\beta}}}^2$
+\tab $\ds R = \abs{\frac{1 - \tilde{\beta}}{1+\tilde{\beta}}}^2 \qquad T = 1 - R = \abs{\frac{2}{1+\tilde{\beta}}}^2 \frac{v_1}{\omega}\abs{\tilde{k}}\cos(\angle \tilde{k})$
 
 \section{Polarization of Hydrogen}
 Complex permittivity for N/2 molecules of H$_2$.\\
@@ -237,7 +238,6 @@ Plasma Frequency:\\
 
 Phase and Group Velocities:\\
 \tab $\ds v_p = \frac{c\omega}{\sqrt{\omega^2 - \omega_p^2}} \qquad v_g = \frac{c\sqrt{\omega^2 - \omega_p^2}}{\omega}$
-
 
 Index of Refraction:\\
 \tab $\ds n = \frac{1}{\omega}\sqrt{\omega^2 - \omega_p^2}$
@@ -279,6 +279,70 @@ Impedance of a perfectly conductive transmission line:\\
 
 Conservation of Charge:\\
 \tab $\ds \pdv{\rho}{t} = -\div{\vb{J}} \qquad \dv{\lambda}{t} + \dv{I}{z} = 0$
+
+\section{Electromagnetic Radiation}
+\subsection{Retarded Potentials}
+\tab $\ds V(\vb{r}, t) = \frac{1}{4\pi\varepsilon_0}\int\frac{\rho(\vb{r}^\prime, t_r)}{\rcurs}\mathop{d\tau^\prime}$\\
+\tab $\ds \vb{A}(\vb{r}, t) = \frac{\mu_0}{4\pi}\int\frac{\vb{J}(\vb{r}^\prime, t_r)}{\rcurs}\mathop{d\tau^\prime}$
+
+\subsection{Dipole Radiation}
+Assumptions:\\
+\tab $d \ll  r \qquad d \ll c/\omega \qquad r \gg c/\omega$
+
+Oscillating electric dipole ($\vb{p} = p_0 \cos(\omega t)\vu{z}$):\\
+\tab $\ds V(r, \theta, t) = -\frac{p_0\omega}{4\pi\varepsilon_0 c}\left(\frac{\cos\theta}{r}\right)\sin(\omega t_r)$\\
+\tab $\ds \vb{A}(r,\theta,t) = -\frac{\mu_0 p_0 \omega}{4\pi r}\sin(\omega t_r)\vu{z}$
+
+Radiation from an arbitrary source with approximations $r^\prime \ll r$, $r^\prime \ll c/\abs{\ddot{\rho}/\dot{\rho}}$ and dropping $1/r^2$ terms:\\
+\tab $\ds \vb{E}(\vb{r}, t) \approx \frac{\mu_0}{4\pi r}[(\vb{r}\cdot\ddot{\vb{p}})\vu{\vb{r}} - \ddot{\vb{p}}] = \frac{\mu_0}{4\pi r}[\vb{r} \cross (\vb{r} \cross \ddot{\vb{p}})]$\\
+\tab $\ds \vb{B}(\vb{r}, t) \approx -\frac{\mu_0}{4\pi r c} [\vb{r} \cross \ddot{\vb{p}}]$\\
+\tab $\ds \vb{S}(\vb{r}, t) \approx \frac{\mu_0}{c} \left(\frac{1}{4\pi r}\right)^2 [\abs{\ddot{\vb{p}}}^2 - (\vu{r}\cdot\ddot{\vb{p}})^2]\vu{r}$
+
+\subsection{Point Charges}
+Li\'enard-Wiechert Potential and Fields ($\vb{u} = c\vu{\brcurs} - \vb{v}$):\\
+\tab $\ds V(\vb{r}, t) = \frac{1}{4\pi\varepsilon_0} \frac{qc}{\rcurs c - \brcurs \cdot \vb{v}}$\\
+\tab $\ds \vb{A}(\vb{r}, t) = \frac{\mu_0}{4\pi}\frac{qc\vb{v}}{(\rcurs c - \brcurs \cdot \vb{v})} = \frac{\vb{v}}{c^2}V(\vb{r}, t)$\\
+\tab $\ds \vb{E}(\vb{r}, t) = \frac{q}{4\pi\varepsilon_0}\frac{\rcurs}{(\brcurs \cdot \vb{u})^3}\left[(c^2 - v^2)\vb{u} + \brcurs \cross (\vb{u} \cross \vb{a})\right]$\\
+\tab $\ds \vb{B}(\vb{r}, t) = \frac{1}{c}\vu{\brcurs}\cross\vb{E}(\vb{r}, t)$
+
+\columnbreak
+Larmor Formula:\\
+\tab $\ds P = \frac{\mu_0 q a^2}{6 \pi c}$
+
+\section{Special Relativity}
+4-Vectors:\\
+\tab $x = (ct, \vb{x})$\\
+\tab $\ds \eta = \dv{x}{\tau} =  \left(\gamma c, \dv{\vb{x}}{\tau}\right)$\\
+\tab $p = m\eta = (E/c, \vb{p})$\\
+\tab $K = (\omega/c, \vb{k})$\\
+
+Invariance of Length-Squared:\\
+\tab $a_\mu b^\mu = -a^0b^0 + a^1b^1 + a^2b^2 + a^3b^3$\\
+
+Proper Time:\\
+\tab $d\uptau = \sqrt{1 - u^2/c^2}\mathop{dt} = \gamma^{-1}\mathop{dt}$
+
+Space-time Lorentz Transform with inertial frame, $\vb{v} = v\vu{x}$:\\
+\tab $\ds c\bar{t} = \gamma\left(ct - \frac{v}{c}x\right) \qquad \bar{x} = \gamma(x - vt)$\\
+\tab $\bar{y} = y \hspace{2.38cm} \bar{z} = z$
+
+Energy-momentum Lorentz Transform with inertial frame, $\vb{v} = v\vu{x}$:\\
+\tab $\ds \frac{\bar{E}}c = \gamma\left(\frac{E}{c} - \frac{v}{c}p_x\right) \qquad \bar{p}_x = \gamma\left(p_x - \frac{v}{c}\frac{E}{c}\right)$\\
+\tab $\bar{p}_y = p_y \hspace{2.3cm} \bar{p}_z = p_z$
+
+Relativistic Energy:\\
+\tab $E = \gamma mc^2$
+
+Relativistic Energy and Momentum:\\
+\tab $E^2 = p^2c^2 + m^2c^4$
+
+
+\subsection{Relativistic Electrodynamics}
+Field transform for an inertial frame moving $\vb{v} = v\vu{x}$:\\
+\tab $\bar{E}_x = E_x \hspace{2.125cm} \bar{B}_x = B_x$\\
+\tab $\ds \bar{E}_y = \gamma(E_y - vB_z) \qquad \bar{B_y} = \gamma\left(B_y + \frac{v}{c^2}E_z\right)$\\
+\tab $\ds \bar{E}_z = \gamma(E_z + vB_y) \qquad\hspace{0.5mm} \bar{B}_z = \gamma \left(B_z - \frac{v}{c^2}E_y\right)$
+
 
 \newpage
 \section{Vector Derivatives}
