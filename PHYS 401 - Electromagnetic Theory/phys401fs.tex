@@ -117,7 +117,7 @@ Intensity:\\
 \tab $I = \langle \vb{S}\cdot\vu{n}\rangle$
 
 Potentials:\\
-\tab $\ds \vb{E} = -\grad{V} - \pdv{\vb{A}}{t} \qquad \vb{B} = \curl{\vb{B}}$
+\tab $\ds \vb{E} = -\grad{V} - \pdv{\vb{A}}{t} \qquad \vb{B} = \curl{\vb{A}}$
 
 Gauge Transformation:\\
 \tab $\ds \vb{A^\prime} = \vb{A} + \grad{\Lambda} \qquad V^\prime = V - \pdv{\Lambda}{t}$
@@ -216,7 +216,7 @@ Reflection and Transmission Coefficients:\\
 \tab $\ds R = \abs{\frac{1 - \tilde{\beta}}{1+\tilde{\beta}}}^2 \qquad T = 1 - R = \abs{\frac{2}{1+\tilde{\beta}}}^2 \frac{v_1}{\omega}\abs{\tilde{k}}\cos(\angle \tilde{k})$
 
 \section{Polarization of Hydrogen}
-Complex permittivity for N/2 molecules of H$_2$.\\
+Complex permittivity for $N/2$ molecules of H$_2$:\\
 \tab $\ds \varepsilon = \varepsilon_0\left(1 + \frac{Nq^2/m\varepsilon_0}{\omega_0^2 - \omega^2 - i\gamma\omega}\right)$
 
 For optical materials (small complex index of refraction):\\
@@ -243,7 +243,7 @@ Index of Refraction:\\
 \tab $\ds n = \frac{1}{\omega}\sqrt{\omega^2 - \omega_p^2}$
 
 Critical Angle (angle for which $\theta_T = \pi/2$):\\
-\tab $\ds \sin\theta_C = \frac{n_T}{n_I} = \frac{1}{\omega}\sqrt{\omega^2 - \omega_p^2}$
+\tab $\ds \sin\theta_C = \frac{n_T}{n_I}$
 
 \section{Rectangular Wave-Guide}
 Dispersion Relation:\\
@@ -268,11 +268,12 @@ Intensity:\\
 \tab $\langle\vb{S}\cdot\vu{z}\rangle = \langle \frac{1}{\mu} \left(E_xB_y-E_yB_x\right)\rangle$
 
 \section{Transmission Lines}
-Fields of a coaxial-cable:\\
-\tab $\ds \vb{E} = \frac{\lambda}{2\pi\varepsilon s}e^{i(kz -\omega t)}\vu{s} \qquad \vb{B} = \frac{\lambda}{2\pi\varepsilon s v}e^{i(kz -\omega t)}\vu{\phi}$
-
 Inductance and Capacitance per unit length:\\
 \tab $\ds C\pdv{V}{t} = -\pdv{I}{z} \qquad \pdv{V}{z} = -L\pdv{I}{t} - RI$
+
+Wave Speed:\\
+\tab $v = 1/\sqrt{LC} = 1/\sqrt{\mu\varepsilon}$
+
 
 Impedance of a perfectly conductive transmission line:\\
 \tab $Z = \sqrt{L/C}$
@@ -293,13 +294,13 @@ Oscillating electric dipole ($\vb{p} = p_0 \cos(\omega t)\vu{z}$):\\
 \tab $\ds V(r, \theta, t) = -\frac{p_0\omega}{4\pi\varepsilon_0 c}\left(\frac{\cos\theta}{r}\right)\sin(\omega t_r)$\\
 \tab $\ds \vb{A}(r,\theta,t) = -\frac{\mu_0 p_0 \omega}{4\pi r}\sin(\omega t_r)\vu{z}$
 
-Radiation from an arbitrary source with approximations $r^\prime \ll r$, $r^\prime \ll c/\abs{\ddot{\rho}/\dot{\rho}}$ and dropping $1/r^2$ terms:\\
+Radiation from an arbitrary source with approximations $r^\prime \ll r$, $r^\prime \ll c/\abs{\ddot{\rho}/\dot{\rho}}$, dropping $1/r^2$ terms and evaluating $\vb{p}, \ddot{\vb{p}}$ at $t_r$:\\
 \tab $\ds \vb{E}(\vb{r}, t) \approx \frac{\mu_0}{4\pi r}[(\vb{r}\cdot\ddot{\vb{p}})\vu{\vb{r}} - \ddot{\vb{p}}] = \frac{\mu_0}{4\pi r}[\vb{r} \cross (\vb{r} \cross \ddot{\vb{p}})]$\\
 \tab $\ds \vb{B}(\vb{r}, t) \approx -\frac{\mu_0}{4\pi r c} [\vb{r} \cross \ddot{\vb{p}}]$\\
 \tab $\ds \vb{S}(\vb{r}, t) \approx \frac{\mu_0}{c} \left(\frac{1}{4\pi r}\right)^2 [\abs{\ddot{\vb{p}}}^2 - (\vu{r}\cdot\ddot{\vb{p}})^2]\vu{r}$
 
 \subsection{Point Charges}
-Li\'enard-Wiechert Potential and Fields ($\vb{u} = c\vu{\brcurs} - \vb{v}$):\\
+Li\'enard-Wiechert Potential and Fields ($\vb{u} = c\vu{\brcurs} - \vb{v}$, $\brcurs = \vb{r} - \vb{w}(t_r)$):\\
 \tab $\ds V(\vb{r}, t) = \frac{1}{4\pi\varepsilon_0} \frac{qc}{\rcurs c - \brcurs \cdot \vb{v}}$\\
 \tab $\ds \vb{A}(\vb{r}, t) = \frac{\mu_0}{4\pi}\frac{qc\vb{v}}{(\rcurs c - \brcurs \cdot \vb{v})} = \frac{\vb{v}}{c^2}V(\vb{r}, t)$\\
 \tab $\ds \vb{E}(\vb{r}, t) = \frac{q}{4\pi\varepsilon_0}\frac{\rcurs}{(\brcurs \cdot \vb{u})^3}\left[(c^2 - v^2)\vb{u} + \brcurs \cross (\vb{u} \cross \vb{a})\right]$\\
@@ -315,12 +316,21 @@ Larmor Formula:\\
 \tab $\ds \eta = \dv{x}{\tau} =  \left(\gamma c, \dv{\vb{x}}{\tau}\right)$\\
 \tab $p = m\eta = (E/c, \vb{p})$\\
 \tab $K = (\omega/c, \vb{k})$\\
+\tab $\ds \mathcal{F} = \dv{p}{\tau} = \left(\frac{\gamma \vb{v}\cdot\vb{F}}{c}, \gamma\vb{F}\right)$
 
 Invariance of Length-Squared:\\
 \tab $a_\mu b^\mu = -a^0b^0 + a^1b^1 + a^2b^2 + a^3b^3$\\
 
 Proper Time:\\
 \tab $d\uptau = \sqrt{1 - u^2/c^2}\mathop{dt} = \gamma^{-1}\mathop{dt}$
+
+Lorentz Transformation Matrix in $\vu{x}$:\\
+\tab $\ds \Lambda = \begin{bmatrix}
+	\gamma & -\gamma\beta & 0 & 0 \\
+	-\gamma\beta & \gamma & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 1
+\end{bmatrix}$
 
 Space-time Lorentz Transform with inertial frame, $\vb{v} = v\vu{x}$:\\
 \tab $\ds c\bar{t} = \gamma\left(ct - \frac{v}{c}x\right) \qquad \bar{x} = \gamma(x - vt)$\\
@@ -342,6 +352,9 @@ Field transform for an inertial frame moving $\vb{v} = v\vu{x}$:\\
 \tab $\bar{E}_x = E_x \hspace{2.125cm} \bar{B}_x = B_x$\\
 \tab $\ds \bar{E}_y = \gamma(E_y - vB_z) \qquad \bar{B_y} = \gamma\left(B_y + \frac{v}{c^2}E_z\right)$\\
 \tab $\ds \bar{E}_z = \gamma(E_z + vB_y) \qquad\hspace{0.5mm} \bar{B}_z = \gamma \left(B_z - \frac{v}{c^2}E_y\right)$
+
+Relativistic Larmor's Formula:\\
+\tab $\ds P = \frac{\mu_0 q^2 \gamma^6}{6 \pi c}\left(a^2 - \abs{\frac{\vb{v}\cross\vb{a}}{c}}^2\right)$
 
 
 \newpage
@@ -458,6 +471,12 @@ Stoke's Theorem:\\
 \tab $\vu*{\phi}=-\sin\phi\,\vu{x}+\cos\phi\,\vu{y}$
 \\
 \tab $\vu{z} = \vu{z}$
+
+\section{Trig Identities}
+\tab $2\cos\theta\cos\phi = \cos(\theta - \phi) + \cos(\theta + \phi)$\\
+\tab $2\sin\theta\sin\phi = \cos(\theta - \phi) - \cos(\theta + \phi)$\\
+\tab $2\sin\theta\cos\phi = \sin(\theta + \phi) + \sin(\theta - \phi)$\\
+\tab $2\cos\theta\sin\phi = \sin(\theta + \phi) - \sin(\theta - \phi)$\\
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
