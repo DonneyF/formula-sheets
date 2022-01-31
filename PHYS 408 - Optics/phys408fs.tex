@@ -1,0 +1,282 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{bm}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\renewcommand\small{\@setfontsize\small{10}{11}}                           
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+\def\rcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{BoldR}}$}}}
+
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{PHYS 408 Formula Sheet}}
+\end{center}
+
+\section{Differential Maxwell's Equations}
+\hspace{3mm}\begin{tabular}{p{2cm}p{4cm}}
+	$\ds \div{\vb{E}} = \frac{\rho}{\varepsilon_0}$ & $\ds \curl{\vb{E}} = -\pdv{\vb{B}}{t}$\\
+	$\ds \div{\vb{B}} = 0$ & $\ds \curl{\vb{B}} = \mu_0\vb{J} + \mu_0\varepsilon_0\pdv{\vb{E}}{t}$
+\end{tabular}
+
+\section{Integral Maxwell's Equations}
+
+\begin{tabular}{p{2.75cm}p{5cm}}
+	$\ds \oint \vb{E}\cdot d\vb{a} = \frac{Q_\text{enc}}{\varepsilon_0}$ & $\ds \oint \vb{B}\cdot d\vb{a} = 0$\\
+	$\ds \oint \vb{E}\cdot d\vb{l} = -\dv{\Phi_B}{t}$ & $\ds \oint \vb{B}\cdot d\vb{l} = \mu_0 I_\text{enc} + \varepsilon_0\mu_0 \dv{\Phi_E}{t}$
+\end{tabular}
+
+\section{Wave Optics}
+Monochromatic Wave:\\
+\tab $\bm{\mathcal{E}} = \Re{\vb{E}(\vb{r}) e^{-i\omega t}}$
+
+Helmholtz Equation:\\
+\tab $\laplacian\vb{E} + k^2 \vb{E} = 0$
+
+Plane wave solution to Helmholtz Equation:\\
+\tab $\vb{E}(\vb{r}) = \vb{E}_0 e^{i\vb{k}\cdot\vb{r}}$
+
+Spherical wave solution to Helmholtz Equation:\\
+\tab $\ds \vb{E}(\vb{r}) = \vb{E}_0 \frac{1}{r}e^{ikr} \qquad \vb{E}_0 = E_0\vu{\theta}$
+
+Interference of multiple fields:\\
+\tab $I = \sum_{k=1}^{N}I_k + v\epsilon \Re{E_1 E_2^* + E_1 E_3^* + \cdots + E_{N-1} E_N^*}$\\
+\tab $v\epsilon E_i E_j^* = 2\sqrt{I_i I_j}\exp[i(\theta_i - \theta_j)]$
+
+Fresnel (Paraxial) Approximation:\\
+\tab $\sqrt{x^2 + y^2} \ll z$
+
+Transverse Laplacian Operator:\\
+\tab $\laplacian_T = \pdv{x} + \pdv{y}$
+
+Paraxial Wave Equation:\\
+\tab $\ds \laplacian_T \vb{E} + i2k\pdv{\vb{E}}{z} = \vb{0}$
+
+Fresnel Approximation of a spherical wave:\\
+\tab $\ds \vb{E}(\vb{r}) \approx \frac{\vb{E}_0}{z}\exp\left[ik \frac{x^2 + y^2}{2z}\right] = \frac{\vb{E}_0}{z}\exp\left[ik\frac{\rho^2}{2z}\right]$
+
+\section{Beam Optics}
+Gaussian beam with Rayleigh length $z_0$:\\
+\tab $\ds \vb{E}(\vb{r}) = \vb{E}_0 \frac{w_0}{w(z)}\exp\left[-\frac{\rho^2}{(w(z))^2}\right]\exp\left[ik\frac{\rho^2}{2R(z)}\right]\exp\left[ikz - i\tan^{-1}\left(\frac{z}{z_0}\right)\right]$
+
+Beam waist:\\
+\tab $\ds w_0 = \sqrt{\frac{\lambda z_0}{\pi}}$
+
+Beam Radius:\\
+\tab $\ds w(z) = w_0\sqrt{1 + \left(\frac{z}{z_0}\right)^2}$
+
+Radius of curvature:\\
+\tab $\ds R(z) = z\left[1 + \left(\frac{z_0}{z}\right)^2\right]$
+
+Gaussian beam intensity with center intensity $I_0$:\\
+\tab $\ds I(z, \rho) = I_0\left[\frac{w_0}{w(z)}\right]^2\exp\left[-\frac{2\rho^2}{(w(z))^2}\right]$
+
+Gaussian beam total power:\\
+\tab $P = \frac{I_0}{2}\pi w_0^2$
+
+Depth of focus (confocal parameter):\\
+\tab $\ds d = 2z_0 = \frac{2\pi w_0^2}{\lambda}$
+
+\newpage
+\section{Vector Derivatives}
+\subsection{Cartesian}
+$d\vb{l} = dx\,\vu{x} + dy\,\vu{y} + dz\,\vu{z}$
+\hspace{1cm}
+$d\uptau = dx\,dy\,dz$
+
+Gradient:\\
+\tab $\ds \grad{f} =  \pdv{f}{x}\vu{x} + \pdv{f}{y}\vu{y} + \pdv{f}{z}\vu{z}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \pdv{v_x}{x} + \pdv{v_y}{y} + \pdv{v_z}{z}$
+
+Curl:\\
+\vspace{-3mm}
+\tab $\ds \curl{\vb{v}} = \left(\pdv{v_z}{y} - \pdv{v_y}{z}\right)\vu{x} + \left(\pdv{v_x}{z} - \pdv{v_z}{x}\right)\vu{y} + \left(\pdv{v_y}{x} - \pdv{v_x}{y}\right)\vu{z}$
+
+\subsection{Spherical}
+$d\uptau = r^2\sin\theta\,dr\,d\theta\,d\phi$
+
+Gradient:\\
+\tab $\ds \grad{f} = \pdv{f}{r}\vu{r} + \frac{1}{r}\pdv{f}{\theta}\vu*{\theta} + \frac{1}{r\sin\theta}\pdv{f}{\phi}\vu*{\phi}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \frac{1}{r^2}\pdv{r}(r^2v_r) + \frac{1}{r\sin\theta}\pdv{\theta}(\sin\theta v_\theta) + \frac{1}{r\sin\theta}\pdv{v_\phi}{\phi}$
+
+Curl:\\
+\tab $\ds \curl{\vb{v}} = \frac{1}{r\sin\theta}\left[\pdv{\theta}(\sin\theta\, v_\phi)- \pdv{v_\theta}{\phi}\right]\vu{r}\,+$\\
+\tab \tab $\ds \frac{1}{r}\left[\frac{1}{\sin\theta}\pdv{v_r}{\phi}-\pdv{r}(r v_\phi)\right]\vu*{\theta} + \frac{1}{r}\left[\pdv{r}(r v_\theta)-\pdv{v_r}{\theta}\right]\vu*{\phi}$
+
+\subsection{Cylindrical}
+$d\uptau = s\,ds\,d\phi\,dz$
+
+Gradient:\\
+\tab $\ds \grad{f} = \pdv{f}{s}\vu{s}+\frac{1}{s}\pdv{f}{\phi}\vu*{\phi}+\pdv{f}{z}\vu{z}$
+
+Divergence:\\
+\tab $\ds \div{\vb{v}} = \frac{1}{s}\pdv{s}(sv_s)+\frac{1}{s}\pdv{v_\phi}{\phi} + \pdv{v_z}{z}$
+
+Curl:\\
+\tab $\ds \curl{\vb{v}} = \left[\frac{1}{s}\pdv{v_z}{\phi}-\pdv{v_\phi}{z}\right]\vu{s}+\left[\pdv{v_s}{z}-\pdv{v_z}{s}\right]\vu*{\phi}+\frac{1}{s}\left[\pdv{s}(sv_\phi)-\pdv{v_s}{\phi}\right]\vu{z}$
+
+\section{Fundamental Theorems}
+Fundamental Theorem of Line Integrals:\\
+\tab $\ds \int_{\vb{a}}^{\vb{b}}(\grad{f})\cdot d\vb{l} = f(\vb{b})-f(\vb{a})$
+
+Divergence Theorem:\\
+\tab $\ds \int (\div \vb{A})\, d\uptau = \oint \vb{A}\cdot d\vb{a}$
+
+Stoke's Theorem:\\
+\tab $\ds \int (\curl{\vb{A}})\cdot d\vb{a} = \oint \vb{A}\cdot d\vb{l}$
+
+\section{Vector Identities}
+\tab $\ds \div{\left(\frac{\vu{\brcurs}}{\rcurs^2}\right)} = 4\pi \delta^3(\brcurs)$
+\\
+\tab $\ds \grad{\left(\frac{1}{\rcurs}\right)} = -\frac{\vu{\brcurs}}{\rcurs}$
+\\
+\tab $\ds \delta(kx) = \frac{1}{\abs{k}}\delta(x)$
+
+\section{Spherical Coordinates}
+\tab $x = r\sin\theta\cos\phi$
+\\
+\tab $y = r\sin\theta\sin\phi$
+\\
+\tab $z = r\cos\theta$
+\\
+\vspace{3mm}
+\tab $\vu{x} = \sin\theta\cos\phi\,\vu{r} + \cos\theta\cos\phi\,\vu*{\theta} - \sin\phi\,\vu*{\phi}$
+\\
+\tab $\vu{y} = \sin\theta\sin\phi\,\vu{r} + \cos\theta\sin\phi\,\vu*{\theta} + \cos\phi\,\vu*{\phi}$
+\\
+\tab $\vu{z} = \cos\theta \, \vu{r} - \sin\theta \, \vu*{\theta}$
+\\
+\vspace{3mm}
+\tab $r=\sqrt{x^2 + y^2 + z^2}$
+\\
+\tab $\theta = \tan^{-1}\left(\sqrt{x^2+y^2}/z \right)$
+\\
+\tab $\phi = \tan^{-1}(y/x)$
+\\
+\vspace{3mm}
+\tab $\vu{r}=\sin\theta\cos\phi\,\vu{x} + \sin\theta\sin\phi\,\vu{y}+\cos\theta\,\vu{z}$
+\\
+\tab $\vu*{\theta}=\cos\theta\cos\phi\,\vu{x}+\cos\theta\sin\phi\,\vu{y}-\sin\theta\,\vu{z}$
+\\
+\tab $\vu*{\phi} = -\sin\phi\,\vu{x}+\cos\phi\,\vu{y}$
+
+\section{Cylindrical Coordinates}
+\tab $x = s\cos\phi$
+\\
+\tab $y = s \sin\phi$
+\\
+\tab $z=z$
+\\
+\vspace{3mm}
+\tab $\vu{x}=\cos\phi\,\vu{s}-\sin\phi\vu*{\phi}$
+\\
+\tab $\vu{y} = \sin\phi\,\vu{s}+\cos\phi\,\vu*{\phi}$
+\\
+\tab $\vu{z} = \vu{z}$
+\\
+\vspace{3mm}
+\tab $s = \sqrt{x^2+y^2}$
+\\
+\tab $\phi = \tan^{-1}(y/x)$
+\\
+\tab $z = z$
+\\
+\vspace{3mm}
+\tab $\vu{s} = \cos\phi\,\vu{x}+\sin\phi\,\vu{y}$
+\\
+\tab $\vu*{\phi}=-\sin\phi\,\vu{x}+\cos\phi\,\vu{y}$
+\\
+\tab $\vu{z} = \vu{z}$
+
+\section{Trig Identities}
+\tab $2\cos\theta\cos\phi = \cos(\theta - \phi) + \cos(\theta + \phi)$\\
+\tab $2\sin\theta\sin\phi = \cos(\theta - \phi) - \cos(\theta + \phi)$\\
+\tab $2\sin\theta\cos\phi = \sin(\theta + \phi) + \sin(\theta - \phi)$\\
+\tab $2\cos\theta\sin\phi = \sin(\theta + \phi) - \sin(\theta - \phi)$\\
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}

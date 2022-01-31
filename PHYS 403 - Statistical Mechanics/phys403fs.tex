@@ -1,0 +1,194 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{booktabs}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\renewcommand\small{\@setfontsize\small{10}{11}}                           
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{PHYS 403 Formula Sheet}}
+\end{center}
+
+\section{Thermodynamics}
+\begin{tabular}{lll}  
+	\toprule
+	Potential & Function & Differential\\
+	\midrule
+	Internal & $U$ & $dU = T\,dS - p\,dV$\\
+	Enthalpy & $H = U + pV$ & $dH = T\,dS + V\,dp$\\
+	Helmoltz & $F = U -TS$ & $dF = -S\,dT$\\
+	Gibbs & $G = U -TS + pV$ & $dG = -S\,dT + V\,dp$\\
+	\bottomrule
+\end{tabular}
+
+Internal Energy:\\
+\tab $\Delta U = Q + W$
+
+First Law of Thermodynamics:\\
+\tab $dU = \delta Q - p\,dV$
+
+Reversible Process:\\
+\tab $dU = T\,dS$\\
+\tab $\ds dS = \frac{\delta Q}{T}$
+
+Heat Capacities:\\
+\tab $\ds C_V = \left(\pdv{U}{T}\right)_V \qquad C_p = \left(\pdv{H}{T}\right)_p$
+
+Entropy:\\
+\tab $S = k_B \ln(W)$
+
+\section{The Canonical Distribution}
+Boltzmann Factor:\\
+\tab $e^{-\beta E_i}$
+
+The Canonical Distribution:\\
+\tab $P_i = Z^{-1}e^{-\beta E_i}$
+
+Partition Function with degeneracy $g_j$:\\
+\tab $\ds Z = \sum_i g_ie^{-\beta E_i}$
+
+Continuous Partition function for degeneracy per unit volume $g(E)$:\\
+\tab $\ds Z = V\int_{0}^{\infty}g(E)e^{-\beta E}\mathop{dE}$
+
+Mean energy of a microsystem:\\
+\tab $\ds \expval{E} = \sum_i P_i E_i = -\frac{1}{Z}\pdv{Z}{\beta}$
+
+Mean energy of a macrosystem with $N$ identical and weakly interacting microsystems:\\
+\tab $U = N\hspace{-0.75mm}\expval{E}$
+
+Many-particle partition function:\\
+\tab $Z_N = Z_1^N$
+
+Free Energy:\\
+\tab $Z_N = e^{-\beta F}$
+
+Entropy for probability $P_i = Z_N^{-1}e^{-\beta E_i}$ that the system is in the $i$-th macrostate:\\
+\tab $\ds S = -k_B \sum_i P_i\ln(P_i)$
+
+\subsection{$N$ Distinguishable Particles in a Box}
+Degeneracies for spin $s$:\\
+\tab $\ds g_\mathit{1D}(E) = (2s+1)\frac{2}{\hbar}\sqrt{\frac{m}{2E}}$\\
+\tab $\ds g_\mathit{2D}(E) = (2s+1)\frac{m}{2\pi\hbar^2}$\\
+\tab $\ds g_\mathit{3D}(E) = (2s+1)\frac{1}{4\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}\sqrt{E}$
+
+\section{The Grand Canonical Distribution}
+Chemical Potential:\\
+\tab $\ds \mu = -T\left(\pdv{S}{N}\right)_{U,V} = \left(\pdv{F}{N}\right)_{T,V}$
+
+Gibbs Factor:\\
+\tab $e^{\beta(n\mu - E_i)}$
+
+The Grand Canonical Distribution:\\
+\tab $P(n, E_i) = \Xi^{-1}e^{\beta(n\mu - E_i)}$
+
+Grand Partition Function:\\
+\tab $\ds \Xi = \sum_{i,n}e^{\beta(n\mu - E_i)}$
+
+Absolute Activity:\\
+\tab $\alpha = e^{\beta\mu}$
+
+Mean number of particles:\\
+\tab $\ds \expval{n} = \Xi^{-1} \sum_{i,n}ne^{\beta(n\mu - E_i)} = \frac{1}{\beta\Xi}\left(\pdv{\Xi}{\mu}\right)_T =  \frac{\alpha}{\Xi}\left(\pdv{\Xi}{\alpha}\right)_T$
+
+Mean energy:\\
+\tab $\ds \expval{E} = -\frac{1}{\Xi}\left(\pdv{\Xi}{\beta}\right)_T + \mu\hspace{-0.75mm}\expval{n}$
+
+\section{Quantum and Classical Gasses}
+One-particle distribution function over energy:\\
+\tab $f(E) = \expval{n(E)}$
+
+Fermi-Dirac Distribution:\\
+\tab $\ds f(E) = \frac{1}{e^{\beta(E - \mu)}- 1}$
+
+Total number of particles:\\
+\tab $\ds N = \int_{0}^{\infty}Vg(E)f(E)\mathop{dE}$
+
+Fermi Energy ($\mu \approx E_F$ at very low temperatures):\\
+\tab $\ds n = \int_{0}^{E_F}g(E)\mathop{dE}$
+
+Bose-Einstein Distribution:\\
+\tab $\ds f(E) = \frac{1}{e^{\beta(E - \mu)}-1} = \frac{1}{\alpha^{-1}e^{\beta E}-1}$
+
+Maxwell-Boltzmann Distribution ($f(E) \ll 1$):\\
+\tab $f(E) = e^{\beta(\mu - E)}$
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}
