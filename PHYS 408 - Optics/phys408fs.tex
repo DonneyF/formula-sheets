@@ -132,7 +132,9 @@ Fresnel Approximation of a spherical wave:\\
 
 \section{Beam Optics}
 Gaussian beam with Rayleigh length $z_0$:\\
-\tab $\ds \vb{E}(\vb{r}) = \vb{E}_0 \frac{w_0}{w(z)}\exp\left[-\frac{\rho^2}{(w(z))^2}\right]\exp\left[ik\frac{\rho^2}{2R(z)}\right]\exp\left[ikz - i\tan^{-1}\left(\frac{z}{z_0}\right)\right]$
+\tab $\ds \vb{E}(\vb{r}) = \vb{E}_0 \frac{w_0}{w(z)}\exp\left[-\frac{\rho^2}{(w(z))^2}\right]\times\exp\left[ik\frac{\rho^2}{2R(z)}\right]\exp\left[ikz - i\tan^{-1}\left(\frac{z}{z_0}\right)\right]$\\
+\tab $q(z) = z - z_0$\\
+\tab $\ds \frac{1}{q(z)} = \frac{1}{R(z)} + i\frac{\lambda}{\pi}\frac{1}{(w(z))^2}$
 
 Beam waist:\\
 \tab $\ds w_0 = \sqrt{\frac{\lambda z_0}{\pi}}$
@@ -151,6 +153,51 @@ Gaussian beam total power:\\
 
 Depth of focus (confocal parameter):\\
 \tab $\ds d = 2z_0 = \frac{2\pi w_0^2}{\lambda}$
+
+\section{Propagation of Paraxial Waves}
+ABCD Matrix of an optical system:\\
+\tab $\begin{bmatrix}y_2 \\ \theta_2\end{bmatrix} = \begin{bmatrix}A & B \\ C & D\end{bmatrix}\begin{bmatrix}y_1 \\ \theta_1\\\end{bmatrix}$
+
+Free space propagation transfer matrix:\\
+\tab $\begin{bmatrix}1 & d\\ 0 & 1\end{bmatrix}$
+
+Refraction transfer matrix:\\
+\tab $\begin{bmatrix}1 & 0\\ 0 & n_I/n_T\end{bmatrix}$
+
+Curved interface transfer matrix:\\
+\tab $\begin{bmatrix}1 & 0\\ -\frac{n_T-n_I}{n_I R} & n_I/n_T\end{bmatrix}$
+
+Thin lens transfer matrix:\\
+\tab $\begin{bmatrix}1 & 0\\ -\frac{1}{f} & 1\end{bmatrix}$
+
+Gaussian Beam propagation in the paraxial regime:\\
+\tab $\ds q_2 = \frac{Aq_1 + B}{Cq_1 + D}$
+
+\section{Fourier Optics}
+Fraunhofer (far field) limit:\\
+\tab $x^2/\lambda, y^2/\lambda \ll z/\pi$
+
+Free space transfer function along $\vb{z}$:\\
+\tab $\tilde{H}(k_x, k_y) = e^{ik_z z} \approx e^{ikz}e^{-i(k_x^2 + k_y^2))z/2k}$
+
+Free space propagation in paraxial limit:\\
+\tab $\ds E(x',y',z) \approx \frac{e^{ikz}}{i\lambda z}\exp\left[ik\frac{x'^2 + y'^2 }{2z}\right]\times\iint E(x,y,z)\exp\left[ik\frac{x^2 + y^2 }{2z}\right]\exp\left[-\frac{ik}{z}(x'x + y'y)\right]\,dx\,dy$\\
+%\tab $\ds E(x',y',z) \approx \frac{e^{ikz}}{i\lambda z}\exp\left[ik\frac{x'^2 + y'^2 }{2z}\right]\mathcal{F}\left\{E(x,y, z)\exp\left[ik\frac{x^2 + y^2 }{2z}\right]\right\}$
+
+Free space propagation in Fraunhofer limit:\\
+\tab $\ds E(x', y', z) \approx \frac{e^{ikz}}{i\lambda z} \exp\left[ik\frac{x'^2 + y'^2}{2z}\right]\mathcal{F}\{E(x,y, z)\}$
+
+Thin lens thickness function:\\
+\tab $\ds \Delta(x,y) = \Delta_0 - R_1\left(1 - \sqrt{1 - \frac{x^2 + y^2}{R_1^2}}\right) + R_2\left(1 - \sqrt{1 - \frac{x^2 + y^2}{R_2^2}}\right)$
+
+Thin lens thickness function in paraxial limit:\\
+\tab $\ds \Delta(x,y) \approx \Delta_0 - \frac{x^2 + y^2}{2}\left(\frac{1}{R_1} - \frac{1}{R_2}\right)$
+
+Thin lens phase function:\\
+\tab $t_L(x,y) = \exp[ikn\Delta(x,y)]\exp[ik(\Delta_0 - \Delta(x,y))]$\\
+
+Thin lens phase function (ignore constant phase):\\
+\tab $\ds t_L(x,y) = \exp\left[-i\frac{k}{2f}(x^2 + y^2)\right]$
 
 \newpage
 \section{Vector Derivatives}

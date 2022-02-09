@@ -1,0 +1,195 @@
+\documentclass[12pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{upgreek}
+\usepackage{physics}
+\usepackage{newtxtext,newtxmath}
+\usepackage{bm}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\footnotessize\bfseries}}
+\renewcommand\small{\@setfontsize\small{10}{11}}                           
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1pt plus 0.5ex}
+
+\newcommand{\tab}{\hspace{.02\textwidth}}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\defn}[1]{\textbf{Def} (\emph{#1})}
+\newcommand{\set}[1]{\left\{ #1 \right\}}
+\newcommand{\gf}[1]{\text{GF}(#1)}
+
+\renewcommand{\dv}[2]{\frac{d#1}{d#2}}
+
+% Redefine some commands for newtxmath boldness
+\renewcommand{\grad}{\nabla}
+\renewcommand{\curl}[1]{\nabla\times#1}
+\renewcommand{\div}[1]{\nabla\cdot#1}
+\renewcommand{\cross}{\times}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+	\Large{\underline{ELEC 433 Formula Sheet}}
+\end{center}
+
+\section{Coding Approaches and Characteristics}
+
+Channel Capacity for Additive White Gaussian for bandwidth $W$ and noise $N_0$:\\
+\tab $\ds C = W\log_2\left(1 + \frac{P}{N_0 W}\right)$
+
+BFSK bit error probability:\\
+\tab $\ds p = \frac{1}{2}e^{-E_b / 2N_0}$
+
+\section{Binary Linear Block Codes}
+
+Number of codewords in a code C:\\
+\tab $\abs{C} = M = 2^k$
+
+Code rate:\\
+\tab $\ds R = \frac{\log_2(M)}{n} = \frac{k}{n}$
+
+Vector space dimensions:\\
+\tab $\dim{S} + \dim{S^\perp} = \dim{V}$
+
+\defn{Binary Linear Block Codes}: A subset $C \subseteq V_n$ is a binary linear block code if:
+\begin{itemize}
+    \itemsep 0em
+    \item $\vb{u} + \vb{v} \in C \quad \forall \vb{u}, \vb{v} \in C$
+    \item $a\vb{u} \in C \quad \forall \vb{u} \in C, a \in \set{0,1}$
+\end{itemize}
+
+Hamming Weight:\\
+\tab $w(\vb{x}) =$ number of non-zero elements in $\vb{x}$
+
+Hamming Distance:\\
+\tab $d(\vb{x}, \vb{y}) =$ number of places in which $\vb{x}$ and $\vb{y}$ differ
+
+Hamming Distance for binary linear codes:\\
+\tab $d(\vb{x}, \vb{y}) = w(\vb{x} + \vb{y})$
+
+Minimum Hamming Distance:\\
+\begin{itemize}
+    \item $d(C) = \min{\set{d(\vb{x}, \vb{y}) : \vb{x}, \vb{y} \in C, \vb{x} \neq \vb{y}}}$
+    \item A code C can detect up to $v$ errors if $d(C) \geq v + 1$
+    \item A code C can correct up to $t$ errors if $d(C) \geq 2t + 1$
+\end{itemize}
+
+\defn{Generator Matrix}: A $k\times n$ matrix whose rows for a basis for a linear $(n,k)$ code of a subspace $C$ is said to be a generator matrix for $C$.
+
+\section{Groups, Rings, and Fields}
+
+\defn{Group} A group $(G, \cdot)$ is a set of objects $G$ on which a binary operation $\cdot$ is defined: $a \cdot b \in G : \forall a,b \in G$. The operation must satisfy:
+\begin{itemize}
+    \item Associativity: $a \cdot (b \cdot c) = (a \cdot b) \cdot c$
+    \item Identity: $\exists e \in G \mid \forall a \in G, a \cdot e = a$
+    \item Inverse: $\forall a \in G, \exists \text{ unique } a^{-1} \in G \mid a \cdot a^{-1} = e$
+\end{itemize}
+
+\defn{Commutative Group} A group is said to be commutative or abelian if it also satisfies: $\forall a,b \in G, a \cdot b = b \cdot a$
+
+\defn{Ring} A ring $(R, +, \cdot)$ is a set of objects $R$ on which two binary operations ($+$ and $\cdot$) are defined. It has properties:
+\begin{itemize}
+    \item $(R, +)$ is a commutative group under $+$ with identity "$0$"
+    \item Associativity: $a \cdot (b \cdot c) = (a \cdot b) \cdot c$
+    \item Distribution: $a \cdot (b + c) = (a \cdot b) + (a \cdot c)$
+\end{itemize}
+
+\defn{Commutative Ring} A ring is said to be commutative if it also satisfies: $\forall a,b \in G, a \cdot b = b \cdot a$
+
+\defn{Ring with Identity} A ring is said to be a ring with identity if the operation $\cdot$ has an identity element "$1$"
+
+\defn{Division Ring} Let $(R, +, \cdot)$ be a ring, and $R^* = R - {0}$. If the ring is a commutative ring with identity, and $(R^*, \cdot)$ is a group, then the ring is said to be a division ring.
+
+\defn{Field} A field $(F, +, \cdot)$ is a set of objects $F$ for which two binary operations ($+$ and $\cdot$) are defined. $F$ is said to be a field if and only if:
+\begin{itemize}
+    \item $(F,+)$ is a commutative group under $+$ with additive identity "$0$"
+    \item $(F^*, \cdot)$ is a commutative group under $\cdot$ with multiplicative identity "$1$"
+    \item Distribution: $a \cdot (b + c) = (a \cdot b) + (a \cdot c)$
+\end{itemize}
+
+Finite Integer Fields:\\
+\tab $S = \set{0, 1, \ldots, p - 1}$ form a finite field if $p$ is prime.
+
+Properties of Finite Fields:\\
+\begin{itemize}
+    \item Order: A field of order $q$ has cardinality $\abs{F} = q$, denoted $\gf{q}$
+    \item Let $\beta \in \gf{q}, \beta \neq 0$. The order of $\beta$ is the smallest positive integer $m$ such that $\beta^m = 1$
+    \item If $t$ is the order of $\beta$, then $t \mid (q - 1)$
+    \item In any finite field, there are on or more elements of order $q-1$ called primitive elements.
+\end{itemize}
+
+Euler's Totient Function:\\
+\tab $\phi(t) =$ number of positive integers less than $t$ that are relatively prime to $t$
+
+Finite Fields and Euler's Totient Function:\\
+\begin{itemize}
+    \item The number of elements in $\gf{q}$ of order $t$ is $\phi(t)$
+    \item In $\gf{q}$ there are exactly $\phi(q - 1)$ primitive elements
+    \item If $\alpha$ is a primitive element, then $1, \alpha, \alpha^2, \ldots, \alpha^{q-2}$ must be non-zero elements of $\gf{q}$
+\end{itemize}
+
+\defn{Primitive Polynomial} If an irriducible polynomial $p(x)$ such that the smallest positive integer $n$ for which $p(x)$ divides $x^n - 1$ is $n=p^m - 1$ for a prime $p$ and positive integer $m$, the polynomial is said to be a primitive polynomial.
+
+% Footer content
+\rule{0.3\linewidth}{0.25pt}
+\scriptsize\\
+Updated \today\\
+\href{https://github.com/DonneyF/formula-sheets}{https://github.com/DonneyF/formula-sheets}
+\end{multicols}
+\end{document}
