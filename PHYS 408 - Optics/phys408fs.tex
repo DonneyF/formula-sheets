@@ -199,6 +199,135 @@ Thin lens phase function:\\
 Thin lens phase function (ignore constant phase):\\
 \tab $\ds t_L(x,y) = \exp\left[-i\frac{k}{2f}(x^2 + y^2)\right]$
 
+\section{Polarization Optics}
+\subsection{Boundary Conditions}
+\vspace{-2mm}\hspace{3mm}\begin{tabular}{p{3cm}p{4cm}}
+	$\bullet \; \varepsilon_1\vb{E}_1^\perp = \varepsilon_2\vb{E}_2^\perp$ & $\bullet \;\vb{E}_1^\parallel = \vb{E}_2^\parallel$\\
+	$\bullet \;\vb{B}_1^\perp = \vb{B}_2^\perp$ & $\bullet \;\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
+\end{tabular}
+\vspace{-1.5mm}
+
+\subsection{$\vb{E}$ Parallel to Plane of Incidence}
+\tab $\vb{k}_I = k_I(\cos\theta_I\vu{z} + \sin\theta_I\vu{x})$\\
+\tab $\vb{E}_I = E_Ie^{i[k_I(\cos\theta_I z + \sin\theta_I x) - \omega t]}(\cos\theta_I\vu{x}-\sin\theta_I\vu{z})$\\
+\tab $\vb{k}_R = k_I(-\cos\theta_R\vu{z} + \sin\theta_R\vu{x})$\\
+\tab $\vb{E}_R = E_Re^{i[k_R(-\cos\theta_R z + \sin\theta_R x) - \omega t]}(\cos\theta_R\vu{x} + \sin\theta_R\vu{z})$\\
+\tab $\vb{k}_T = k_T(\cos\theta_T\vu{z} + \sin\theta_T\vu{x})$\\
+\tab $\vb{E}_T = E_Te^{i[k_T(\cos\theta_T z + \sin\theta_T x) - \omega t]}(\cos\theta_T\vu{x} - \sin\theta_T\vu{z})$
+
+Field Magnitudes (Fresnel Equations):\\
+\tab $\ds \frac{E_R}{E_I} = \left(\frac{\alpha-\beta}{\alpha + \beta}\right) \qquad \frac{E_T}{E_I} = \left(\frac{2}{\alpha + \beta}\right)$
+
+Reflection and Transmission Coefficients:\\
+\tab $\ds R = \left(\frac{\alpha-\beta}{\alpha+\beta}\right)^2 \qquad T = \alpha\beta\left(\frac{2}{\alpha + \beta}\right)^2$
+
+Brewster's Angle (no reflected wave, $\alpha = \beta$):\\
+\tab $\tan\theta_B = n_2/n_1$
+
+\subsection{$\vb{E}$ Perpendicular to Plane of Incidence}
+\tab $\vb{k}_I = k_I(\cos\theta_I\vu{z} + \sin\theta_I\vu{x})$\\
+\tab $\vb{B}_I = B_Ie^{i[k_I(\cos\theta_I z + \sin\theta_I x) - \omega t]}(-\cos\theta_I\vu{x}+\sin\theta_I\vu{z})$\\
+\tab $\vb{k}_R = k_I(-\cos\theta_R\vu{z} + \sin\theta_R\vu{x})$\\
+\tab $\vb{B}_R = B_Re^{i[k_R(-\cos\theta_R z + \sin\theta_R x) - \omega t]}(\cos\theta_R\vu{x} + \sin\theta_R\vu{z})$\\
+\tab $\vb{k}_T = k_T(\cos\theta_T\vu{z} + \sin\theta_T\vu{x})$\\
+\tab $\vb{B}_T = B_Te^{i[k_T(\cos\theta_T z + \sin\theta_T x) - \omega t]}(-\cos\theta_T\vu{x} + \sin\theta_T\vu{z})$
+
+Field Magnitudes (Fresnel Equations):\\
+\tab $\ds \frac{E_R}{E_I} = \left(\frac{1 - \alpha\beta}{1+\alpha\beta}\right) \qquad \frac{E_T}{E_I} = \left(\frac{2}{1 + \alpha\beta}\right)$
+
+Reflection and Transmission Coefficients:\\
+\tab $\ds R = \left(\frac{1 - \alpha\beta}{1+\alpha\beta}\right)^2 \qquad T = \alpha\beta\left(\frac{2}{1 + \alpha\beta}\right)^2$
+
+\subsection{Basic Polarization States}
+Linear Polarization Vector:\\
+\tab $\vb{E}_0 = E_{0x} e^{i\phi_x}\vu{x} + E_{0y} e^{i\phi_y}\vu{y}$\\
+\tab $\phi = \phi_x - \phi_y \in \{0, \pi, -\pi\}$
+
+Linear Polarization Angle $\psi$ relative to $x$-axis:\\
+\tab $\tan\psi = E_{0x}/E_{0y}$
+
+Circular Polarization Vector ($+i$ is counter-clockwise):\\
+\tab $\vb{E}_0 = E_0 \vu{x} \pm iE_0\vu{y}$
+
+Elliptical Polarization Vector:\\
+\tab $\vb{E}_0 = E_{0x} e^{i\phi_x}\vu{x} + E_{0y} e^{i\phi_y}\vu{y}$
+
+Elliptical Polarization Ellipticity:\\
+\tab $\tan \chi = b/a$
+
+\subsection{Jones Vectors}
+\tab $\ds \vb{E}_0 = E_{0x}\vu{x} + E_{0y} e^{i\phi}\vu{y} = E_0\begin{bmatrix}E_x \\ E_y
+\end{bmatrix}$\\
+\tab $\abs{E_x}^2 + \abs{E_y}^2 = 1$
+
+Linear Polarization:\\
+\tab $\ds \vu{e}_x = \begin{bmatrix}
+	1 \\ 0
+\end{bmatrix} \qquad \vu{e}_y = \begin{bmatrix}
+	0 \\ 1
+\end{bmatrix} \qquad \vu{e}_\alpha = \begin{bmatrix}
+	\cos\alpha \\ \sin\alpha
+\end{bmatrix}$
+
+Circular Polarization:\\
+\tab $\ds \vu{e}_\text{CW} = \frac{1}{\sqrt{2}} \begin{bmatrix}
+	1 \\ -i
+\end{bmatrix} \qquad \vu{e}_\text{CCW} = \frac{1}{\sqrt{2}} \begin{bmatrix}
+1 \\ i
+\end{bmatrix}$
+
+Elliptical Polarization:\\
+\tab $\ds \vu{e}_e = \frac{1}{\sqrt{2}}(\sin\chi + \cos\chi)e^{-i\psi}\vu{e}_\text{CW} +  \frac{1}{\sqrt{2}}(\sin\chi - \cos\chi)e^{i\psi}\vu{e}_\text{CCW}$
+
+\subsection{Jones Matrices}
+\tab $\vb{E_2} = T\vb{E_1}$
+
+Linear Polarizer in $x$-$y$ basis:\\
+\tab $T_p^{(x)} = \begin{bmatrix}
+	1 & 0\\
+	0 & 0
+\end{bmatrix} \qquad T_p^{(y)} = \begin{bmatrix}
+0 & 0\\
+0 & 1
+\end{bmatrix}$
+
+Linear Polarizer at angle $\alpha$ relative to $x$-axis:\\
+\tab $T_p^{(\alpha)} = \begin{bmatrix}
+	\cos^2\alpha & \cos\alpha\sin\alpha\\
+	\cos\alpha\sin\alpha & \sin^2\alpha
+\end{bmatrix}$
+
+Arbitrary Phase Retarder in $x$-$y$ basis:\\
+\tab $T_\phi^{(x)} = \begin{bmatrix}
+	1 & 0\\
+	0 & e^{i\phi}
+\end{bmatrix}$
+
+Phase retarder with fast axis at angle $\alpha$ relative to $x$-axis:\\
+\tab $T_\phi^{(\alpha)} = e^{-\frac{i\phi}{2}}\begin{bmatrix}
+	\cos^2\alpha + e^{i\phi}sin^2\alpha & (1 - e^{i\phi})\cos\alpha\sin\alpha\\
+	(1 - e^{i\phi})\cos\alpha\sin\alpha & \sin^2\alpha + e^{i\phi}\cos^2\alpha
+\end{bmatrix}$
+
+Rotate $x$-$y$ basis by an arbitrary angle:\\
+\tab $T^{(\theta)} = R_\theta^{-1}TR_\theta \qquad R_\theta = \begin{bmatrix}
+	\cos\theta & \sin\theta \\
+	-\sin\theta & \cos\theta
+\end{bmatrix}$
+
+Normal Modes:\\
+\tab $T_\text{total}\vb{E}_0 = \lambda_{1,2}\vb{E}_0$
+
+\subsection{Stokes Vectors}
+\tab $\ds \vb{E}_0 = E_{0x}\vu{x} + E_{0y} e^{i\phi}\vu{y}$\\
+\tab $S_0 = I_\text{tot} = \langle E_{0x}^2  + E_{0y}^2 \rangle$\\
+\tab $S_1 = I_\text{pol}\cos(2\psi)\cos(2\chi) = \langle E_{0x}^2  - E_{0y}^2 \rangle$\\
+\tab $S_2 = I_\text{pol}\sin(2\psi)\cos(2\chi) = \langle 2E_{0x}E_{0y}\cos\phi \rangle$\\
+\tab $S_3 = I_\text{pol}\sin(2\chi) = \langle 2E_{0x}E_{0y}\sin\phi\rangle$
+
+Polarization Degree:\\
+\tab $\ds \frac{I_\text{pol}}{I_\text{tot}} = \frac{1}{S_0}\sqrt{S_1^2 + S_2^2 + S_3^2}$
+
 \newpage
 \section{Vector Derivatives}
 \subsection{Cartesian}

@@ -1,2 +1,5 @@
 *.synctex.gz
 *.ini
+*.aux
+*.log
+*.out
