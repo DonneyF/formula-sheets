@@ -131,17 +131,22 @@ Hamming Distance for binary linear codes:\\
 \tab $d(\vb{x}, \vb{y}) = w(\vb{x} + \vb{y})$
 
 Minimum Hamming Distance:\\
+\vspace{-0.5em}
 \begin{itemize}[itemsep=0em]
     \item $d(C) = \min{\set{d(\vb{x}, \vb{y}) : \vb{x}, \vb{y} \in C, \vb{x} \neq \vb{y}}}$
     \item A code C can detect up to $v$ errors if $d(C) \geq v + 1$
     \item A code C can correct up to $t$ errors if $d(C) \geq 2t + 1$
 \end{itemize}
 
+Singleton Bound:\\
+\tab $d_\text{min} \leq n - k + 1$
+
 \defn{Generator Matrix}: A $k\times n$ matrix whose rows for a basis for a linear $(n,k)$ code of a subspace $C$ is said to be a generator matrix for $C$.
 
 \section{Groups, Rings, and Fields}
 
 \defn{Group} A group $(G, \cdot)$ is a set of objects $G$ on which a binary operation $\cdot$ is defined: $a \cdot b \in G : \forall a,b \in G$. The operation must satisfy:
+\vspace{-0.5em}
 \begin{itemize}[itemsep=0em]
     \item Associativity: $a \cdot (b \cdot c) = (a \cdot b) \cdot c$
     \item Identity: $\exists e \in G \mid \forall a \in G, a \cdot e = a$
@@ -151,6 +156,7 @@ Minimum Hamming Distance:\\
 \defn{Commutative Group} A group is said to be commutative or abelian if it also satisfies: $\forall a,b \in G, a \cdot b = b \cdot a$
 
 \defn{Ring} A ring $(R, +, \cdot)$ is a set of objects $R$ on which two binary operations ($+$ and $\cdot$) are defined. It has properties:
+\vspace{-0.5em}
 \begin{itemize}[itemsep=0em]
     \item $(R, +)$ is a commutative group under $+$ with identity "$0$"
     \item Associativity: $a \cdot (b \cdot c) = (a \cdot b) \cdot c$
@@ -164,6 +170,7 @@ Minimum Hamming Distance:\\
 \defn{Division Ring} Let $(R, +, \cdot)$ be a ring, and $R^* = R - {0}$. If the ring is a commutative ring with identity, and $(R^*, \cdot)$ is a group, then the ring is said to be a division ring.
 
 \defn{Field} A field $(F, +, \cdot)$ is a set of objects $F$ for which two binary operations ($+$ and $\cdot$) are defined. $F$ is said to be a field if and only if:
+\vspace{-0.5em}
 \begin{itemize}[itemsep=0em]
     \item $(F,+)$ is a commutative group under $+$ with additive identity "$0$"
     \item $(F^*, \cdot)$ is a commutative group under $\cdot$ with multiplicative identity "$1$"
@@ -174,6 +181,7 @@ Finite Integer Fields:\\
 \tab $S = \set{0, 1, \ldots, p - 1}$ form a finite field if $p$ is prime.
 
 Properties of Finite Fields:\\
+\vspace{-0.5em}
 \begin{itemize}[itemsep=0em]
     \item Order: A field of order $q$ has cardinality $\abs{F} = q$, denoted $\gf{q}$
     \item Let $\beta \in \gf{q}, \beta \neq 0$. The order of $\beta$ is the smallest positive integer $m$ such that $\beta^m = 1$
@@ -185,6 +193,7 @@ Euler's Totient Function:\\
 \tab $\phi(t) =$ number of positive integers less than $t$ that are relatively prime to $t$
 
 Finite Fields and Euler's Totient Function:\\
+\vspace{-0.5em}
 \begin{itemize}[itemsep=0em]
     \item The number of elements in $\gf{q}$ of order $t$ is $\phi(t)$
     \item In $\gf{q}$ there are exactly $\phi(q - 1)$ primitive elements
@@ -219,6 +228,7 @@ Hamming code parameters:\\
 \tab $C: (2^m-1, 2^m-1-m, 3) \quad C^\perp: (2^m-1, m, 2^{m-1})$
 
 Decoding Hamming Codes where columns of $H$ are arranged in order of increasing binary numbers:
+\vspace{-0.5em}
 \begin{enumerate}[itemsep=0em]
 	\item Compute $S(\vb{r}) = \vb{r}H^T$
 	\item If $S(\vb{r}) = 0$, then $\vb{r}$ is a valid codeword
@@ -232,6 +242,7 @@ Hamming Bound:\\
 \defn{Cyclic Code} A code $C$ is cyclic if $C$ is linear and a cyclic shift of any codeword is another codeword.
 
 Properties of a $(n,k)$ binary cyclic code $C$:\\
+\vspace{-0.5em}
 \begin{enumerate}[itemsep=0em]
 	\item There exists a generator polynomial of minimal degree $n-k$
 	\item Every code polynomial in $C$ can be expressed as $c(x) = m(x)g(x)$ where $m(x)$ has degree $< k-1$
@@ -256,14 +267,87 @@ Parity Check Matrix:\\
 	0 & 0 & 0 & h_k & \cdots & h_1 & h_0
 \end{bmatrix}$
 
+\columnbreak
 Systematic Generator Matrix:\\
+\vspace{-0.5em}
 \begin{enumerate}[itemsep=0em]
+	\setlength\itemsep{0em}
 	\item For $i = n-k$ to $n-1$, compute $x^i \mod g(x) = p_i(x)$
 	\item Rows of $G$ are formed by $x^i + p_i(x)$.
 \end{enumerate}
 
 Systematic Encoding:\\
 \tab $c(x) = m(x)x^{n-k} + m(x)x^{n-k}\mod g(x)$
+
+\defn{Shortened Cyclic Code} $(n, k) \rightarrow (n-u, k-u)$ by setting $u$ most significant bits of codeword to zero. Typically not cyclic. A CRC code is a shortened cyclic code.
+
+\section{Minimal Polynomials}
+\defn{Minimal Polynomial} Let $\alpha \in \gf{2^m}$. $p(x)$ is a minimal polynomial of $\alpha$ with respect to $\gf{2^m}$ if it is the smallest degree monic polynomial such that $p(\alpha) = 0$.
+
+Properties of Minimal Polynomials:\\
+\vspace{-0.5em}
+\begin{itemize}[itemsep=0em]
+	\item The degree of $p(x)$ is $d$, and $d \mid m$
+	\item $f(\alpha) = 0 \implies p(x) \mid f(x)$
+	\item $p(x)$ is irreducible in $\gf{2^m}$
+	\item If $\alpha$ is primitive, $p(x)$ is a primitive polynomial.
+\end{itemize}
+
+\defn{Conjugacy Class} Let $\alpha \in \gf{2^m}$. The conjugacy class of $\alpha$ is $\set{\alpha, \alpha^2, \alpha^{2^2}, \cdots, \alpha^{2^{d-1}}}$. If $p(\alpha) = 0$, any element of the conjugacy class is also a root.
+
+\defn{Cyclotomic Coset} The partition of powers of $\alpha$ by the conjugacy classes of a finite field is called the set of cyclotomic cosets.
+
+\section{BCH Codes}
+BCH codes are a generalization of cyclic Hamming codes. The generator polynomial $g(x)$ is a primitive polynomial. Codeword satisfies $g(\alpha) = 0 \implies c(\alpha) = 0$.
+
+\thm{BCH Bound} Let $C$ be a $(n,k)$ 2-ary cyclic code with generator polynomial $g(x)$. Let $\alpha \in \gf{2^m}$ be an element of order $n$, $n \mid 2^m - 1$. If $g(x)$ is a minimal polynomial with roots $\alpha^b, \alpha^{b+1}, \cdots, \alpha^{b+\delta-2}$, then $C$ has minimum distance at least $\delta$. $g(x)$ is degree $n-k$ and is the product of the minimal polynomials of the roots\\
+\tab $g(x) = \text{LCM}\{m_b(x), m_{b+1}(x), \cdots, m_{b+\delta-2}(x)\}$
+
+\defn{Narrow-Sense BCH Code} Narrow-Sense codes have parameter $b = 1$.
+
+\defn{Binary Primitive BCH Codes} For any $m$ and $t < n/2$, there exists a binary primitive BCH code with parameters $n = 2^m - 1$, $d \geq 2t = 1$, $n-k \leq mt$, where $d$ is the designed distance.
+
+Construction of a $t$ error correcting 2-ary BCH Code:\\
+\vspace{-0.5em}
+\begin{enumerate}[itemsep=0em]
+	\item Find $\alpha \in \gf{2^m}$ where $m$ is minimal.
+	\item Select $2t$ consecutive powers of $\alpha$ starting at $\alpha^b$.
+	\item Find $g(x)$ as the LCM of the minimal polynomials for those powers of $\alpha$.
+\end{enumerate}
+
+\section{Reed-Solomon Codes}
+Reed-Solomon codes are a subset of BCH codes and are non-binary. Properties:
+\vspace{-0.5em}
+\begin{itemize}[itemsep=0em]
+	\item $\alpha$ is primitive.
+	\item Generator polynomial $g(x) = (x-\alpha)(x-\alpha^2)\cdots(x-\alpha^{2t})$
+	\item $n = 2^m -1 \qquad n - k = 2t$
+\end{itemize}
+
+A RS code can correct up to $s$ errors and $r$ erasures if\\
+\tab $2s + r < 2t$
+
+\section{Convolutional Codes}
+\defn{Constraint Length} The constraint length $L$ is the length of longest input shift register with maximum number of memory elements plus one.
+
+Coding Rate:\\
+\tab $\ds R = \frac{\text{symbols shifted in a cycle}}{\text{number of output symbols}}$
+
+\section{LPDC Codes}
+\subsection{Parity Check Matrix Representation}
+\begin{itemize}[itemsep=0em]
+	\item Let $W_r$ be the number of $1$'s in each row
+	\item Let $W_c$ be the number of $1$'s in each column
+	\item A matrix is called low density if $W_c \ll n$ and $W_r \ll (n-k)$
+\end{itemize}
+
+\subsection{Graph Representation}
+\begin{itemize}[itemsep=0em]
+	\item Node are separated into variable nodes $f_i$ and check nodes $c_j$
+	\item An edge connects nodes $f_i$ and $c_j$ if $H_{ij}$ = 1
+\end{itemize}
+
+\defn{Regular LPDC Code} A LPDC code is said to be regular if $W_c$ and $W_r = W_c(n/(n-l))$ are constant.
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}

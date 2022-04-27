@@ -56,9 +56,6 @@
 \newcommand{\tab}{\hspace{.02\textwidth}}
 \newcommand{\ds}{\displaystyle}
 
-\def\rcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{ScriptR}}$}}}
-\def\brcurs{{\mbox{$\resizebox{.09in}{.08in}{\includegraphics[trim= 1em 0 14em 0,clip]{BoldR}}$}}}
-
 \renewcommand{\dv}[2]{\frac{d#1}{d#2}}
 
 % Redefine some commands for newtxmath boldness
@@ -94,13 +91,6 @@
 	$\ds \div{\vb{B}} = 0$ & $\ds \curl{\vb{B}} = \mu_0\vb{J} + \mu_0\varepsilon_0\pdv{\vb{E}}{t}$
 \end{tabular}
 
-\section{Integral Maxwell's Equations}
-
-\begin{tabular}{p{2.75cm}p{5cm}}
-	$\ds \oint \vb{E}\cdot d\vb{a} = \frac{Q_\text{enc}}{\varepsilon_0}$ & $\ds \oint \vb{B}\cdot d\vb{a} = 0$\\
-	$\ds \oint \vb{E}\cdot d\vb{l} = -\dv{\Phi_B}{t}$ & $\ds \oint \vb{B}\cdot d\vb{l} = \mu_0 I_\text{enc} + \varepsilon_0\mu_0 \dv{\Phi_E}{t}$
-\end{tabular}
-
 \section{Wave Optics}
 Monochromatic Wave:\\
 \tab $\bm{\mathcal{E}} = \Re{\vb{E}(\vb{r}) e^{-i\omega t}}$
@@ -121,24 +111,25 @@ Interference of multiple fields:\\
 Fresnel (Paraxial) Approximation:\\
 \tab $\sqrt{x^2 + y^2} \ll z$
 
-Transverse Laplacian Operator:\\
-\tab $\laplacian_T = \pdv{x} + \pdv{y}$
-
 Paraxial Wave Equation:\\
-\tab $\ds \laplacian_T \vb{E} + i2k\pdv{\vb{E}}{z} = \vb{0}$
+\tab $\ds \laplacian_T \vb{E} + i2k\pdv{\vb{E}}{z} = \vb{0} \qquad  \laplacian_T = \pdv[2]{x} + \pdv[2]{y}$
 
 Fresnel Approximation of a spherical wave:\\
 \tab $\ds \vb{E}(\vb{r}) \approx \frac{\vb{E}_0}{z}\exp\left[ik \frac{x^2 + y^2}{2z}\right] = \frac{\vb{E}_0}{z}\exp\left[ik\frac{\rho^2}{2z}\right]$
 
+Grating Equation:\\
+\tab $\sin\theta_m = \sin\theta + m\lambda/d$
+
 \section{Beam Optics}
 Gaussian beam with Rayleigh length $z_0$:\\
 \tab $\ds \vb{E}(\vb{r}) = \vb{E}_0 \frac{w_0}{w(z)}\exp\left[-\frac{\rho^2}{(w(z))^2}\right]\times\exp\left[ik\frac{\rho^2}{2R(z)}\right]\exp\left[ikz - i\tan^{-1}\left(\frac{z}{z_0}\right)\right]$\\
-\tab $q(z) = z - z_0$\\
+\tab $q(z) = z - iz_0$\\
 \tab $\ds \frac{1}{q(z)} = \frac{1}{R(z)} + i\frac{\lambda}{\pi}\frac{1}{(w(z))^2}$
 
 Beam waist:\\
 \tab $\ds w_0 = \sqrt{\frac{\lambda z_0}{\pi}}$
 
+\columnbreak
 Beam Radius:\\
 \tab $\ds w(z) = w_0\sqrt{1 + \left(\frac{z}{z_0}\right)^2}$
 
@@ -152,7 +143,7 @@ Gaussian beam total power:\\
 \tab $P = \frac{I_0}{2}\pi w_0^2$
 
 Depth of focus (confocal parameter):\\
-\tab $\ds d = 2z_0 = \frac{2\pi w_0^2}{\lambda}$
+\tab $d = 2z_0 = 2\pi w_0^2/\lambda$
 
 \section{Propagation of Paraxial Waves}
 ABCD Matrix of an optical system:\\
@@ -184,6 +175,7 @@ Free space propagation in paraxial limit:\\
 \tab $\ds E(x',y',z) \approx \frac{e^{ikz}}{i\lambda z}\exp\left[ik\frac{x'^2 + y'^2 }{2z}\right]\times\iint E(x,y,z)\exp\left[ik\frac{x^2 + y^2 }{2z}\right]\exp\left[-\frac{ik}{z}(x'x + y'y)\right]\,dx\,dy$\\
 %\tab $\ds E(x',y',z) \approx \frac{e^{ikz}}{i\lambda z}\exp\left[ik\frac{x'^2 + y'^2 }{2z}\right]\mathcal{F}\left\{E(x,y, z)\exp\left[ik\frac{x^2 + y^2 }{2z}\right]\right\}$
 
+\columnbreak
 Free space propagation in Fraunhofer limit:\\
 \tab $\ds E(x', y', z) \approx \frac{e^{ikz}}{i\lambda z} \exp\left[ik\frac{x'^2 + y'^2}{2z}\right]\mathcal{F}\{E(x,y, z)\}$
 
@@ -191,30 +183,16 @@ Thin lens thickness function:\\
 \tab $\ds \Delta(x,y) = \Delta_0 - R_1\left(1 - \sqrt{1 - \frac{x^2 + y^2}{R_1^2}}\right) + R_2\left(1 - \sqrt{1 - \frac{x^2 + y^2}{R_2^2}}\right)$
 
 Thin lens thickness function in paraxial limit:\\
-\tab $\ds \Delta(x,y) \approx \Delta_0 - \frac{x^2 + y^2}{2}\left(\frac{1}{R_1} - \frac{1}{R_2}\right)$
+\tab $\Delta(x,y) \approx \Delta_0 - \frac{x^2 + y^2}{2}\left(\frac{1}{R_1} - \frac{1}{R_2}\right)$
 
 Thin lens phase function:\\
 \tab $t_L(x,y) = \exp[ikn\Delta(x,y)]\exp[ik(\Delta_0 - \Delta(x,y))]$\\
 
 Thin lens phase function (ignore constant phase):\\
-\tab $\ds t_L(x,y) = \exp\left[-i\frac{k}{2f}(x^2 + y^2)\right]$
+\tab $t_L(x,y) = \exp\left[-i\frac{k}{2f}(x^2 + y^2)\right]$
 
 \section{Polarization Optics}
-\subsection{Boundary Conditions}
-\vspace{-2mm}\hspace{3mm}\begin{tabular}{p{3cm}p{4cm}}
-	$\bullet \; \varepsilon_1\vb{E}_1^\perp = \varepsilon_2\vb{E}_2^\perp$ & $\bullet \;\vb{E}_1^\parallel = \vb{E}_2^\parallel$\\
-	$\bullet \;\vb{B}_1^\perp = \vb{B}_2^\perp$ & $\bullet \;\ds \frac{\vb{B}_1^\parallel}{\mu_1} = \frac{\vb{B}_2^\parallel}{\mu_2}$
-\end{tabular}
-\vspace{-1.5mm}
-
 \subsection{$\vb{E}$ Parallel to Plane of Incidence}
-\tab $\vb{k}_I = k_I(\cos\theta_I\vu{z} + \sin\theta_I\vu{x})$\\
-\tab $\vb{E}_I = E_Ie^{i[k_I(\cos\theta_I z + \sin\theta_I x) - \omega t]}(\cos\theta_I\vu{x}-\sin\theta_I\vu{z})$\\
-\tab $\vb{k}_R = k_I(-\cos\theta_R\vu{z} + \sin\theta_R\vu{x})$\\
-\tab $\vb{E}_R = E_Re^{i[k_R(-\cos\theta_R z + \sin\theta_R x) - \omega t]}(\cos\theta_R\vu{x} + \sin\theta_R\vu{z})$\\
-\tab $\vb{k}_T = k_T(\cos\theta_T\vu{z} + \sin\theta_T\vu{x})$\\
-\tab $\vb{E}_T = E_Te^{i[k_T(\cos\theta_T z + \sin\theta_T x) - \omega t]}(\cos\theta_T\vu{x} - \sin\theta_T\vu{z})$
-
 Field Magnitudes (Fresnel Equations):\\
 \tab $\ds \frac{E_R}{E_I} = \left(\frac{\alpha-\beta}{\alpha + \beta}\right) \qquad \frac{E_T}{E_I} = \left(\frac{2}{\alpha + \beta}\right)$
 
@@ -225,13 +203,6 @@ Brewster's Angle (no reflected wave, $\alpha = \beta$):\\
 \tab $\tan\theta_B = n_2/n_1$
 
 \subsection{$\vb{E}$ Perpendicular to Plane of Incidence}
-\tab $\vb{k}_I = k_I(\cos\theta_I\vu{z} + \sin\theta_I\vu{x})$\\
-\tab $\vb{B}_I = B_Ie^{i[k_I(\cos\theta_I z + \sin\theta_I x) - \omega t]}(-\cos\theta_I\vu{x}+\sin\theta_I\vu{z})$\\
-\tab $\vb{k}_R = k_I(-\cos\theta_R\vu{z} + \sin\theta_R\vu{x})$\\
-\tab $\vb{B}_R = B_Re^{i[k_R(-\cos\theta_R z + \sin\theta_R x) - \omega t]}(\cos\theta_R\vu{x} + \sin\theta_R\vu{z})$\\
-\tab $\vb{k}_T = k_T(\cos\theta_T\vu{z} + \sin\theta_T\vu{x})$\\
-\tab $\vb{B}_T = B_Te^{i[k_T(\cos\theta_T z + \sin\theta_T x) - \omega t]}(-\cos\theta_T\vu{x} + \sin\theta_T\vu{z})$
-
 Field Magnitudes (Fresnel Equations):\\
 \tab $\ds \frac{E_R}{E_I} = \left(\frac{1 - \alpha\beta}{1+\alpha\beta}\right) \qquad \frac{E_T}{E_I} = \left(\frac{2}{1 + \alpha\beta}\right)$
 
@@ -240,8 +211,7 @@ Reflection and Transmission Coefficients:\\
 
 \subsection{Basic Polarization States}
 Linear Polarization Vector:\\
-\tab $\vb{E}_0 = E_{0x} e^{i\phi_x}\vu{x} + E_{0y} e^{i\phi_y}\vu{y}$\\
-\tab $\phi = \phi_x - \phi_y \in \{0, \pi, -\pi\}$
+\tab $\vb{E}_0 = E_{0x} e^{i\phi_x}\vu{x} + E_{0y} e^{i\phi_y}\vu{y} \quad \phi = \phi_x - \phi_y \in \{0, \pi, -\pi\}$
 
 Linear Polarization Angle $\psi$ relative to $x$-axis:\\
 \tab $\tan\psi = E_{0x}/E_{0y}$
@@ -257,8 +227,7 @@ Elliptical Polarization Ellipticity:\\
 
 \subsection{Jones Vectors}
 \tab $\ds \vb{E}_0 = E_{0x}\vu{x} + E_{0y} e^{i\phi}\vu{y} = E_0\begin{bmatrix}E_x \\ E_y
-\end{bmatrix}$\\
-\tab $\abs{E_x}^2 + \abs{E_y}^2 = 1$
+\end{bmatrix}$
 
 Linear Polarization:\\
 \tab $\ds \vu{e}_x = \begin{bmatrix}
@@ -305,7 +274,7 @@ Arbitrary Phase Retarder in $x$-$y$ basis:\\
 
 Phase retarder with fast axis at angle $\alpha$ relative to $x$-axis:\\
 \tab $T_\phi^{(\alpha)} = e^{-\frac{i\phi}{2}}\begin{bmatrix}
-	\cos^2\alpha + e^{i\phi}sin^2\alpha & (1 - e^{i\phi})\cos\alpha\sin\alpha\\
+	\cos^2\alpha + e^{i\phi}\sin^2\alpha & (1 - e^{i\phi})\cos\alpha\sin\alpha\\
 	(1 - e^{i\phi})\cos\alpha\sin\alpha & \sin^2\alpha + e^{i\phi}\cos^2\alpha
 \end{bmatrix}$
 
@@ -328,126 +297,128 @@ Normal Modes:\\
 Polarization Degree:\\
 \tab $\ds \frac{I_\text{pol}}{I_\text{tot}} = \frac{1}{S_0}\sqrt{S_1^2 + S_2^2 + S_3^2}$
 
-\newpage
-\section{Vector Derivatives}
-\subsection{Cartesian}
-$d\vb{l} = dx\,\vu{x} + dy\,\vu{y} + dz\,\vu{z}$
-\hspace{1cm}
-$d\uptau = dx\,dy\,dz$
+\section{Optical Cavities}
+ABCD matrix approach:\\
+\tab $\begin{bmatrix}
+	U_2^{+} \\ U_2^{-}
+\end{bmatrix} = \begin{bmatrix}
+	A & B \\
+	C & D
+\end{bmatrix} \begin{bmatrix}
+U_1^{+} \\ U_1^{-}
+\end{bmatrix} = M_{21} \begin{bmatrix}
+U_1^{+} \\ U_1^{-}
+\end{bmatrix}$
 
-Gradient:\\
-\tab $\ds \grad{f} =  \pdv{f}{x}\vu{x} + \pdv{f}{y}\vu{y} + \pdv{f}{z}\vu{z}$
+Two interfaces:\\
+\tab $\ds M_{21} = \frac{1}{2n_2}\begin{bmatrix}
+	n_2 + n_1 & n_2 - n_1 \\ n_2 - n_1 & n_2 + n_1
+\end{bmatrix}$
 
-Divergence:\\
-\tab $\ds \div{\vb{v}} = \pdv{v_x}{x} + \pdv{v_y}{y} + \pdv{v_z}{z}$
+Mirror:\\
+\tab $\ds M_m = \frac{i}{\sqrt{T}}\begin{bmatrix}1 & -\sqrt{R} \\ \sqrt{R} & -1\end{bmatrix} \qquad t = i\sqrt{T}, r = \sqrt{R}$
 
-Curl:\\
-\vspace{-3mm}
-\tab $\ds \curl{\vb{v}} = \left(\pdv{v_z}{y} - \pdv{v_y}{z}\right)\vu{x} + \left(\pdv{v_x}{z} - \pdv{v_z}{x}\right)\vu{y} + \left(\pdv{v_y}{x} - \pdv{v_x}{y}\right)\vu{z}$
+Fabry-Perot Cavity (two mirrors a distance $d$ apart):\\
+\tab $\ds M_\text{FP} = \frac{1}{t_1^{*}}\begin{bmatrix}
+	1 & -r_1 \\ r_1 & -1
+\end{bmatrix} \begin{bmatrix}
+e^{ik_0d} & 0 \\ 0 & e^{-ik_0d}
+\end{bmatrix} \frac{1}{t_2^{*}}\begin{bmatrix}
+ 1 & -r_2 \\ r_2 & -1
+\end{bmatrix}$\\
+\tab $\ds t_\text{FP} = \frac{t_1t_2e^{i\varphi}}{1 - r_1r_2e^{2i\varphi}} \qquad \varphi = k_0d$\\
+\tab $\ds T_\text{FP} = [1 + (2\mathcal{F}/\pi)^2\sin^2\varphi]^{-1}$
 
-\subsection{Spherical}
-$d\uptau = r^2\sin\theta\,dr\,d\theta\,d\phi$
+Finesse:\\
+\tab $\ds \mathcal{F} = \frac{\pi\sqrt{R}}{1 - R}$
 
-Gradient:\\
-\tab $\ds \grad{f} = \pdv{f}{r}\vu{r} + \frac{1}{r}\pdv{f}{\theta}\vu*{\theta} + \frac{1}{r\sin\theta}\pdv{f}{\phi}\vu*{\phi}$
+Free Spectral Range:\\
+\tab $\nu_\text{FSR} = c/2d$
 
-Divergence:\\
-\tab $\ds \div{\vb{v}} = \frac{1}{r^2}\pdv{r}(r^2v_r) + \frac{1}{r\sin\theta}\pdv{\theta}(\sin\theta v_\theta) + \frac{1}{r\sin\theta}\pdv{v_\phi}{\phi}$
+Spectral line width (FWHM):\\
+\tab $\Delta \nu \approx \nu_\text{FSR}/\mathcal{F}$
 
-Curl:\\
-\tab $\ds \curl{\vb{v}} = \frac{1}{r\sin\theta}\left[\pdv{\theta}(\sin\theta\, v_\phi)- \pdv{v_\theta}{\phi}\right]\vu{r}\,+$\\
-\tab \tab $\ds \frac{1}{r}\left[\frac{1}{\sin\theta}\pdv{v_r}{\phi}-\pdv{r}(r v_\phi)\right]\vu*{\theta} + \frac{1}{r}\left[\pdv{r}(r v_\theta)-\pdv{v_r}{\theta}\right]\vu*{\phi}$
+Cavity Uncertainty Relation:\\
+\tab $\Delta t \Delta f = \tau_\gamma \Delta\nu = 1/2\pi$
 
-\subsection{Cylindrical}
-$d\uptau = s\,ds\,d\phi\,dz$
+Quality Factor:\\
+\tab $Q = 2\pi\frac{\text{stored energy}}{\text{energy loss per oscillation cycle}} = q\mathcal{F} \quad q \in \mathbb{Z}$
 
-Gradient:\\
-\tab $\ds \grad{f} = \pdv{f}{s}\vu{s}+\frac{1}{s}\pdv{f}{\phi}\vu*{\phi}+\pdv{f}{z}\vu{z}$
+Resonator Stability:\\
+\tab $0 \leq \left(1 + d/R_1\right)\left(1 + d/R_2\right) \leq 1$
 
-Divergence:\\
-\tab $\ds \div{\vb{v}} = \frac{1}{s}\pdv{s}(sv_s)+\frac{1}{s}\pdv{v_\phi}{\phi} + \pdv{v_z}{z}$
+Resonant frequencies in a stable cavity:\\
+\tab $\nu_{q,l,m} = \nu_\text{FSR}\left[q + \frac{1}{\pi}(1 + l + m)\cos^{-1}(g_1g_2)\right]$
 
-Curl:\\
-\tab $\ds \curl{\vb{v}} = \left[\frac{1}{s}\pdv{v_z}{\phi}-\pdv{v_\phi}{z}\right]\vu{s}+\left[\pdv{v_s}{z}-\pdv{v_z}{s}\right]\vu*{\phi}+\frac{1}{s}\left[\pdv{s}(sv_\phi)-\pdv{v_s}{\phi}\right]\vu{z}$
+Gaussian beam parameters:\\
+\tab $\ds z_0^2 = \frac{g_1g_2(1-g_1g_2)}{(g_1 + g_2-2g_1g_2)^2} \quad w_0^2 = \frac{d\lambda}{\pi}\frac{\sqrt{g_1g_2(1-g_1g_2)}}{g_1+g_2-2g_1g_2}$
 
-\section{Fundamental Theorems}
-Fundamental Theorem of Line Integrals:\\
-\tab $\ds \int_{\vb{a}}^{\vb{b}}(\grad{f})\cdot d\vb{l} = f(\vb{b})-f(\vb{a})$
+\section{Lasers}
 
-Divergence Theorem:\\
-\tab $\ds \int (\div \vb{A})\, d\uptau = \oint \vb{A}\cdot d\vb{a}$
+Einstein coefficients in a two level system:\\
+\tab Spontaneous emission: Rate = $AN_2$\\
+\tab Absorption (stimulated): Rate = $B_{12}N_1\rho(\nu_{12})$\\
+\tab Stimulated emission: Rate = $B_{21}N_2\rho(\nu_{12})$
 
-Stoke's Theorem:\\
-\tab $\ds \int (\curl{\vb{A}})\cdot d\vb{a} = \oint \vb{A}\cdot d\vb{l}$
+Spontaneous Emission ($d_{12} = \bra{1}e\vu{x}\ket{2}$):\\
+\tab $\ds A = \frac{1}{\tau_{sp}} = \gamma_{sp} = \frac{1}{4\pi\varepsilon_0}\frac{4d_{12}^2\omega_0^3}{4\hbar c^3}$
 
-\section{Vector Identities}
-\tab $\ds \div{\left(\frac{\vu{\brcurs}}{\rcurs^2}\right)} = 4\pi \delta^3(\brcurs)$
-\\
-\tab $\ds \grad{\left(\frac{1}{\rcurs}\right)} = -\frac{\vu{\brcurs}}{\rcurs}$
-\\
-\tab $\ds \delta(kx) = \frac{1}{\abs{k}}\delta(x)$
+\columnbreak
+Einstein B coefficient (Blackbody radiation):\\
+\tab $A/B = 8\pi h/\lambda^3$
 
-\section{Spherical Coordinates}
-\tab $x = r\sin\theta\cos\phi$
-\\
-\tab $y = r\sin\theta\sin\phi$
-\\
-\tab $z = r\cos\theta$
-\\
-\vspace{3mm}
-\tab $\vu{x} = \sin\theta\cos\phi\,\vu{r} + \cos\theta\cos\phi\,\vu*{\theta} - \sin\phi\,\vu*{\phi}$
-\\
-\tab $\vu{y} = \sin\theta\sin\phi\,\vu{r} + \cos\theta\sin\phi\,\vu*{\theta} + \cos\phi\,\vu*{\phi}$
-\\
-\tab $\vu{z} = \cos\theta \, \vu{r} - \sin\theta \, \vu*{\theta}$
-\\
-\vspace{3mm}
-\tab $r=\sqrt{x^2 + y^2 + z^2}$
-\\
-\tab $\theta = \tan^{-1}\left(\sqrt{x^2+y^2}/z \right)$
-\\
-\tab $\phi = \tan^{-1}(y/x)$
-\\
-\vspace{3mm}
-\tab $\vu{r}=\sin\theta\cos\phi\,\vu{x} + \sin\theta\sin\phi\,\vu{y}+\cos\theta\,\vu{z}$
-\\
-\tab $\vu*{\theta}=\cos\theta\cos\phi\,\vu{x}+\cos\theta\sin\phi\,\vu{y}-\sin\theta\,\vu{z}$
-\\
-\tab $\vu*{\phi} = -\sin\phi\,\vu{x}+\cos\phi\,\vu{y}$
+Gain Coefficient:\\
+\tab $\dv{I}{z} = g(\omega)I$
 
-\section{Cylindrical Coordinates}
-\tab $x = s\cos\phi$
-\\
-\tab $y = s \sin\phi$
-\\
-\tab $z=z$
-\\
-\vspace{3mm}
-\tab $\vu{x}=\cos\phi\,\vu{s}-\sin\phi\vu*{\phi}$
-\\
-\tab $\vu{y} = \sin\phi\,\vu{s}+\cos\phi\,\vu*{\phi}$
-\\
-\tab $\vu{z} = \vu{z}$
-\\
-\vspace{3mm}
-\tab $s = \sqrt{x^2+y^2}$
-\\
-\tab $\phi = \tan^{-1}(y/x)$
-\\
-\tab $z = z$
-\\
-\vspace{3mm}
-\tab $\vu{s} = \cos\phi\,\vu{x}+\sin\phi\,\vu{y}$
-\\
-\tab $\vu*{\phi}=-\sin\phi\,\vu{x}+\cos\phi\,\vu{y}$
-\\
-\tab $\vu{z} = \vu{z}$
+Absorption cross-section:\\
+\tab $\sigma(\omega) = \frac{B\hbar\omega}{c\Delta\omega} = \frac{A\lambda^2}{4\Delta\omega}$
 
-\section{Trig Identities}
-\tab $2\cos\theta\cos\phi = \cos(\theta - \phi) + \cos(\theta + \phi)$\\
-\tab $2\sin\theta\sin\phi = \cos(\theta - \phi) - \cos(\theta + \phi)$\\
-\tab $2\sin\theta\cos\phi = \sin(\theta + \phi) + \sin(\theta - \phi)$\\
-\tab $2\cos\theta\sin\phi = \sin(\theta + \phi) - \sin(\theta - \phi)$\\
+Absorption \& emission rate:\\
+\tab $B\rho(\omega) = \frac{I\sigma}{\hbar\omega}$
+
+Saturation Intensity:\\
+\tab $I_\text{sat} = \hbar\omega/\sigma\tau$
+
+Pumping rate:\\
+\tab $R_p = B\rho(\omega_p) = \frac{I_p\sigma(\omega_p)}{\hbar\omega_p}$
+
+Single-pass gain:\\
+\tab $\ds \ln\left(\frac{I_2}{I_1}\right) + \frac{I_2 - I_1}{I_\text{sat}} = g_0l_g$
+
+Four Level System Lasing:\\
+\tab $\ds N_2 = \frac{R_p\tau}{1 + R_p\tau + I(\omega_l)/I_\text{sat}(\omega_l)}N_\text{tot}$
+
+\subsection{Gain medium in a cavity}
+Steady state, losses compensated:\\
+\tab $I_2/I_1 \approx 1 + (A + T_\text{oc})$
+
+Output intensity:\\
+\tab $I_\text{out} = I_\text{sat}T_\text{oc}\left[\frac{g_ol_g}{A+T_\text{oc}}-1\right]$
+
+Optimal output coupler:\\
+\tab $T_\text{oc} = \sqrt{g_ol_gA} - A$
+
+Density of cavity modes under gain bandwidth:\\
+\tab $N_\text{cav} = \frac{8\pi}{\lambda^3\omega}\Delta\omega$
+
+Cavity decay rate for gain medium loss $a$:\\
+\tab $\gamma_c = ca$
+
+Threshold inversion:\\
+\tab $N_t = \frac{\gamma_c}{\gamma}N_\text{cav}$
+
+Normalized pumping rate:\\
+\tab $p = \frac{P}{\gamma N_t}$
+
+\subsection{Ultrafast Optics}
+Chirped pulse width:\\
+\tab $\delta t \approx \frac{\phi^{''}(\omega)}{\delta t_0}$
+
+Velocity:\\
+\tab $v_\phi = \omega_0/k_0 \qquad v_g = 1/k_0^{'}$
+
+Group Delay Dispersion:\\
+\tab $\delta t(z) \approx k_0^{''}z/\delta t_0$
 
 % Footer content
 \rule{0.3\linewidth}{0.25pt}
