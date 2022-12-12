@@ -160,8 +160,7 @@ Laplace's Equation:\\
 \end{equation*}
 
 Legendre Polynomials:
-\begin{itemize}
-	\itemsep0em
+\begin{itemize}[noitemsep,topsep=0pt]
 	\item $P_0(x) = 1$
 	\item $P_1(x) = x$
 	\item $P_2(x) = (3x^2 - 1)/2$
@@ -205,12 +204,12 @@ Energy in a Dielectric System:\\
 \subsection{Boundary Conditions in Electrostatics}
 \begin{itemize}
 	\itemsep0em
-	\item $\vb{D}_{\text{above}}^{\perp} - \vb{D}_{\text{below}}^{\perp}  = \sigma_f$
+	\item $D_{\text{above}}^{\perp} - D_{\text{below}}^{\perp}  = \sigma_f$
 	\item $\vb{D}_{\text{above}}^{\parallel} - \vb{D}_{\text{below}}^{\parallel} = \vb{P}_{\text{above}}^{\parallel} - \vb{P}_{\text{below}}^{\parallel}$
-	\item $\vb{E}_{\text{above}}^{\perp} - \vb{E}_{\text{below}}^{\perp}  = \sigma_{\text{tot}}/\epsilon_0$
+	\item $E_{\text{above}}^{\perp} - E_{\text{below}}^{\perp}  = \sigma_f/\epsilon_0$
 	\item $\vb{E}_{\text{above}}^{\parallel} - \vb{E}_{\text{below}}^{\parallel}  = \vb{0}$
 	\item $V_\text{above} = V_\text{below}$
-	\item $\epsilon_\text{above}\vb{E}_\text{above}^\perp - \epsilon_\text{below}\vb{E}_\text{below}^\perp = \sigma_f$
+	\item $\epsilon_\text{above}E_\text{above}^\perp - \epsilon_\text{below}E_\text{below}^\perp = \sigma_f$
 	\item $\ds \epsilon_\text{above}\pdv{V_\text{above}}{n} - \epsilon_\text{below}\pdv{V_\text{below}}{n} = -\sigma_f$
 \end{itemize}
 
@@ -220,6 +219,9 @@ Lorentz Force Law:\\
 
 Currents:\\
 \tab $\vb{I} = \lambda \vb{v}$ \qquad $\vb{K} = \sigma\vb{v}$ \qquad $\vb{J} = \rho\vb{v}$
+
+Continuity Equation:\\
+\tab $\ds \grad \cdot \vb{J} = - \pdv{\rho}{t}$
 
 Biot-Savart Law:\\
 \tab $\ds \vb{B}(\vb{r}) = \frac{\mu_0}{4\pi}\int \frac{\vb{I}\cross\vu{\brcurs}}{\rcurs^2}\,dl' = \frac{\mu_0I}{4\pi}\int \frac{d\vb{l'}\cross\vu{\brcurs}}{\rcurs^2}$
@@ -261,7 +263,7 @@ Volume bound current:\\
 \subsection{Boundary Conditions in Magnetostatics}
 \begin{itemize}
 	\itemsep0em
-	\item $\vb{B}_\text{above}^\parallel - \vb{B}_\text{below}^\parallel = \mu_0\vb{K}$
+	\item $B_\text{above}^\parallel - B_\text{below}^\parallel = \mu_0K$
 	\item $\vb{B}_\text{above} - \vb{B}_\text{below} = \mu_0(\vb{K}\cross\vu{n})$
 	\item $\vb{A}_\text{above} = \vb{A}_\text{below}$
 	\item $\ds \pdv{A_\text{above}}{n} - \pdv{A_\text{below}}{n} = -\mu_0\vb{K}$
