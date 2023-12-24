@@ -117,7 +117,7 @@ Electric Field due to a continuous charge distribution:\\
 \tab $\ds V(b) - V(a) = - \int_{a}^{b} \vb{E} \cdot d\vb{l}$
 
 Poisson's Equation:\\
-\tab $\ds \nabla^2 V = \rho/\epsilon_0$
+\tab $\ds \nabla^2 V = -\rho/\epsilon_0$
 
 Potential due to a localized charge distribution:\\
 \tab $\ds V(\vb{r}) = \frac{1}{4\pi\epsilon_0} \int \frac{\rho(\vb{r'})}{\rcurs}\,dV$
@@ -178,7 +178,7 @@ Potential at large distances ($\alpha$ is between $\vb{r}$ and $\vb{r'}$):\\
 \tab $\ds V(\vb{r}) = \frac{1}{4\pi\epsilon_0}\sum_{n = 0}^{\infty}\frac{1}{r^{n + 1}}\int (r')^n P_n(\cos\alpha)\rho(\vb{r'})\,d\uptau$
 
 Dipole Moment:\\
-\tab $\ds \vb{p} = \sum_{i=1}^{n}q_i \vb{r'}_i = \int \vb{r'}\rho(\vb{r'})\,d\uptau$
+\tab $\ds \vb{p} = \sum_{i=1}^{n}q_i \vb{r'}_i = \int \vb{r'}\rho(\vb{r'})\,d\uptau'$
 
 Electric Dipole Potential:\\
 \tab $\ds V_{\text{dip}}(\vb{r}) = \frac{1}{4\pi\epsilon_0} \frac{\vb{p}\cdot\vu{r}}{r^2}$
@@ -232,28 +232,28 @@ Biot-Savart Law:\\
 Vector Potential Poisson's Equation:\\
 \tab $\nabla^2\vb{A} = -\mu_0 \vb{J}$
 
-Vector Potential when $\vb{A} \rightarrow \vb{0}$ at infinity:\\
-\tab $\ds \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi}\int \frac{\vb{J}(\vb{r'})}{\rcurs}\,d\uptau$
+Vector Potential when $\vb{J} \rightarrow \vb{0}$ at infinity:\\
+\tab $\ds \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi}\int \frac{\vb{J}(\vb{r'})}{\rcurs}\,d\uptau'$
 
 Multipole Expansion of a current loop:\\
 \tab $\ds \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \sum_{n = 0}^{\infty} \frac{1}{r^{n+1}} \oint (r')^n P_n(\cos\alpha)\,d\vb{l'}$\\
 \tab $\ds \vb{A}(\vb{r}) = \frac{\mu_0}{4\pi} \frac{\vb{m}\times\vu{r}}{r^2}$
 
 Magnetic Dipole Moment for a vector area $\vb{a}$:\\
-\tab $\ds \vb{m} = I\int d\vb{A} = I\vb{a}$
+\tab $\ds \vb{m} = I\int d\vb{a} = I\vb{a}$
 
 \section{Magnetic Fields in Matter}
 Bound Currents:\\
-\tab $\vb{J}_B = \curl{\vb{M}}$ \qquad $\vb{K}_B = \vb{M}\cross\vb{n}$
+\tab $\vb{J}_B = \curl{\vb{M}}$ \qquad $\vb{K}_B = \vb{M}\cross\vb{\hat{n}}$
 
-Auxillary Field:\\
+Auxiliary Field:\\
 \tab $\ds \vb{H} = \frac{\vb{B}}{\mu_0} - \vb{M}$ \quad\, $\curl{\vb{H}} = \vb{J}_f$ \quad\, $\ds \oint \vb{H}\cdot d\vb{l} = I_\text{free}$
 
 \subsection{Linear Media}
 Magnetization in linear media:\\
 \tab $\vb{M} = \chi_m \vb{H}$
 
-Auxillary Field:\\
+Auxiliary Field:\\
 \tab $\vb{B} = \mu_0(\vb{H} + \vb{M}) = \mu_0(1 + \chi_m)\vb{H} = \mu \vb{H}$
 
 Volume bound current:\\
