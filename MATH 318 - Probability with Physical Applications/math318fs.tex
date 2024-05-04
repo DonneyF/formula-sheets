@@ -126,14 +126,14 @@ Two events are said to be independent if:\\
 
 \section{Random Variables}
 Memory-less Property:\\
-\tab $P(X > m + n | X > n) = P(x > m)$
+\tab $P(X > m + n | X > n) = P(X > m)$
 
 Expectation Value:\\
 \tab $\expval{X} = \sum_{i=0}^{\infty} x_i p(X = x_i) = \sum_{i=0}^{\infty} x_i p(x_i)$\\
 \tab $\expval{X} = \int_{-\infty}^\infty xf(x)\,dx$
 
 Cumulative Distribution Function:\\
-\tab $F(x) = \int_{-\infty}^{x} f(t),dt$
+\tab $F(x) = \int_{-\infty}^{x} f(t)\,dt$
 
 Law of the Unconscious Statistician:\\
 \tab $\expval{g(X)} = \int_{-\infty}^{\infty}g(x)f(x)\,dx$
@@ -179,16 +179,16 @@ Conditional Probability Distribution:\\
 
 Conditional Expectation:\\
 \tab $\expval{X|Y} = \sum_x xp_{X|Y}(x,y)$\\
-\tab $\expval{X|Y} = \int_{\infty}^{\infty}xf_{X|Y}(x,y)\,dx$\\
+\tab $\expval{X|Y} = \int_{-\infty}^{\infty}xf_{X|Y}(x,y)\,dx$\\
 \tab $\expval{X} = \expval{\expval{X|Y}} = \sum_y\expval{X|Y=y}P(Y=y)$\\
-\tab $\expval{X} = \expval{\expval{X|Y}} = \int_\infty^\infty \expval{X|Y=y}f_Y(y)\,dy$
+\tab $\expval{X} = \expval{\expval{X|Y}} = \int_{-\infty}^\infty \expval{X|Y=y}f_Y(y)\,dy$
 
 \subsection{Characteristic Functions}
 \tab $\phi_X(t) = \expval{e^{itX}}$
 \tab $M(t) = \expval{e^{tX}}$
 
 Extracting Moments:
-\tab $\ds \dv[n]{}{x}\rvert_{t=0} \phi(t) = \expval{i^nX^n}$
+\tab $\ds \dv[n]{}{t}\rvert_{t=0} \phi(t) = \expval{i^nX^n}$
 
 Inversion Theorem:\\
 \tab $f(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty}\phi(t) e^{-itx}\,dt$
@@ -255,7 +255,7 @@ Classification of States:
 \end{itemize}
 
 Irreducibility:\\
-\tab A Markov chain is irreducible if there is only one state (all states communicate).
+\tab A Markov chain is irreducible if there is only one class  (all states communicate).
 
 Periodicity of state $i$:\\
 \tab Period $d = \gcd\{n \geq 1 : P_{ii}^n > 0\}$\\
